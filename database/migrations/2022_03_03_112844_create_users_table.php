@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->integer('role_id');
             $table->integer('mobile');
-            $table->integer('office_id')->unsigned();
+            $table->integer('office_id')->nullable()->unsigned();
             $table->integer('age');
-            $table->integer('family_count');
+            $table->integer('family_count')->default(0);
             $table->boolean('is_active');
             $table->string('image');
             $table->timestamp('email_verified_at')->nullable();

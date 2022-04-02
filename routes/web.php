@@ -1,4 +1,4 @@
-    <?php
+<?php
 
 use Illuminate\Support\Facades\Route;
 
@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/test-web', function () {
+    return view('website.test.page1');
+});
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,8 +27,8 @@ Route::get('/users', [App\Http\Controllers\UserController::class, 'getUsers']);
 
 Route::get('/store-project', [App\Http\Controllers\ProjectController::class, 'store']);
 
-Route::group(['middleware' => ['auth']], function() {
-        Route::resource('roles', 'App\Http\Controllers\RoleController');
-        Route::resource('users', 'App\Http\Controllers\UserController');
+Route::group(['middleware' => ['auth']], function () {
+//    Route::resource('roles', [\App\Http\Controllers\RoleController::class]);
+//    Route::resource('users', \App\Http\Controllers\UserController::class);
 
 });
