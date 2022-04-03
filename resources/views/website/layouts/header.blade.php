@@ -7,18 +7,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html"><img src="{{asset('website/images/logo/logo.png')}}" alt="logo">Khai<span>rah.</span></a>
+            <a class="navbar-brand" href="index.html"><img src="{{asset('website/images/logo/logo.png')}}" alt="logo">الأمل<span> &nbsp;شعاع  </span></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse navigation-holder">
             <button class="close-navbar"><i class="ti-close"></i></button>
             <ul class="nav navbar-nav">
-                <li class="menu-item-has-children">
-                    <a href="#">Home +</a>
-                    <ul class="sub-menu">
-                        <li><a href="index.html">Home style 1</a></li>
-                        <li><a href="index-2.html">Home style 2</a></li>
-                    </ul>
-                </li>
+                <li><a class="active" href="{{ route('home') }}">home</a></li>
                 <li><a class="active" href="about.html">About</a></li>
                 <li class="menu-item-has-children">
                     <a href="#">Causes +</a>
@@ -30,7 +24,7 @@
                 <li class="menu-item-has-children">
                     <a href="#">Event +</a>
                     <ul class="sub-menu">
-                        <li><a href="event.html">Event</a></li>
+                        <li><a href="{{route('event.index')}}">Event</a></li>
                         <li><a href="event-single.html">Event Single</a></li>
                     </ul>
                 </li>
