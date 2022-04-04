@@ -25,7 +25,7 @@
                     <a href="#">Event +</a>
                     <ul class="sub-menu">
                         <li><a href="{{route('event.index')}}">Event</a></li>
-                        <li><a href="event-single.html">Event Single</a></li>
+                        <li><a href="{{route('event.add')}}">add Event</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children">

@@ -4,7 +4,7 @@
             <div class="col col-lg-3 col-md-3 col-sm-6">
                 <div class="widget about-widget">
                     <div class="footer-logo widget-title">
-                        <a href="index.html"><img src="{{asset('website/images/logo/logo.png')}}" alt="logo">Khai<span>rah.</span></a>
+                        <a href="index.html"><img src="{{asset('website/images/logo/logo.png')}}" alt="logo">الأمل<span> &nbsp;شعاع  </span></a>
                     </div>
                     <p>Build and Earn with your online store with lots of cool and exclusive tp-features </p>
                     <ul>
@@ -65,7 +65,7 @@
     <div class="container">
         <div class="row">
             <div class="col col-xs-12">
-                <p class="copyright">&copy; 2020 Khairah. All rights reserved</p>
+                <p class="copyright">&copy; 2022 شعاع الأمل معك دائما</p>
             </div>
         </div>
     </div>

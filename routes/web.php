@@ -35,8 +35,8 @@ Route::controller(EventController::class)
     ->group(function () {
         Route::get('/index', 'index')->name('index');
         Route::get('/single', 'single')->name('single');
-
-//        Route::get('/create', 'create')->name('create');
+        Route::get('/add', 'add')->name('add');
+        Route::post('/create', 'create')->name('create');
 //        Route::post('/store', 'store')->name('store');
 //        Route::post('/update', 'update')->name('update');
 //        Route::get('/edit/{id}', 'edit')->name('edit');
