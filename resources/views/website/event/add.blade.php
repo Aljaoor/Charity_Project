@@ -67,7 +67,7 @@
                                         {{ csrf_field() }}
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                                <input type="text" class="form-control" name="where" id="where" placeholder="ُEnter the place...">
+                                                <input type="text" class="form-control" name="title" id="title" placeholder="ُEnter name or title...">
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group form-group-in">
                                                 <label for="file">Upload Event Image</label>
@@ -83,6 +83,9 @@
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group clearfix">
                                                 <input type="text" class="form-control" name="count_of_volunteers" id="count_of_volunteers" placeholder="Number of volunteers">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
+                                                <input type="text" class="form-control" name="where" id="where" placeholder="ُEnter the place...">
                                             </div>
 
 

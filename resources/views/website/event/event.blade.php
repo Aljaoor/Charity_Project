@@ -52,73 +52,36 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <a href="{{route('event.single')}}">
-                        <div class="event-item">
-                            <div class="event-img">
-                                <img src="{{asset('website/images/event/1.jpg')}}" alt="">
-                            </div>
-                            <div class="event-text">
-                                <div class="event-left">
-                                    <div class="event-l-text">
-                                        <span>MAR</span>
-                                        <h4>28</h4>
-                                    </div>
-                                </div>
-                                <div class="event-right">
-                                    <ul>
-                                        <li><i class="ti-location-pin"></i> 9:00 AM - 10:00 AM</li>
-                                        <li><i class="ti-location-pin"></i> 968, Mudkarim, Pakistan.</li>
-                                    </ul>
-                                    <h2>Fundrising event that could change some poor children.</h2>
-                                    <p>It is long estblished fact that a reader will be distracted aliquip exea commodo consequat velit esse cillum fugiat.</p>
-                                </div>
-                            </div>
-                        </div></a>
-                        <a href="{{route('event.single')}}">
-                        <div class="event-item">
-                            <div class="event-img">
-                                <img src="{{asset('website/images/event/2.jpg')}}" alt="">
-                            </div>
-                            <div class="event-text">
-                                <div class="event-left">
-                                    <div class="event-l-text">
-                                        <span>MAR</span>
-                                        <h4>28</h4>
-                                    </div>
-                                </div>
+{{--       ========================  start event                 ========================--}}
+                        @foreach($event as $event)
 
-                                <div class="event-right">
-                                    <ul>
-                                        <li><i class="ti-location-pin"></i> 9:00 AM - 10:00 AM</li>
-                                        <li><i class="ti-location-pin"></i> 968, Mudkarim, Pakistan.</li>
-                                    </ul>
-                                    <h2>>Many Children are suffering a lot for food.</h2>
-                                    <p>It is long estblished fact that a reader will be distracted aliquip exea commodo consequat velit esse cillum fugiat.</p>
-                                </div>
-                            </div>
-                        </div></a>
+
                         <a href="{{route('event.single')}}">
                         <div class="event-item">
                             <div class="event-img">
-                                <img src="{{asset('website/images/event/3.jpg')}}" alt="">
+                                <img src="{{asset('/Event_Attachments')}}/{{$event->id}}/{{$event->image}}" alt="">
+
                             </div>
                             <div class="event-text">
                                 <div class="event-left">
-                                    <div class="event-l-text">
-                                        <span>MAR</span>
-                                        <h4>28</h4>
+                                    <div class="event-l-text" style="" >
+                                        <span>{{ $event->from_date  }} </span>
+                                        <h4>9:00 AM </h4>
                                     </div>
                                 </div>
                                 <div class="event-right">
                                     <ul>
-                                        <li><i class="ti-location-pin"></i> 9:00 AM - 10:00 AM</li>
-                                        <li><i class="ti-location-pin"></i> 968, Mudkarim, Pakistan.</li>
+                                        <li><i class="ti-location-pin"></i>9:00 AM - 10:00 AM </li>
+                                        <li><i class="ti-location-pin"></i> {{ $event->where  }}</li>
                                     </ul>
-                                    <h2> Be kind for the poor people and the kids.</h2>
-                                    <p>It is long estblished fact that a reader will be distracted aliquip exea commodo consequat velit esse cillum fugiat.</p>
+                                    <h2>{{ $event->title  }} </h2>
+                                    <p> {{ $event->count_of_volunteers  }} volunteers work free for you </p>
                                 </div>
                             </div>
                         </div></a>
+                        @endforeach
+{{--       ========================  end div event                 ========================--}}
+
                     </div>
                 </div>
             </div>

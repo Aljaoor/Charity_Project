@@ -62,7 +62,7 @@ URL:            http://themeforest.net/user/themepresss
 
 
 --------------------------------------------------------------
-#9.0  blog-page-section 
+#9.0  blog-page-section
 --------------------------------------------------------------
 
 
@@ -2627,7 +2627,7 @@ li{
     .header-style-3 .navigation .navbar-brand {
         margin-top: 10px;
     }
-    
+
     .header-style-2 .navigation .navbar-brand img,
     .header-style-3 .navigation .navbar-brand img{
       margin-right: 10px;
@@ -3473,7 +3473,7 @@ li{
 }
 
 .about-cercle{
-  padding: 150px 0;  
+  padding: 150px 0;
   position: relative;
 }
 .about-cercle:before{
@@ -3776,7 +3776,7 @@ li{
   color: #fff;
 }
 .features-wrap{
-  padding: 100px 0 70px; 
+  padding: 100px 0 70px;
 }
 
 .features-wrap .row{
@@ -4200,6 +4200,7 @@ li{
   min-height: 200px;
   object-fit: cover;
 }
+
 .event-l-text{
   padding: 30px;
   background: #03b664;
@@ -4250,7 +4251,7 @@ li{
   position: absolute;
   left: 8%;
   top: 10%;
-  z-index: -1;  
+  z-index: -1;
 }
 .shape2 {
     position: absolute;
@@ -4328,7 +4329,7 @@ li{
   .event-img{
     width: 100%;
     margin-right: 0;
-  } 
+  }
   .event-img img{
     width: 100%;
   }
@@ -4388,7 +4389,7 @@ li{
 }
 
 .volunteer-item .volunteer-img{
-  transition: all .3s; 
+  transition: all .3s;
 }
 .volunteer-item:hover .volunteer-img{
   transform: translateY(-20px);
@@ -5730,7 +5731,7 @@ li{
 .tp-event-details-tab .nav li:last-child a{
     margin-right: -1px;
 }
-.tp-event-details-tab .nav li.active a, 
+.tp-event-details-tab .nav li.active a,
 .tp-event-details-tab .nav li:hover a {
     background: #fff;
     outline: none;
@@ -5839,7 +5840,7 @@ li{
 }
 
 /*--------------------------------------------------------------
- #9.0 blog-page-section 
+ #9.0 blog-page-section
 --------------------------------------------------------------*/
 .tp-blog-pg-section {
     /*** format-standard ***/
