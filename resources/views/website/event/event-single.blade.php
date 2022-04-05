@@ -1,5 +1,6 @@
 ﻿@extends('website.layouts.main')
 @section('content')
+
     <!-- start page-wrapper -->
     <div class="page-wrapper">
         <!-- start preloader -->
@@ -24,7 +25,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col col-xs-12">
-                                <h2>Single Event</h2>
+                                <h2> {{$event->title}}  </h2>
                                 <ol class="breadcrumb">
                                     <li><a href="{{ route('home') }}">Home</a></li>
                                     <li>Event</li>
@@ -45,19 +46,19 @@
                             <div class="tp-case-details-text">
                                 <div id="Description">
                                     <div class="tp-case-details-img">
-                                        <img src="{{asset('website/images/event-details2.jpg')}}" alt="">
+                                        <img src="{{asset('/Event_Attachments')}}/{{$event->id}}/{{$event->image}}" alt="">
                                     </div>
                                     <div class="tp-case-content">
                                         <div class="tp-case-text-top">
-                                            <h2>Many Children are suffering a lot for food.</h2>
+                                            <h2>{{$event->title}} </h2>
                                             <div class="case-b-text">
-                                                <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.</p>
-                                                <p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided.</p>
-                                                <p>But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures.</p>
+                                                <p> start at :{{$event->from_date}} </p>
+                                                <p> end in :{{$event->to_date}}  </p>
+                                                <p> عدد المتوعين المشاركين :{{$event->count_of_volunteers}}  </p>
                                             </div>
                                             <div class="case-bb-text">
-                                                <h3>Event Mission</h3>
-                                                <p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure.</p>
+                                                <h3>وصف الحدث</h3>
+                                                <p>{{$event->describe}} .</p>
                                                 <ul>
                                                     <li>Save The Children’s Role In Fight Against Malnutrition Hailed</li>
                                                     <li>Charity Can Help Make Smile Of Poor People</li>
@@ -70,17 +71,20 @@
                                                 <h3>Event Loacation</h3>
                                                 <div id="Map" class="tab-pane">
                                                     <div class="contact-map">
-{{--                                                        <iframe src="../../../../maps/embed.html?pb=!1m18!1m12!1m3!1d193595.9147703055!2d-74.11976314309273!3d40.69740344223377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sbd!4v1547528325671" allowfullscreen=""></iframe>--}}
-                                                        <iframe src="https://www.google.com/maps/embed/v1/search?q=syria+homs+albath-unifer&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8" allowfullscreen=""></iframe>
+
+                                                        <iframe src="{{$event->location}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="submit-area sub-btn">
-                                                <a href="donate.html" class="theme-btn submit-btn">Donate Now</a>
-                                            </div>
+
                                         </div>
+
                                     </div>
+
+                                </div>
+                                <div class="submit-area sub-btn" style="margin-left: 40%;">
+                                    <a href="donate.html" class="theme-btn submit-btn">Donate Now</a>
                                 </div>
                             </div>
                         </div>
@@ -148,4 +152,7 @@
         <!-- tp-event-details-area end -->
     </div>
     <!-- end of page-wrapper -->
+
 @endsection
+
+

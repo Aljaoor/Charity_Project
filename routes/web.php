@@ -24,7 +24,7 @@ Route::controller(EventController::class)
 //   ->middleware(['auth'])
     ->group(function () {
         Route::get('/index', 'index')->name('index');
-        Route::get('/single', 'single')->name('single');
+        Route::get('/single/{id}', 'single')->name('single');
         Route::get('/add', 'add')->name('add');
         Route::post('/create', 'create')->name('create');
 //        Route::post('/store', 'store')->name('store');

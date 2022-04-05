@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
+
 use App\Models\Event_attachment;
 use function GuzzleHttp\Promise\all;
 
@@ -40,6 +41,8 @@ class EventController extends Controller
         $event->describe = $request->describe;
         $event->from_date = $request->from_date;
         $event->to_date = $request->to_date;
+        $event->location = $request->location;
+
         $event->count_of_volunteers = $request->count_of_volunteers;
         $event->image = $request->file('event_image')->getClientOriginalName();
         $event->title = $request->title;
@@ -81,8 +84,9 @@ class EventController extends Controller
 
 
 
-    public  function single(){
-        return view("website.event-single");
+    public  function single($id){
+        $event=Event::whereId($id)->firstOrFail();
+        return view('website.event.event-single')->with('event',$event);
 
     }
 }

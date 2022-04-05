@@ -55,8 +55,7 @@
 {{--       ========================  start event                 ========================--}}
                         @foreach($event as $event)
 
-
-                        <a href="{{route('event.single')}}">
+                        <a href="{{route('event.single',$event->id)}}">
                         <div class="event-item">
                             <div class="event-img">
                                 <img src="{{asset('/Event_Attachments')}}/{{$event->id}}/{{$event->image}}" alt="">
@@ -78,7 +77,8 @@
                                     <p> {{ $event->count_of_volunteers  }} volunteers work free for you </p>
                                 </div>
                             </div>
-                        </div></a>
+                        </div>
+                        </a>
                         @endforeach
 {{--       ========================  end div event                 ========================--}}
 
