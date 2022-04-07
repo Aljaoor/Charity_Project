@@ -17,6 +17,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/users', [App\Http\Controllers\UserController::class, 'getUsers']);
 
 Route::get('/store-project', [App\Http\Controllers\ProjectController::class, 'store']);
+Route::get('/contact',[App\Http\Controllers\EventController::class, 'contact'])->name('contact');
 
 Route::controller(EventController::class)
     ->prefix('/events')
@@ -27,10 +28,9 @@ Route::controller(EventController::class)
         Route::get('/single/{id}', 'single')->name('single');
         Route::get('/add', 'add')->name('add');
         Route::post('/create', 'create')->name('create');
-//        Route::post('/store', 'store')->name('store');
-//        Route::post('/update', 'update')->name('update');
-//        Route::get('/edit/{id}', 'edit')->name('edit');
-//        Route::get('/delete/{id}', 'delete')->name('delete');
+        Route::post('/update', 'update')->name('update');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::get('/delete/{id}', 'delete')->name('delete');
 //        Route::get('/attachment/{id}', 'attachment')->name('attachment');
 //        Route::get('open/{id}/{file_name}', 'open')->name('open');
     });

@@ -36,6 +36,18 @@
             </div>
         </section>
         <!-- end page-title -->
+        @if(session()->has('delete'))
+            <div class="clearfix error-handling-messages">
+                <div id="success"> Successfully deleted</div>
+                {{--                <div id="error"> Error occurred while sending email. Please try again later. </div>--}}
+            </div>
+        @endif
+        @if(session()->has('edit'))
+            <div class="clearfix error-handling-messages">
+                <div id="success">Successfully edited</div>
+                {{--                <div id="error"> Error occurred while sending email. Please try again later. </div>--}}
+            </div>
+    @endif
         <!-- event-area start -->
         <div class="event-area section-padding">
             <div class="container">
@@ -50,8 +62,11 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="row">
                     <div class="col-12">
+
 {{--       ========================  start event                 ========================--}}
                         @foreach($event as $event)
 

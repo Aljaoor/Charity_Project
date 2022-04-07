@@ -89,4 +89,49 @@ class EventController extends Controller
         return view('website.event.event-single')->with('event',$event);
 
     }
+
+    public function edit($id){
+
+        $event=Event::whereId($id)->firstOrFail();
+        return view('website.event.edit')->with('event',$event);
+
+    }
+
+
+    public function update(Request $request){
+        $event_id= $request->id;
+       $event=Event::whereId($event_id)->firstOrFail();
+        $event->title = $request->title;
+        $event->where = $request->where;
+        $event->from_date = $request->from_date;
+        $event->to_date = $request->to_date;
+        $event->count_of_volunteers = $request->count_of_volunteers;
+        $event->describe = $request->describe;
+        $event->location = $request->location;
+
+
+        if($request->has('event_image')) {
+            $image = $request->file('event_image');
+            $filename = $image->getClientOriginalName();
+            $image->move(public_path('Event_Attachments/' . $event_id), $filename);
+            $event->image = $request->file('event_image')->getClientOriginalName();
+        }
+
+        $event->update();
+
+        session()->flash('edit', 'تم التعديل event ');
+        return redirect()->route('event.index');
+
+    }
+    public function delete($id){
+        Event::whereId($id)->delete();
+        session()->flash('delete', 'تم الحدف event ');
+
+        return redirect()->route('event.index');
+
+
+    }
+    public  function contact(){
+        return view('website.contact');
+    }
 }

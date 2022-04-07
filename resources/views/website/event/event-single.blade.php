@@ -133,15 +133,13 @@
                                 </div>
                             </div>
                             <div class="widget tag-widget">
-                                <h3>Tags</h3>
+                                <h3>option</h3>
                                 <ul>
-                                    <li><a href="#">Donations</a></li>
-                                    <li><a href="#">Charity</a></li>
-                                    <li><a href="#">Help</a></li>
-                                    <li><a href="#">Non Profit</a></li>
-                                    <li><a href="#">Poor People</a></li>
-                                    <li><a href="#">Helping Hand</a></li>
-                                    <li><a href="#">Video</a></li>
+                                    <li class="theme-btn submit-btn"><a href="{{route('event.delete',$event->id)}}">Delete</a></li>
+                                    <li class="theme-btn submit-btn"><a href="{{route('event.edit',$event->id)}}">Edit</a></li>
+                                    <li class="theme-btn submit-btn"><a href="#">Add amage</a></li>
+                                    <li class="theme-btn submit-btn"><a href="{{route('contact')}}">Help</a></li>
+
                                 </ul>
                             </div>
                         </div>
