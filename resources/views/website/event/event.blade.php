@@ -43,7 +43,7 @@
             </div>
         @endif
         @if(session()->has('edit'))
-            <div class="clearfix error-handling-messages">
+            <div class="section-title section-title2 text-center" style="color: #2ebd61; background: #0b1c3c">
                 <div id="success">Successfully edited</div>
                 {{--                <div id="error"> Error occurred while sending email. Please try again later. </div>--}}
             </div>

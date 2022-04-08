@@ -37,6 +37,11 @@
             </div>
         </section>
         <!-- end page-title -->
+        @if(session()->has('delete_image'))
+            <div class="clearfix error-handling-messages">
+                <div id="success">image deleted</div>
+            </div>
+    @endif
         <!-- tp-event-details-area start -->
         <div class="tp-case-details-area section-padding">
             <div class="container">
@@ -135,10 +140,13 @@
                             <div class="widget tag-widget">
                                 <h3>option</h3>
                                 <ul>
-                                    <li class="theme-btn submit-btn"><a href="{{route('event.delete',$event->id)}}">Delete</a></li>
+                                    <li class="theme-btn submit-btn"><a href="{{route('event.delete',$event->id)}}">Delete Event</a></li>
                                     <li class="theme-btn submit-btn"><a href="{{route('event.edit',$event->id)}}">Edit</a></li>
-                                    <li class="theme-btn submit-btn"><a href="#">Add amage</a></li>
-                                    <li class="theme-btn submit-btn"><a href="{{route('contact')}}">Help</a></li>
+                                    <li class="theme-btn submit-btn"><a href="{{route('events_attachment.show',$event->id)}}">show image</a></li>
+                                    <li class="theme-btn submit-btn"><a href="{{route('events_attachment.download',$event->id)}}">download image</a></li>
+                                    <li class="theme-btn submit-btn"><a href="{{route('events_attachment.delete',$event->id)}}">delete image</a></li>
+                                    <li class="theme-btn submit-btn"><a href="#">Add image</a></li>
+                                    <li class="theme-btn submit-btn"><a href="{{route('contact')}}">contact</a></li>
 
                                 </ul>
                             </div>

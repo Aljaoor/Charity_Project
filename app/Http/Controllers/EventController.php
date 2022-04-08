@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-
+use File;
 
 use App\Models\Event_attachment;
 use function GuzzleHttp\Promise\all;
@@ -75,7 +76,7 @@ class EventController extends Controller
         }
         session()->flash('Add', 'تم اضافة event ');
 
-        return back();
+        return redirect()->route('event.index');
 
 
 
@@ -99,32 +100,102 @@ class EventController extends Controller
 
 
     public function update(Request $request){
+
         $event_id= $request->id;
-       $event=Event::whereId($event_id)->firstOrFail();
-        $event->title = $request->title;
-        $event->where = $request->where;
-        $event->from_date = $request->from_date;
-        $event->to_date = $request->to_date;
-        $event->count_of_volunteers = $request->count_of_volunteers;
-        $event->describe = $request->describe;
-        $event->location = $request->location;
+        $old=Event_attachment::whereEventId($event_id)->first();
+        if ($old === null) {
+            // $old doesn't exist
+            $event=Event::whereId($event_id)->firstOrFail();
+            $event->title = $request->title;
+            $event->where = $request->where;
+            $event->from_date = $request->from_date;
+            $event->to_date = $request->to_date;
+            $event->count_of_volunteers = $request->count_of_volunteers;
+            $event->describe = $request->describe;
+            $event->location = $request->location;
 
 
-        if($request->has('event_image')) {
-            $image = $request->file('event_image');
-            $filename = $image->getClientOriginalName();
-            $image->move(public_path('Event_Attachments/' . $event_id), $filename);
-            $event->image = $request->file('event_image')->getClientOriginalName();
+            if($request->has('event_image')) {
+                $image = $request->file('event_image');
+                $filename = $image->getClientOriginalName();
+                $image->move(public_path('Event_Attachments/' . $event_id), $filename);
+                $event->image = $request->file('event_image')->getClientOriginalName();
+
+
+                $attachments = new Event_attachment();
+                $attachments->file_name = $filename;
+                $attachments->event_id = $event_id;
+                $attachments->save();
+
+            }
+
+            $event->update();
+
+            session()->flash('edit', 'تم التعديل event ');
+            return redirect()->route('event.index');
+
         }
 
-        $event->update();
+        else{
+            Storage::disk('public_uploads')->delete($old->event_id.'/'.$old->file_name);
 
-        session()->flash('edit', 'تم التعديل event ');
-        return redirect()->route('event.index');
+            $event=Event::whereId($event_id)->firstOrFail();
+            $event->title = $request->title;
+            $event->where = $request->where;
+            $event->from_date = $request->from_date;
+            $event->to_date = $request->to_date;
+            $event->count_of_volunteers = $request->count_of_volunteers;
+            $event->describe = $request->describe;
+            $event->location = $request->location;
+
+
+
+                $image = $request->file('event_image');
+                $filename = $image->getClientOriginalName();
+                $image->move(public_path('Event_Attachments/' . $event_id), $filename);
+                $event->image = $request->file('event_image')->getClientOriginalName();
+
+
+                $attachments = Event_attachment::whereEventId($event_id)->firstOrFail();
+                $attachments->file_name = $filename;
+                $attachments->update();
+
+
+
+            $event->update();
+
+            session()->flash('edit', 'تم التعديل event ');
+            return redirect()->route('event.index');
+        }
 
     }
+
+
+
     public function delete($id){
+
+        File::deleteDirectory(public_path('/Event_Attachments'.'/'.$id));
+
+
+
+//        $image=Event_attachment::whereEventId($id)->first();
+//        Storage::disk('public_uploads')->delete($image->event_id.'/');
+//        $image->delete();
+//
+//        $folder = Folder::find($id);
+//
+//
+//        $folder=Event_attachment::find($id);
+//        $folder_path = public_path('Event_Attachments/'.$id);
+//       delete($folder_path);
+//        Storage::deleteDirectory(public_path('Event_Attachments/'.$id));
+//
+//        return $folder_path;
+
+
+
         Event::whereId($id)->delete();
+
         session()->flash('delete', 'تم الحدف event ');
 
         return redirect()->route('event.index');
@@ -134,4 +205,5 @@ class EventController extends Controller
     public  function contact(){
         return view('website.contact');
     }
+
 }

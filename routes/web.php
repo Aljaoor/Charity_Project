@@ -35,6 +35,16 @@ Route::controller(EventController::class)
 //        Route::get('open/{id}/{file_name}', 'open')->name('open');
     });
 
+Route::controller(\App\Http\Controllers\EventAttachmentController::class)
+    ->prefix('/events_attachment')
+    ->as('events_attachment.')
+    ->group(function () {
+        Route::get('/delete/{id}', 'delete')->name('delete');
+        Route::get('/download/{id}', 'download')->name('download');
+        Route::get('/show/{id}', 'show')->name('show');
+
+    });
+
 Route::group(['middleware' => ['auth']], function () {
 //    Route::resource('roles', [\App\Http\Controllers\RoleController::class]);
 //    Route::resource('users', \App\Http\Controllers\UserController::class);
