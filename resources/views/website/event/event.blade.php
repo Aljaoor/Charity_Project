@@ -36,18 +36,24 @@
             </div>
         </section>
         <!-- end page-title -->
+        @if(session()->has('Add'))
+            <div class="section-title section-title2 text-center" style="color:orangered; background: #2ebd61">
+                <strong>{{ session()->get('Add') }}</strong>
+                {{--                <div id="error"> Error occurred while sending email. Please try again later. </div>--}}
+            </div>
+        @endif
         @if(session()->has('delete'))
-            <div class="clearfix error-handling-messages">
-                <div id="success"> Successfully deleted</div>
+            <div class="section-title section-title2 text-center" style="color:orangered; background: #2ebd61">
+                <strong>{{ session()->get('delete') }}</strong>
                 {{--                <div id="error"> Error occurred while sending email. Please try again later. </div>--}}
             </div>
         @endif
         @if(session()->has('edit'))
-            <div class="section-title section-title2 text-center" style="color: #2ebd61; background: #0b1c3c">
-                <div id="success">Successfully edited</div>
+            <div class="section-title section-title2 text-center" style="color:orangered; background: #2ebd61">
+                <strong>{{ session()->get('edit') }}</strong>
                 {{--                <div id="error"> Error occurred while sending email. Please try again later. </div>--}}
             </div>
-    @endif
+          @endif
         <!-- event-area start -->
         <div class="event-area section-padding">
             <div class="container">

@@ -74,7 +74,7 @@ class EventController extends Controller
             // move pic
             $request->event_image->move(public_path('Event_Attachments/' . $event_id), $file_name);
         }
-        session()->flash('Add', 'تم اضافة event ');
+        session()->flash('Add', 'Successfully Added ');
 
         return redirect()->route('event.index');
 
@@ -131,13 +131,13 @@ class EventController extends Controller
 
             $event->update();
 
-            session()->flash('edit', 'تم التعديل event ');
+            session()->flash('edit', 'Successfully Edited ');
             return redirect()->route('event.index');
 
         }
 
         else{
-            Storage::disk('public_uploads')->delete($old->event_id.'/'.$old->file_name);
+
 
             $event=Event::whereId($event_id)->firstOrFail();
             $event->title = $request->title;
@@ -149,7 +149,8 @@ class EventController extends Controller
             $event->location = $request->location;
 
 
-
+            if($request->has('event_image')) {
+                Storage::disk('public_uploads')->delete($old->event_id.'/'.$old->file_name);
                 $image = $request->file('event_image');
                 $filename = $image->getClientOriginalName();
                 $image->move(public_path('Event_Attachments/' . $event_id), $filename);
@@ -160,11 +161,11 @@ class EventController extends Controller
                 $attachments->file_name = $filename;
                 $attachments->update();
 
-
+                }
 
             $event->update();
 
-            session()->flash('edit', 'تم التعديل event ');
+            session()->flash('edit', 'Successfully Edited');
             return redirect()->route('event.index');
         }
 
@@ -173,6 +174,7 @@ class EventController extends Controller
 
 
     public function delete($id){
+
 
         File::deleteDirectory(public_path('/Event_Attachments'.'/'.$id));
 
@@ -196,7 +198,7 @@ class EventController extends Controller
 
         Event::whereId($id)->delete();
 
-        session()->flash('delete', 'تم الحدف event ');
+        session()->flash('delete', 'Successfully Deleted ');
 
         return redirect()->route('event.index');
 

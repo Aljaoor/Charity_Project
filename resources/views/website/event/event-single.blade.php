@@ -38,10 +38,11 @@
         </section>
         <!-- end page-title -->
         @if(session()->has('delete_image'))
-            <div class="clearfix error-handling-messages">
-                <div id="success">image deleted</div>
+            <div class="section-title section-title2 text-center" style="color:orangered; background: #2ebd61">
+                <strong>{{ session()->get('delete_image') }}</strong>
+                {{--                <div id="error"> Error occurred while sending email. Please try again later. </div>--}}
             </div>
-    @endif
+        @endif
         <!-- tp-event-details-area start -->
         <div class="tp-case-details-area section-padding">
             <div class="container">
@@ -140,7 +141,9 @@
                             <div class="widget tag-widget">
                                 <h3>option</h3>
                                 <ul>
-                                    <li class="theme-btn submit-btn"><a href="{{route('event.delete',$event->id)}}">Delete Event</a></li>
+                                    <button type="button" class="theme-btn submit-btn" data-toggle="modal" data-target="#exampleModal">
+                                        <li><a>Delete Event</a></li>
+                                    </button>
                                     <li class="theme-btn submit-btn"><a href="{{route('event.edit',$event->id)}}">Edit</a></li>
                                     <li class="theme-btn submit-btn"><a href="{{route('events_attachment.show',$event->id)}}">show image</a></li>
                                     <li class="theme-btn submit-btn"><a href="{{route('events_attachment.download',$event->id)}}">download image</a></li>
@@ -150,6 +153,27 @@
 
                                 </ul>
                             </div>
+                            <!-- Modal -->
+                            <form action="{{route('event.delete',$event->id)}}" method="get">
+                                {{ csrf_field() }}
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <h3 class="modal-title" id="exampleModalLabel"   style="color: red;"> تأكيد عملية الحذف</h3>
+                                            <input type="hidden" name="id" id="id_file" value="{{$event->id}}">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="theme-btn submit-btn" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="theme-btn submit-btn">Delete</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                            </div>
+                            <!-- Modal -->
                         </div>
                     </div>
                 </div>
