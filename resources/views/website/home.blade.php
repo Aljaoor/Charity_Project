@@ -1,6 +1,18 @@
 ﻿
 @extends('website.layouts.main')
 @section('content')
+    @if ($message = Session::get('error'))
+        <div class="alert alert-success">
+            <p style="color: red; margin-left: 600px;">{{ $message }}</p>
+        </div>
+    @endif
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p style="margin-left: 600px;">{{ $message }}</p>
+        </div>
+    @endif
+{{Auth::user()->name}}
+    <a href="{{url('/log')}}"> aaaaaaa</a>
 <div class="page-wrapper">
     <!-- start preloader -->
     <div class="preloader">

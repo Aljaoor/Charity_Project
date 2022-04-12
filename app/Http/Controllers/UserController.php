@@ -8,6 +8,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -30,8 +31,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name','name')->all();
-        return view('users.create',compact('roles'));
+//        $roles = Role::pluck('name','name')->all();
+//        return view('users.create',compact('roles'));
+        return  view('website.user.add');
+
     }
 
     /**
@@ -45,18 +48,48 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+//            'password' => 'required|same:confirm-password',
         ]);
 
-        $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
+//        $request->password = Hash::make( $request->password );
 
-        $user = User::create($input);
-        $user->assignRole($request->input('roles'));
+        $user=new User();
+        $user->name = $request->name;
+        $user->password = $request->password;
+        $user->email = $request->email;
+        $user->age = $request->age;
+        $user->mobile = $request->mobile;
+        $user->role_id = $request->role_id;
+        $user->save();
 
-        return redirect()->route('users.index')
-            ->with('success','User created successfully');
+//       $user->assignRole($request->input('roles'));
+
+       return redirect()->route('home')
+           ->with('success',' welcome user account created successfully');
+
+    }
+
+    public function log_in(Request $request){
+     $email=User::whereEmail($request->email)->first();
+     if($email===null){
+        return back()->with('error','The email you entered was wrong.');
+
+     }
+     else{
+      $password=$email->password;
+
+      if ($password===$request->password){
+
+          return back()->with('success','welcome');
+       }
+      else{
+
+          return back()->with('error','The password you entered was wrong.');
+          }
+
+
+      }
+
     }
 
     /**

@@ -1,3 +1,4 @@
+
 <nav class="navigation navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
@@ -103,8 +104,53 @@
                 </div>
             </div>
             <div class="vollenter-btn">
-                <a class="theme-btn-s2" href="volunteer.html">Join a volunteer</a>
+                <a class="theme-btn-s2" href="{{route('user.create')}}">Join</a>
+            </div>
+            <div class="vollenter-btn">
+            <button type="button" class="theme-btn-s2" data-toggle="modal" data-target="#exampleModalCenter" style="color: white; background: #2ebd61; width: 70px; height: 45px; ">
+               log in
+            </button>
             </div>
         </div>
     </div><!-- end of container -->
 </nav>
+<!-- Modal -->
+<form action="{{ route('login') }}" method="post">
+    @csrf
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLongTitle">log in</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror"   name="email" id="email" placeholder="your email..." style="height: 50px;">
+                </div>
+                @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
+                    <input type="password" class="form-control @error('password') is-invalid @enderror"  name="password" id="password" placeholder="ُpassword..." style="height: 50px;">
+                </div>
+                @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" style="background: #2ebd61">log in</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

@@ -2,12 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use  App\Http\Controllers\UserController;
 
-Route::get('/test_web', function () {
-    return view('website.test.page2');
-});
 Route::get('/', function () {
     return view('website.home');
+});
+Route::get('/log', function () {
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -31,8 +32,6 @@ Route::controller(EventController::class)
         Route::post('/update', 'update')->name('update');
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::get('/delete/{id}', 'delete')->name('delete');
-//        Route::get('/attachment/{id}', 'attachment')->name('attachment');
-//        Route::get('open/{id}/{file_name}', 'open')->name('open');
     });
 
 Route::controller(\App\Http\Controllers\EventAttachmentController::class)
@@ -44,6 +43,22 @@ Route::controller(\App\Http\Controllers\EventAttachmentController::class)
         Route::get('/show/{id}', 'show')->name('show');
 
     });
+
+Route::controller(UserController::class)
+    ->prefix('/user')
+    ->as('user.')
+//   ->middleware(['auth'])
+    ->group(function () {
+          Route::get('/create', 'create')->name('create');
+          Route::post('/store', 'store')->name('store');
+          Route::post('/log_in', 'log_in')->name('log_in');
+//        Route::get('/single/{id}', 'single')->name('single');
+
+//        Route::post('/update', 'update')->name('update');
+//        Route::get('/edit/{id}', 'edit')->name('edit');
+//        Route::get('/delete/{id}', 'delete')->name('delete');
+    });
+
 
 Route::group(['middleware' => ['auth']], function () {
 //    Route::resource('roles', [\App\Http\Controllers\RoleController::class]);

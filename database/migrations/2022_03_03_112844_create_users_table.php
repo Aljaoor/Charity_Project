@@ -22,10 +22,8 @@ class CreateUsersTable extends Migration
             $table->integer('mobile');
             $table->integer('office_id')->nullable()->unsigned();
             $table->integer('age');
-            $table->integer('family_count')->default(0);
-            $table->boolean('is_active');
-            $table->string('image');
-            $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('is_active')->default(true);
+
             $table->foreign('office_id')->on('offices')->references('id')->onDelete('cascade');
 
             $table->rememberToken();
