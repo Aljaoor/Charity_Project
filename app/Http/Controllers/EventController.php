@@ -74,9 +74,8 @@ class EventController extends Controller
             // move pic
             $request->event_image->move(public_path('Event_Attachments/' . $event_id), $file_name);
         }
-        session()->flash('Add', 'Successfully Added ');
 
-        return redirect()->route('event.index');
+        return redirect()->route('event.index')->with('add','Successfully Added ');;
 
 
 

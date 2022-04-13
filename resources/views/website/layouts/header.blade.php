@@ -23,7 +23,7 @@
                     </ul>
                 </li>
                 <li class="menu-item-has-children">
-                    <a href="#">Event +</a>
+                    <a href="">Event +</a>
                     <ul class="sub-menu">
                         <li><a href="{{route('event.index')}}">Event</a></li>
                         <li><a href="{{route('event.add')}}">add Event</a></li>
@@ -172,5 +172,4 @@
             </div>
         </div>
     </div>
-</div>
 </form>

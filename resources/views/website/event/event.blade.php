@@ -36,10 +36,9 @@
             </div>
         </section>
         <!-- end page-title -->
-        @if(session()->has('Add'))
-            <div class="section-title section-title2 text-center" style="color:orangered; background: #2ebd61">
-                <strong>{{ session()->get('Add') }}</strong>
-                {{--                <div id="error"> Error occurred while sending email. Please try again later. </div>--}}
+        @if ($message = Session::get('add'))
+            <div class="alert alert-success">
+                <p style="margin-left: 600px;">{{ $message }}</p>
             </div>
         @endif
         @if(session()->has('delete'))
