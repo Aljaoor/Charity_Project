@@ -21,6 +21,14 @@
                         <h3>Useful Links</h3>
                     </div>
                     <ul>
+{{--             ---------------           log out button--}}
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                        </li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="causes.html">Our Causes</a></li>
                         <li><a href="volunteer.html">Our Volunteer</a></li>
@@ -28,6 +36,9 @@
                         <li><a href="event.html">Our Event</a></li>
                     </ul>                            </div>
             </div>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
             <div class="col col-lg-3 col-lg-offset-1 col-md-3 col-sm-6">
                 <div class="widget market-widget tp-service-link-widget">
                     <div class="widget-title">

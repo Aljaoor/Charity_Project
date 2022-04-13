@@ -11,8 +11,6 @@
             <p style="margin-left: 600px;">{{ $message }}</p>
         </div>
     @endif
-{{Auth::user()->name}}
-    <a href="{{url('/log')}}"> aaaaaaa</a>
 <div class="page-wrapper">
     <!-- start preloader -->
     <div class="preloader">

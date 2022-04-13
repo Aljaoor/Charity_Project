@@ -104,7 +104,8 @@
                 </div>
             </div>
             <div class="vollenter-btn">
-                <a class="theme-btn-s2" href="{{route('user.create')}}">Join</a>
+                <a class="theme-btn-s2" href="{{url('join')}}">Join</a>
+
             </div>
             <div class="vollenter-btn">
             <button type="button" class="theme-btn-s2" data-toggle="modal" data-target="#exampleModalCenter" style="color: white; background: #2ebd61; width: 70px; height: 45px; ">
@@ -128,24 +129,43 @@
             </div>
             <div class="modal-body">
 
-                <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                    <input type="email" class="form-control @error('email') is-invalid @enderror"   name="email" id="email" placeholder="your email..." style="height: 50px;">
-                </div>
-                @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="your email..." style="height: 50px; margin-bottom: 20px;">
 
-                <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                    <input type="password" class="form-control @error('password') is-invalid @enderror"  name="password" id="password" placeholder="ُpassword..." style="height: 50px;">
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                 </div>
-                @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="your password..." style="height: 50px; margin-bottom: 20px;">
+                    </div>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
+                </div>
             </div>
+
+            <div class="row mb-3" style="margin-left: 15px;">
+                <div class="col-md-6 offset-md-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                        <label class="form-check-label" for="remember">
+                            {{ __('Remember Me') }}
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary" style="background: #2ebd61">log in</button>
