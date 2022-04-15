@@ -1,7 +1,21 @@
 @extends('website.layouts.main')
 
 @section('content')
+    <style>
 
+        #background {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            pointer-events: none;
+            border: none;
+        }
+
+    </style>
     <!-- start page-wrapper -->
     <div class="page-wrapper">
         <!-- start preloader -->
@@ -18,6 +32,7 @@
                 <div class="sk-cube sk-cube9"></div>
             </div>
         </div>
+
         <!-- end preloader -->
         <!-- start page-title -->
         <section class="page-title">
@@ -38,6 +53,8 @@
             </div>
         </section>
         <!-- end page-title -->
+        <iframe id="background" src="https://threejs.org/manual/examples/responsive.html"></iframe>
+        <div id="content">
         <!-- volunteer-area-start -->
         <div class="volunteer-area ">
             <div class="volunteer-wrap section-padding">
@@ -55,9 +72,9 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="volunteer-contact">
-                                <div class="volunteer-contact-form">
-                                    <form  action="{{route('event.create')}}" method="post" class="contact-validation-active" enctype="multipart/form-data">
+                            <div class="volunteer-contact" >
+                                <div class="volunteer-contact-form" style="background: black;">
+                                    <form  action="{{route('event.create')}}" method="post" class="contact-validation-active" enctype="multipart/form-data" >
                                         {{ csrf_field() }}
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
@@ -65,14 +82,18 @@
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group form-group-in">
                                                 <label for="file">Upload Event Image</label>
-                                                <div  style="font-size: 10px;">  jpeg ,.jpg , png : صيغة المرفق</div>
+                                                <div  style="font-size: 10px; color: red">Attachment Format:jpeg ,.jpg , png</div>
                                                 <input id="file" type="file" class="form-control" name="event_image" accept=".jpg, .png, image/jpeg, image/png">
                                                 <i class="ti-cloud-up"></i>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                                <input type="date" class="form-control" name="from_date" id="from_date">
+                                                <div  style="font-size: 20px; margin-left: 5px;"> Start At:</div>
+
+                                                <input type="date" class="form-control" name="from_date" id="from_date" >
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group clearfix">
+                                                <div  style="font-size: 20px; margin-left: 5px;"> End In:</div>
+
                                                 <input type="date" class="form-control" name="to_date" id="to_date">
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group clearfix">
@@ -112,73 +133,9 @@
                 </div>
             </div>
             <!-- volunteer-area start -->
-            <div class="volunteer-area v2 section-padding">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3">
-                            <div class="section-title section-title2 text-center">
-                                <div class="thumb-text">
-                                    <span>Events</span>
-                                </div>
-                                <h2>Our Great Events</h2>
-                                <p>It is a long established fact that reader distracted by the the readable content off page looking at its layout point.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="volunteer-wrap">
-                        <div class="row">
-                            <div class="col col-md-3 col-sm-6 custom-grid col-12">
-                                <div class="volunteer-item">
-                                    <div class="volunteer-img">
-                                        <img src="{{asset('website/images/event/1.jpg')}}" alt="">
-                                    </div>
-                                    <div class="volunteer-content">
-                                        <h2><a href="#">مساعدات دراسية </a></h2>
-                                        <span>ُEvent</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col col-md-3 col-sm-6 custom-grid col-12">
-                                <div class="volunteer-item">
-                                    <div class="volunteer-img">
-                                        <img src="{{asset('website/images/event/2.jpg')}}" alt="">
-                                    </div>
-                                    <div class="volunteer-content">
-                                        <h2><a href="#">إفطار صائم</a></h2>
-                                        <span>ُEvent</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col col-md-3 col-sm-6 custom-grid col-12">
-                                <div class="volunteer-item">
-                                    <div class="volunteer-img">
-                                        <img src="{{asset('website/images/event/3.jpg')}}" alt="">
-                                    </div>
-                                    <div class="volunteer-content">
-                                        <h2><a href="#">إفطار صائم</a></h2>
-                                        <span>ُEvent</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col col-md-3 col-sm-6 custom-grid col-12">
-                                <div class="volunteer-item">
-                                    <div class="volunteer-img">
-                                        <img src="{{asset('website/images/blog/img-4.jpg')}}" alt="">
-                                    </div>
-                                    <div class="volunteer-content">
-                                        <h2><a href="#">مساعدات دراسية</a></h2>
-                                        <span>ُEvent</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- volunteer-area start -->
         </div>
         <!-- volunteer-area-end -->
-
+        </div>
     </div>
     <!-- end of page-wrapper -->
 

@@ -90,7 +90,7 @@
 
                                 </div>
                                 <div class="submit-area sub-btn" style="margin-left: 40%;">
-                                    <a href="donate.html" class="theme-btn submit-btn">Donate Now</a>
+                                    <a href="{{url('donate')}}" class="theme-btn submit-btn">Donate Now</a>
                                 </div>
                             </div>
                         </div>
@@ -161,7 +161,7 @@
                                     <div class="modal-content">
 
                                         <div class="modal-header">
-                                            <h3 class="modal-title" id="exampleModalLabel"   style="color: red;"> تأكيد عملية الحذف</h3>
+                                            <h3 class="modal-title" id="exampleModalLabel"   style="color: red;">Confirm The Deletion Process</h3>
                                             <input type="hidden" name="id" id="id_file" value="{{$event->id}}">
                                         </div>
                                         <div class="modal-footer">

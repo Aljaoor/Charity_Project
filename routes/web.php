@@ -12,6 +12,23 @@ Route::get('/join', function () {
     return view('auth.register');
 });
 
+Route::get('/tt', function () {
+    return view('website.test.page2');
+});
+
+
+
+Route::get('contact', function () {
+    return view('website.contact');
+});
+
+Route::get('404', function () {
+    return view('website.error');
+});
+
+Route::get('donate', function () {
+    return view('website.donate');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -31,6 +48,9 @@ Route::controller(EventController::class)
         Route::post('/update', 'update')->name('update');
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::get('/delete/{id}', 'delete')->name('delete');
+        Route::post('/test', 'test')->name('test');
+
+
     });
 
 Route::controller(\App\Http\Controllers\EventAttachmentController::class)

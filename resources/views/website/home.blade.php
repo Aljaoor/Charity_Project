@@ -11,6 +11,8 @@
             <p style="margin-left: 600px;">{{ $message }}</p>
         </div>
     @endif
+{{--    {{Auth::user()->id}}--}}
+
 <div class="page-wrapper">
     <!-- start preloader -->
     <div class="preloader">
@@ -284,18 +286,18 @@
             <div class="row">
                 <div class="col-lg-5 col-md-12 col-12">
                     <div class="cta-left">
-                        <h2>If You Want To Join With Us As a Volunteer. Contact Us Today!</h2>
+                        <h2>If You Want To Join With Us As a Volunteer. <a href="{{url('join')}}">Click Here</a> </h2>
                     </div>
                 </div>
                 <div class="col-lg-6 col-lg-offset-1 col-md-12 col-12">
                     <div class="cta-wrap">
                         <div class="cta-call">
                             <span>Call Us!</span>
-                            <h3>00 968 469 876</h3>
+                            <h3>+963 964 444 111</h3>
                         </div>
-                        <div class="cta-call">
+                        <div class="cta-call" style="margin-left: 100px; ">
                             <span>E-mail Us!</span>
-                            <h3>support@gmail.com</h3>
+                            <h3>    <a href = "mailto: project.4tth@gmail.com"> project.4tth@gmail.com</a></h3>
                         </div>
                     </div>
                 </div>

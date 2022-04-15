@@ -207,4 +207,9 @@ class EventController extends Controller
         return view('website.contact');
     }
 
+    public function test(Request $request){
+
+        return $request;
+    }
+
 }
