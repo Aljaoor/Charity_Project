@@ -39,7 +39,7 @@
                     </ul>
                 </li>
                 <li class="menu-item-has-children">
-                    <a href="#">Request</a>
+                    <a href="{{route('request.add')}}">Request</a>
 
                 </li>
                 <li><a href="{{url('contact')}}">Contact</a></li>

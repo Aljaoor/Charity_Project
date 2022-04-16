@@ -5,6 +5,8 @@ use App\Http\Controllers\EventController;
 use App\Models\User;
 use Illuminate\Notifications\Notification;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RequesttController;
+
 
 
 
@@ -84,3 +86,20 @@ Route::group(['middleware' => ['auth']], function () {
 //    Route::resource('users', \App\Http\Controllers\UserController::class);
 
 });
+Route::controller(RequesttController::class)
+    ->prefix('/request')
+    ->as('request.')
+//   ->middleware(['auth'])
+    ->group(function () {
+       // Route::get('/index', 'index')->name('index');
+        //Route::get('/single/{id}', 'single')->name('single');
+        Route::get('/add', 'add')->name('add');
+        Route::post('/create', 'create')->name('create');
+//        Route::post('/update', 'update')->name('update');
+//        Route::get('/edit/{id}', 'edit')->name('edit');
+//        Route::get('/delete/{id}', 'delete')->name('delete');
+//        Route::post('/test', 'test')->name('test');
+
+
+    });
+

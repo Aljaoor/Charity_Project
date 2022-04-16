@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRequestsTable extends Migration
+class CreateRequesttsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('requests', function (Blueprint $table) {
+        Schema::create('requestts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('status');
-            $table->integer('family_count')->default(0);
+            $table->integer('status')->default(3);
+            $table->integer('family_count');
             $table->timestamp('request_verified_at')->nullable();
             $table->integer('member_id')->unsigned();
             $table->integer('office_id')->unsigned();
@@ -37,6 +37,6 @@ class CreateRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requests');
+        Schema::dropIfExists('requestts');
     }
 }
