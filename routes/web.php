@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Models\User;
+use Illuminate\Notifications\Notification;
+use App\Http\Controllers\HomeController;
+
 
 
 Route::get('/', function () {
@@ -16,11 +20,17 @@ Route::get('/tt', function () {
     return view('website.test.page2');
 });
 
-
-
 Route::get('contact', function () {
     return view('website.contact');
 });
+Route::get('/markAsRead', function(){
+
+    auth()->user()->unreadNotifications->markAsRead();
+
+    return redirect()->back();
+
+    })->name('mark');
+
 
 Route::get('404', function () {
     return view('website.error');
@@ -35,6 +45,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/store-project', [App\Http\Controllers\ProjectController::class, 'store']);
 Route::get('/contact',[App\Http\Controllers\EventController::class, 'contact'])->name('contact');
+
+Route::get('/open_nitification/{id}/{n_id}', [App\Http\Controllers\EventController::class, 'open_nitification'])->name('open_nitification');
+
+
 
 Route::controller(EventController::class)
     ->prefix('/events')

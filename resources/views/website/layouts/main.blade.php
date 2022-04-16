@@ -4,62 +4,10 @@
 <head>
     @include('website.layouts.head')
 </head>
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        position: relative;
-    }
-    .flex{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    body{
-        width:100vw;
-        min-height: 100vw;
-    }
-    .trail{
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        border: 1px solid #2ebd61;
-        background: red;
-        position: fixed;
-        animation: come 1s linear forwards;
-    }
-    @keyframes come {
-        0%{
-            transform: scale(0);
-        }
-        10%{
-            transform: scale(1) translateY(0px);
-            opacity: 1;
-        }
-        100%{
-            transform: scale(1) translateY(50px);
-            opacity: 1;
-        }
 
-    }
-</style>
 
-<body class="flex">
+<body>
 
-<script>
-    var body=document.body;
-    document.addEventListener('mousemove',(e)=>{
-       var elem=document.createElement('div');
-       elem.setAttribute('class','trail')
-        elem.setAttribute('style','left: ${e.clientX -10}px; top: ${e.clientY -10}px;');
-       elem.onanimationend=()=>{
-           elem.remove();
-       }
-       body.insertAdjacentElement('beforeend',elem);
-    })
-
-</script>
 
 <!-- start page-wrapper -->
 <div class="page-wrapper">
@@ -84,7 +32,7 @@
         @include('website.layouts.header')
     </header>
     <!-- end of header -->
-<
+
 
     @yield('content')
 

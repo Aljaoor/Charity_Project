@@ -12,7 +12,6 @@
         </div>
     @endif
 {{--    {{Auth::user()->id}}--}}
-
 <div class="page-wrapper">
     <!-- start preloader -->
     <div class="preloader">

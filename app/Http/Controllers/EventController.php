@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use App\Models\Event;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use File;
+
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Event_attachment;
 use function GuzzleHttp\Promise\all;
@@ -74,6 +78,13 @@ class EventController extends Controller
             // move pic
             $request->event_image->move(public_path('Event_Attachments/' . $event_id), $file_name);
         }
+
+
+
+        $user = User::get();
+        $event_id = Event::latest()->first()->id;
+        Notification::send($user, new \App\Notifications\add_event($event_id));
+
 
         return redirect()->route('event.index')->with('add','Successfully Added ');;
 
@@ -206,6 +217,16 @@ class EventController extends Controller
     public  function contact(){
         return view('website.contact');
     }
+public function open_nitification($id , $n_id){
+        $unread= auth()->user()->unreadNotifications()->whereId($n_id)->first();
+if($unread){
+    $unread->markAsRead();
+}
+    $event=Event::whereId($id)->firstOrFail();
+    return view('website.event.event-single')->with('event',$event);
+
+
+}
 
     public function test(Request $request){
 
