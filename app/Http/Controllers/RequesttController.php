@@ -20,17 +20,18 @@ class RequesttController extends Controller
 
     }
     public function create(Request $request){
+        $req= new Requestt();
+        $req->family_count = $request->family_count;
+        $req->office_id = $request->office_id;
+        $req->proof_image = $request->file('proof_image')->getClientOriginalName();
+        $req->cancellation_reason = $request->cancellation_reason;
+        $req->member_id=auth()->user()->id;
+        $req->save();
 
-        $request= new  Requestt();
-        $request->family_count = $request->family_count;
-        $request->office_id = $request->office_id;
-        $request->proof_image = $request->file('proof_image');
-//        $request->proof_image = $request->file('proof_image')->getClientOriginalName();
-        $request->cancellation_reason = $request->cancellation_reason;
-        $request->member_id=auth()->user()->id;
-//        $request->save();
-        dd($request);
+        return redirect()->route('home')->with('success','Your request has been sent and you will be contacted as soon as possible.  ');
 
     }
+
+
 
 }

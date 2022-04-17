@@ -3,7 +3,7 @@
 @section('content')
     @if ($message = Session::get('error'))
         <div class="alert alert-success">
-            <p style="color: red; margin-left: 600px;">{{ $message }}</p>
+            <p style="color: red; margin-left: 400px;">{{ $message }}</p>
         </div>
     @endif
     @if ($message = Session::get('success'))
