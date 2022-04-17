@@ -1,17 +1,47 @@
-﻿
+﻿@include('sweetalert::alert')
 @extends('website.layouts.main')
 @section('content')
-    @if ($message = Session::get('error'))
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@if (config('sweetalert.alwaysLoadJS') === true && config('sweetalert.neverLoadJS') === false )
+    <script src="{{ $cdn ?? asset('vendor/sweetalert/sweetalert.all.js')  }}"></script>
+@endif
+@if (Session::has('alert.config'))
+    @if(config('sweetalert.animation.enable'))
+        <link rel="stylesheet" href="{{ config('sweetalert.animatecss') }}">
+    @endif
+    @if (config('sweetalert.alwaysLoadJS') === false && config('sweetalert.neverLoadJS') === false)
+        <script src="{{ $cdn ?? asset('vendor/sweetalert/sweetalert.all.js')  }}"></script>
+    @endif
+    <script>
+        Swal.fire({!! Session::pull('alert.config') !!});
+    </script>
+@endif
+
+
+
+
+
+@if ($message = Session::get('error'))
         <div class="alert alert-success">
             <p style="color: red; margin-left: 400px;">{{ $message }}</p>
         </div>
+    @endif
+    @if ($message = Session::get('alert'))
+        <script>
+
+            swal({
+                title: 'Thank you',
+                text: "{!! Session::get('alert') !!}",
+                icon: "success",
+                button: "ok!",
+            });
+        </script>
     @endif
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p style="margin-left: 600px;">{{ $message }}</p>
         </div>
     @endif
-{{--    {{Auth::user()->id}}--}}
 <div class="page-wrapper">
     <!-- start preloader -->
     <div class="preloader">

@@ -41,6 +41,11 @@ Route::get('404', function () {
 Route::get('donate', function () {
     return view('website.donate');
 });
+Route::get('/403', function () {
+    return view('website.error_403');
+})->name('403');
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -89,7 +94,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::controller(RequesttController::class)
     ->prefix('/request')
     ->as('request.')
-//   ->middleware(['auth'])
+   ->middleware(['auth'])
     ->group(function () {
        // Route::get('/index', 'index')->name('index');
         //Route::get('/single/{id}', 'single')->name('single');

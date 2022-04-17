@@ -72,5 +72,6 @@ class RegisterController extends Controller
             'age' => $data['age'],
             'mobile' => $data['mobile'],
         ]);
+
     }
 }

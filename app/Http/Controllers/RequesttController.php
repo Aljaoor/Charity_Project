@@ -27,8 +27,7 @@ class RequesttController extends Controller
         $req->cancellation_reason = $request->cancellation_reason;
         $req->member_id=auth()->user()->id;
         $req->save();
-
-        return redirect()->route('home')->with('success','Your request has been sent and you will be contacted as soon as possible.  ');
+        return redirect()->route('home')->with('alert','Your request has been sent and you will be contacted as soon as possible.  ');
 
     }
 
