@@ -58,27 +58,20 @@
                                         <div class="tp-case-text-top">
                                             <h2>{{$event->title}} </h2>
                                             <div class="case-b-text">
-                                                <p> start at :{{$event->from_date}} </p>
+                                                <p>start at :{{$event->from_date}} </p>
                                                 <p> end in :{{$event->to_date}}  </p>
-                                                <p> عدد المتوعين المشاركين :{{$event->count_of_volunteers}}  </p>
+                                                <p> number of volunteer :{{$event->count_of_volunteers}}  </p>
                                             </div>
                                             <div class="case-bb-text">
-                                                <h3>وصف الحدث</h3>
+                                                <h3 style="color:red">Event Description</h3>
                                                 <p>{{$event->describe}} .</p>
-                                                <ul>
-                                                    <li>Save The Children’s Role In Fight Against Malnutrition Hailed</li>
-                                                    <li>Charity Can Help Make Smile Of Poor People</li>
-                                                    <li>Else he endures pains to avoid worse pains.</li>
-                                                    <li>We denounce with righteous indignation and dislike men. </li>
-                                                    <li>Financial Help For Poor Families</li>
-                                                </ul>
                                             </div>
                                             <div class="case-bb-text">
-                                                <h3>Event Loacation</h3>
+                                                <h3 style="color:red">Event Loacation</h3>
                                                 <div id="Map" class="tab-pane">
                                                     <div class="contact-map">
 
-                                                        <iframe src="{{$event->location}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                                        <iframe src="{{$event-> location}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                                                     </div>
                                                 </div>
@@ -106,38 +99,38 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="widget recent-post-widget">
-                                <h3>Recent posts</h3>
-                                <div class="posts">
-                                    <div class="post">
-                                        <div class="img-holder">
-                                            <img src="{{asset('website/images/recent-posts/img-1.jpg')}}" alt="">
-                                        </div>
-                                        <div class="details">
-                                            <h4><a href="#">Many Children are suffering a lot for food.</a></h4>
-                                            <span class="date">22 Sep 2020</span>
-                                        </div>
-                                    </div>
-                                    <div class="post">
-                                        <div class="img-holder">
-                                            <img src="{{asset('website/images/recent-posts/img-2.jpg')}}" alt="">
-                                        </div>
-                                        <div class="details">
-                                            <h4><a href="#">Be kind for the poor people and the kids.</a></h4>
-                                            <span class="date">22 Sep 2020</span>
-                                        </div>
-                                    </div>
-                                    <div class="post">
-                                        <div class="img-holder">
-                                            <img src="{{asset('website/images/recent-posts/img-3.jpg')}}" alt="">
-                                        </div>
-                                        <div class="details">
-                                            <h4><a href="#">Be soft and kind for the poor people.</a></h4>
-                                            <span class="date">22 Sep 2020</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+{{--                            <div class="widget recent-post-widget">--}}
+{{--                                <h3>Recent posts</h3>--}}
+{{--                                <div class="posts">--}}
+{{--                                    <div class="post">--}}
+{{--                                        <div class="img-holder">--}}
+{{--                                            <img src="{{asset('website/images/recent-posts/img-1.jpg')}}" alt="">--}}
+{{--                                        </div>--}}
+{{--                                        <div class="details">--}}
+{{--                                            <h4><a href="#">Many Children are suffering a lot for food.</a></h4>--}}
+{{--                                            <span class="date">22 Sep 2020</span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="post">--}}
+{{--                                        <div class="img-holder">--}}
+{{--                                            <img src="{{asset('website/images/recent-posts/img-2.jpg')}}" alt="">--}}
+{{--                                        </div>--}}
+{{--                                        <div class="details">--}}
+{{--                                            <h4><a href="#">Be kind for the poor people and the kids.</a></h4>--}}
+{{--                                            <span class="date">22 Sep 2020</span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="post">--}}
+{{--                                        <div class="img-holder">--}}
+{{--                                            <img src="{{asset('website/images/recent-posts/img-3.jpg')}}" alt="">--}}
+{{--                                        </div>--}}
+{{--                                        <div class="details">--}}
+{{--                                            <h4><a href="#">Be soft and kind for the poor people.</a></h4>--}}
+{{--                                            <span class="date">22 Sep 2020</span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="widget tag-widget">
                                 <h3>option</h3>
                                 <ul>
@@ -148,7 +141,7 @@
                                     <li class="theme-btn submit-btn"><a href="{{route('events_attachment.show',$event->id)}}">show image</a></li>
                                     <li class="theme-btn submit-btn"><a href="{{route('events_attachment.download',$event->id)}}">download image</a></li>
                                     <li class="theme-btn submit-btn"><a href="{{route('events_attachment.delete',$event->id)}}">delete image</a></li>
-                                    <li class="theme-btn submit-btn"><a href="#">Add image</a></li>
+                                    <li class="theme-btn submit-btn"><a href="#">volunteering</a></li>
                                     <li class="theme-btn submit-btn"><a href="{{route('contact')}}">contact</a></li>
 
                                 </ul>

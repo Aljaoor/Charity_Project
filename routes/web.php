@@ -84,6 +84,19 @@ Route::controller(\App\Http\Controllers\EventAttachmentController::class)
 
     });
 
+Route::controller(\App\Http\Controllers\OfficeController::class)
+    ->prefix('/offices')
+    ->as('office.')
+    ->group(function () {
+        Route::post('/create', 'create')->name('create');
+        Route::get('/delete/{id}', 'delete')->name('delete');
+        Route::get('/add', 'add')->name('add');
+        Route::get('/show', 'show')->name('show');
+        Route::post('/update', 'update')->name('update');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+    });
+
+
 
 
 Route::group(['middleware' => ['auth']], function () {

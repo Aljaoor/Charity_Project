@@ -47,6 +47,9 @@ class EventController extends Controller
         $event->from_date = $request->from_date;
         $event->to_date = $request->to_date;
         $event->location = $request->location;
+        $l=$request->location;
+        $lls=substr($l,13,-130);
+        $event->location =$lls;
         $event->count_of_volunteers = $request->count_of_volunteers;
         $event->image = $request->file('event_image')->getClientOriginalName();
         $event->title = $request->title;

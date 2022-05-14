@@ -16,10 +16,10 @@
                 <li><a class="active" href="{{ route('home') }}">home</a></li>
                 <li><a class="active" href="about.html">About</a></li>
                 <li class="menu-item-has-children">
-                    <a href="#">Causes +</a>
+                    <a href="#">Offices +</a>
                     <ul class="sub-menu">
-                        <li><a href="causes.html">Causes</a></li>
-                        <li><a href="causes-single.html">Causes Single</a></li>
+                        <li><a href="{{route('office.show')}}">offices</a></li>
+                        <li><a href="{{route('office.add')}}">add office</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children">

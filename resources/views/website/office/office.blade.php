@@ -24,10 +24,10 @@
                     <div class="container">
                         <div class="row">
                             <div class="col col-xs-12">
-                                <h2>Our Events</h2>
+                                <h2>Our Offices</h2>
                                 <ol class="breadcrumb">
                                     <li><a class="active" href="{{ route('home') }}">home</a></li>
-                                    <li>Events</li>
+                                    <li>Offices</li>
                                 </ol>
                             </div>
                         </div> <!-- end row -->
@@ -48,7 +48,7 @@
             </div>
         @endif
         @if(session()->has('edit'))
-            <div class="section-title section-title2 text-center" style="color:orangered; background: #2ebd61">
+            <div class="section-title section-title2 text-center" style="color:orangered; background: #2ebd61" >
                 <strong>{{ session()->get('edit') }}</strong>
                 {{--                <div id="error"> Error occurred while sending email. Please try again later. </div>--}}
             </div>
@@ -60,9 +60,9 @@
                     <div class="col-md-6 col-md-offset-3">
                         <div class="section-title section-title2 text-center">
                             <div class="thumb-text">
-                                <span>EVENTS</span>
+                                <span>offices</span>
                             </div>
-                            <h2>Our  Events</h2>
+                            <h2>Our  offices</h2>
                             <p>It is a long established fact that reader distracted by the the readable content off page looking at its layout point.</p>
                         </div>
                     </div>
@@ -73,33 +73,33 @@
                     <div class="col-12">
 
 {{--       ========================  start event                 ========================--}}
-                        @foreach($event as $event)
+                        @foreach($office as $office)
 
-                        <a href="{{route('event.single',$event->id)}}">
-                        <div class="event-item">
-                            <div class="event-img">
-                                <img src="{{asset('/Event_Attachments')}}/{{$event->id}}/{{$event->image}}" alt="">
 
-                            </div>
+                            <a  class="theme-btn submit-btn" href="{{route('office.edit',$office->id)}}">Edit</a>
+                            <a class="theme-btn submit-btn" href="{{route('office.delete',$office->id)}}">delete</a>
+
+                            <div class="event-item">
                             <div class="event-text">
                                 <div class="event-left">
                                     <div class="event-l-text" style="" >
-                                        <span>{{ $event->from_date  }} </span>
-                                        <h4>9:00 AM </h4>
+                                        <span>Office Name</span>
+                                        <h4>{{$office->name }} </h4>
                                     </div>
                                 </div>
                                 <div class="event-right">
-                                    <ul>
-                                        <li><i class="ti-location-pin"></i>9:00 AM - 10:00 AM </li>
-                                        <li><i class="ti-location-pin"></i> {{ $event->where  }}</li>
-                                    </ul>
-                                    <h2>{{ $event->title  }} </h2>
-                                    <p> {{ $event->count_of_volunteers  }} volunteers work free for you </p>
+
+                                        <h2>Maximum number of people the office can help     <span style="color: #1b6d85"> {{ $office->max_member_count }}</span>
+                                        </h2>
+
+
+
+                                    <h2>number of families helped by this office :  <span style="color: #1b6d85"> 0</span></h2>
                                 </div>
                             </div>
                         </div>
                         </a>
-                        @endforeach
+                      @endforeach
 {{--       ========================  end div event                 ========================--}}
 
                     </div>

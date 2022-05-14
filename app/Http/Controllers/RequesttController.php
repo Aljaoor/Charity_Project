@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Office;
 use App\Models\Requestt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -15,7 +16,7 @@ class RequesttController extends Controller
 {
     public function add(){
 
-            $offices=Event::get();
+            $offices=Office::get();
             return view('website.request.add')->with('offices',$offices);
 
     }
