@@ -23,7 +23,6 @@ class CreateEventVolunteersTable extends Migration
             $table->foreign('event_id')->on('events')->references('id')->onDelete('cascade');
             $table->foreign('volunteer_id')->on('users')->references('id')->onDelete('cascade');
 
-
             $table->timestamps();
         });
     }

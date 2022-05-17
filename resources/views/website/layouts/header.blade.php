@@ -43,7 +43,10 @@
 
                 </li>
                 <li><a href="{{url('contact')}}">Contact</a></li>
+                <li class="menu-item-has-children">
+                    <a href="{{route('eventsvolunteer.view')}}">Volunteer</a>
             </ul>
+
         </div><!-- end of nav-collapse -->
 @if(auth()->user())
         <div class="cart-search-contact">

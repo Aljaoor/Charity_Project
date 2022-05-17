@@ -70,7 +70,18 @@ Route::controller(EventController::class)
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::get('/delete/{id}', 'delete')->name('delete');
         Route::post('/test', 'test')->name('test');
+        Route::get('/volunteering/{id}', 'volunteering')->name('volunteering');
 
+
+    });
+Route::controller(\App\Http\Controllers\EventVolunteerController::class)
+    ->prefix('/eventsvolunteer')
+    ->as('eventsvolunteer.')
+//   ->middleware(['auth'])
+    ->group(function () {
+
+        Route::get('/volunteering/{id}', 'volunteering')->name('volunteering');
+        Route::get('/view', 'view')->name('view');
 
     });
 

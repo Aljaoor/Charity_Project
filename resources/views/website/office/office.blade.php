@@ -76,11 +76,13 @@
                         @foreach($office as $office)
 
 
-                            <a  class="theme-btn submit-btn" href="{{route('office.edit',$office->id)}}">Edit</a>
-                            <a class="theme-btn submit-btn" href="{{route('office.delete',$office->id)}}">delete</a>
+                            <a style="height: 50px; " class="theme-btn submit-btn" href="{{route('office.edit',$office->id)}}">Edit</a>
+                            <a style="height: 50px;" class="theme-btn submit-btn" href="{{route('office.delete',$office->id)}}">delete</a>
 
-                            <div class="event-item">
-                            <div class="event-text">
+                            <div class="event-item" >
+
+                                <div class="event-text" >
+
                                 <div class="event-left">
                                     <div class="event-l-text" style="" >
                                         <span>Office Name</span>

@@ -83,7 +83,7 @@
                             </div>
                             <div class="event-text">
                                 <div class="event-left">
-                                    <div class="event-l-text" style="" >
+                                    <div  class="event-l-text" style="" >
                                         <span>{{ $event->from_date  }} </span>
                                         <h4>9:00 AM </h4>
                                     </div>
