@@ -16,6 +16,7 @@
         Swal.fire({!! Session::pull('alert.config') !!});
     </script>
 @endif
+{{--{{auth()->user()->name}}--}}
 
 
 

@@ -77,11 +77,12 @@ Route::controller(EventController::class)
 Route::controller(\App\Http\Controllers\EventVolunteerController::class)
     ->prefix('/eventsvolunteer')
     ->as('eventsvolunteer.')
-//   ->middleware(['auth'])
+   ->middleware(['auth'])
     ->group(function () {
 
         Route::get('/volunteering/{id}', 'volunteering')->name('volunteering');
         Route::get('/view', 'view')->name('view');
+        Route::get('/processing/{vid}/{eid}', 'processing')->name('processing-accept');
 
     });
 

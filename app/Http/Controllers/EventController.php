@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Event_volunteer;
 use App\Models\User;
 use App\Models\Event;
 use Illuminate\Support\Facades\Storage;
@@ -16,28 +18,32 @@ use function GuzzleHttp\Promise\all;
 
 class EventController extends Controller
 {
-    public function  index(){
-        $event=Event::get();
+    public function index()
+    {
+        $event = Event::get();
 //$W=Event::whereMonth("from_date")->get();
-        return view('website.event.event')->with(['event'=>$event]) ;
-
+        return view('website.event.event')->with(['event' => $event]);
 
 
     }
-    public  function add(){
+
+    public function add()
+    {
 
         return view('website.event.add');
 
     }
-    public function create ( Request $request ) {
+
+    public function create(Request $request)
+    {
 
         $validatedData = $request->validate([
             'where' => 'required|max:255',
             'count_of_volunteers' => 'required',
-        ],[
+        ], [
 
-            'where.required' =>'يرجي ادخال اسم المكان',
-            'count_of_volunteers.required' =>'يرجي ادخال عدد المتطوعين',
+            'where.required' => 'يرجي ادخال اسم المكان',
+            'count_of_volunteers.required' => 'يرجي ادخال عدد المتطوعين',
 
         ]);
 
@@ -47,9 +53,9 @@ class EventController extends Controller
         $event->from_date = $request->from_date;
         $event->to_date = $request->to_date;
         $event->location = $request->location;
-        $l=$request->location;
-        $lls=substr($l,13,-130);
-        $event->location =$lls;
+        $l = $request->location;
+        $lls = substr($l, 13, -130);
+        $event->location = $lls;
         $event->count_of_volunteers = $request->count_of_volunteers;
         $event->image = $request->file('event_image')->getClientOriginalName();
         $event->title = $request->title;
@@ -82,42 +88,52 @@ class EventController extends Controller
         }
 
 
-
         $user = User::get();
         $event_id = Event::latest()->first()->id;
         Notification::send($user, new \App\Notifications\add_event($event_id));
 
 
-        return redirect()->route('event.index')->with('add','Successfully Added ');;
-
-
-
-
-    }
-
-
-
-    public  function single($id){
-        $event=Event::whereId($id)->first();
-        return view('website.event.event-single')->with('event',$event);
-
-    }
-
-    public function edit($id){
-
-        $event=Event::whereId($id)->firstOrFail();
+        return redirect()->route('event.index')->with('add', 'Successfully Added ');;
 
 
     }
 
 
-    public function update(Request $request){
+    public function single($id)
+    {
+        $event = Event::whereId($id)->firstOrFail();
+        $user = \auth()->user();
+        $event->can_enrol = false;
+        if ($user and $user->role_id == 3) {
+            $enroled = Event_volunteer::whereEventId($id)->whereVolunteerId($user->id)->first();
+            if ($enroled) {
+                $event->can_enrol = false;
+            } else {
 
-        $event_id= $request->id;
-        $old=Event_attachment::whereEventId($event_id)->first();
+                $event->can_enrol = true;
+            }
+        }
+        return view('website.event.event-single')->with('event', $event);
+
+    }
+
+    public function edit($id)
+    {
+
+        $event = Event::whereId($id)->firstOrFail();
+
+
+    }
+
+
+    public function update(Request $request)
+    {
+
+        $event_id = $request->id;
+        $old = Event_attachment::whereEventId($event_id)->first();
         if ($old === null) {
             // $old doesn't exist
-            $event=Event::whereId($event_id)->firstOrFail();
+            $event = Event::whereId($event_id)->firstOrFail();
             $event->title = $request->title;
             $event->where = $request->where;
             $event->from_date = $request->from_date;
@@ -127,7 +143,7 @@ class EventController extends Controller
             $event->location = $request->location;
 
 
-            if($request->has('event_image')) {
+            if ($request->has('event_image')) {
                 $image = $request->file('event_image');
                 $filename = $image->getClientOriginalName();
                 $image->move(public_path('Event_Attachments/' . $event_id), $filename);
@@ -146,12 +162,10 @@ class EventController extends Controller
             session()->flash('edit', 'Successfully Edited ');
             return redirect()->route('event.index');
 
-        }
-
-        else{
+        } else {
 
 
-            $event=Event::whereId($event_id)->firstOrFail();
+            $event = Event::whereId($event_id)->firstOrFail();
             $event->title = $request->title;
             $event->where = $request->where;
             $event->from_date = $request->from_date;
@@ -161,8 +175,8 @@ class EventController extends Controller
             $event->location = $request->location;
 
 
-            if($request->has('event_image')) {
-                Storage::disk('public_uploads')->delete($old->event_id.'/'.$old->file_name);
+            if ($request->has('event_image')) {
+                Storage::disk('public_uploads')->delete($old->event_id . '/' . $old->file_name);
                 $image = $request->file('event_image');
                 $filename = $image->getClientOriginalName();
                 $image->move(public_path('Event_Attachments/' . $event_id), $filename);
@@ -173,7 +187,7 @@ class EventController extends Controller
                 $attachments->file_name = $filename;
                 $attachments->update();
 
-                }
+            }
 
             $event->update();
 
@@ -184,12 +198,11 @@ class EventController extends Controller
     }
 
 
+    public function delete($id)
+    {
 
-    public function delete($id){
 
-
-        File::deleteDirectory(public_path('/Event_Attachments'.'/'.$id));
-
+        File::deleteDirectory(public_path('/Event_Attachments' . '/' . $id));
 
 
 //        $image=Event_attachment::whereEventId($id)->first();
@@ -207,7 +220,6 @@ class EventController extends Controller
 //        return $folder_path;
 
 
-
         Event::whereId($id)->delete();
 
         session()->flash('delete', 'Successfully Deleted ');
@@ -216,21 +228,26 @@ class EventController extends Controller
 
 
     }
-    public  function contact(){
+
+    public function contact()
+    {
         return view('website.contact');
     }
-public function open_nitification($id , $n_id){
-        $unread= auth()->user()->unreadNotifications()->whereId($n_id)->first();
-if($unread){
-    $unread->markAsRead();
-}
-    $event=Event::whereId($id)->firstOrFail();
-    return view('website.event.event-single')->with('event',$event);
+
+    public function open_nitification($id, $n_id)
+    {
+        $unread = auth()->user()->unreadNotifications()->whereId($n_id)->first();
+        if ($unread) {
+            $unread->markAsRead();
+        }
+        $event = Event::whereId($id)->firstOrFail();
+        return view('website.event.event-single')->with('event', $event);
 
 
-}
+    }
 
-    public function test(Request $request){
+    public function test(Request $request)
+    {
 
         return $request;
     }
