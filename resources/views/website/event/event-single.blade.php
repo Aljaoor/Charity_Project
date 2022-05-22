@@ -143,6 +143,10 @@
                                     <li class="theme-btn submit-btn"><a href="{{route('events_attachment.delete',$event->id)}}">delete image</a></li>
                                     @if($event->can_enrol)
                                         <li class="theme-btn submit-btn"><a href="{{route('eventsvolunteer.volunteering',$event->id)}}">volunteering</a></li>
+{{--                                    @else--}}
+{{--                                        <li class="theme-btn submit-btn">send</li>--}}
+
+
                                     @endif
 
                                     <li class="theme-btn submit-btn"><a href="{{route('contact')}}">contact</a></li>

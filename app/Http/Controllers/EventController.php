@@ -119,8 +119,8 @@ class EventController extends Controller
 
     public function edit($id)
     {
-
-        $event = Event::whereId($id)->firstOrFail();
+        $event=Event::whereId($id)->firstOrFail();
+        return view('website.event.edit')->with('event',$event);
 
 
     }

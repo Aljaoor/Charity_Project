@@ -1,114 +1,169 @@
-@extends('website.layouts.main')
-
-@section('content')
 
 
-    <section class="page-title">
-        <div class="page-title-container">
-            <div class="page-title-wrapper">
-                <div class="container">
-                    <div class="row">
-                        <div class="col col-xs-12">
-                            <h2>About Us</h2>
-                            <ol class="breadcrumb">
-                                <li><a href="index.html">Home</a></li>
-                                <li>About</li>
-                            </ol>
-                        </div>
-                    </div> <!-- end row -->
-                </div> <!-- end container -->
-            </div>
-        </div>
-    </section>
-    <div class="volunteer-area section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <div class="section-title section-title2 text-center">
-                        <div class="thumb-text">
-                            <span>Volunteer</span>
-                        </div>
-                        <h2>Our Great Volunteer</h2>
-                        <p>It is a long established fact that reader distracted by the the readable content off page
-                            looking at its layout point.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="volunteer-wrap">
-                <div class="row">
-                    <div class="col col-md-3 col-sm-6 custom-grid col-12">
-                        <div class="volunteer-item">
-                            <div class="volunteer-img">
-                                <img src="{{asset('website/images/team/1.png')}}" alt="">
-                            </div>
-                            <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Adriane Newby</a></h2>
-                                <span>Volunteer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-md-3 col-sm-6 custom-grid col-12">
-                        <div class="volunteer-item">
-                            <div class="volunteer-img">
-                                <img src="{{asset('website/images/team/2.png')}}" alt="">
-                            </div>
-                            <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Allene Castaneda</a></h2>
-                                <span>Volunteer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-md-3 col-sm-6 custom-grid col-12">
-                        <div class="volunteer-item">
-                            <div class="volunteer-img">
-                                <img src="{{asset('website/images/team/3.png')}}" alt="">
-                            </div>
-                            <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Malinda Willoughby</a></h2>
-                                <span>Volunteer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-md-3 col-sm-6 custom-grid col-12">
-                        <div class="volunteer-item">
-                            <div class="volunteer-img">
-                                <img src="{{asset('website/images/team/4.png')}}" alt="">
-                            </div>
-                            <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Wilburn Hatfield</a></h2>
-                                <span>Volunteer</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @include('website.layouts.head')
+</head>
+
+
+<body>
+
+
+<!-- start page-wrapper -->
+<div class="page-wrapper">
+    <!-- start preloader -->
+    <div class="preloader">
+        <div class="sk-cube-grid">
+            <div class="sk-cube sk-cube1"></div>
+            <div class="sk-cube sk-cube2"></div>
+            <div class="sk-cube sk-cube3"></div>
+            <div class="sk-cube sk-cube4"></div>
+            <div class="sk-cube sk-cube5"></div>
+            <div class="sk-cube sk-cube6"></div>
+            <div class="sk-cube sk-cube7"></div>
+            <div class="sk-cube sk-cube8"></div>
+            <div class="sk-cube sk-cube9"></div>
         </div>
     </div>
+    <!-- end preloader -->
+
+    <!-- Start header -->
+    <header id="header" class="tp-site-header header-style-2">
+        @include('website.layouts.header')
+    </header>
+    <!-- end of header -->
 
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
-    </button>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
+    <html>
+    <head>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"
+        />
+    </head>
+
+    <style>
+        /*body {margin:2em;}*/
+        tfoot tr, thead tr {
+            background: lightblue;
+        }
+        tfoot td {
+            font-weight:bold;
+        }
+    </style>
+
+    {{--<a class="btn btn-success" style="float:left;margin-right:20px;" href="https://codepen.io/collection/XKgNLN/" target="_blank">Other examples on Codepen</a>--}}
+    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th style="text-align: center;">*</th>
+            <th style="text-align: center;">volunteer name</th>
+            <th style="text-align: center;">volunteer age</th>
+            <th style="text-align: center;">volunteer mobile</th>
+            <th style="text-align: center;">volunteer email</th>
+            <th style="text-align: center;">event name</th>
+            <th style="text-align: center;">acount status</th>
+            <th style="text-align: center;">status</th>
+            <th style="text-align: center;">Modify</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Totals</td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tfoot>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Alphabet puzzle</td>
+            <td>2016/01/15</td>
+            <td>212</td>
+            <td data-order="1000.5">1000.50</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Game station</td>
+            <td>2016/01/31</td>
+            <td>75</td>
+            <td data-order="1834">1834</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Chemistry set</td>
+            <td>2016/01/23</td>
+            <td>160</td>
+            <td data-order="1500">1500</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Smartphone</td>
+            <td>2016/02/26</td>
+            <td>350</td>
+            <td data-order="1200.38">1200.38</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+    <script
+        type="text/javascript"
+        charset="utf8"
+        src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+    ></script>
+    <script
+        type="text/javascript"
+        charset="utf8"
+        src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"
+    ></script>
+
+
+
+    <script>
+
+        $(document).ready(function() {
+            // DataTable initialisation
+            $('#example').DataTable(
+                {
+                    "paging": false,
+                    "autoWidth": true,
+                    "footerCallback": function ( row, data, start, end, display ) {
+                        var api = this.api();
+                        nb_cols = api.columns().nodes().length;
+                        var j = 3;
+                        while(j < nb_cols){
+                            var pageTotal = api
+                                .column( j, { page: 'current'} )
+                                .data()
+                                .reduce( function (a, b) {
+                                    return Number(a) + Number(b);
+                                }, 0 );
+                            // Update footer
+                            $( api.column( j ).footer() ).html(pageTotal);
+                            j++;
+                        }
+                    }
+                }
+            );
+        });
+    </script>
+
+
+
+
+</div>
+<!-- end of page-wrapper -->
+@include('website.layouts.javascript')
+</body>
+
+</html>

@@ -39,12 +39,29 @@
                     </ul>
                 </li>
                 <li class="menu-item-has-children">
-                    <a href="{{route('request.add')}}">Request</a>
+                    <a href="#">Request</a>
+                    <ul class="sub-menu">
+                        <li><a href="{{route('request.add')}}">send request</a></li>
+                        @if(auth()->user())
 
+                        <li><a href="{{route('request.yourRequest',auth()->user()->id)}}">your request</a></li>
+                        @endif
+
+                    </ul>
                 </li>
                 <li><a href="{{url('contact')}}">Contact</a></li>
                 <li class="menu-item-has-children">
-                    <a href="{{route('eventsvolunteer.view')}}">Volunteer</a>
+                    <a href="#">Volunteer</a>
+                    <ul class="sub-menu">
+                        <li><a href="{{route('eventsvolunteer.view')}}">all</a></li>
+
+                        <li><a href="{{route('eventsvolunteer.acceptable')}}">Acceptable</a></li>
+                        <li><a href="{{route('eventsvolunteer.rejected')}}">rejected</a></li>
+                        <li><a href="{{route('eventsvolunteer.pending')}}">pending</a></li>
+
+
+
+                    </ul>
             </ul>
 
         </div><!-- end of nav-collapse -->

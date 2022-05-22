@@ -24,7 +24,7 @@
 
 @if ($message = Session::get('error'))
         <div class="alert alert-success">
-            <p style="color: red; margin-left: 400px;">{{ $message }}</p>
+            <p style="color: red; text-align: center;">{{ $message }}</p>
         </div>
     @endif
     @if ($message = Session::get('alert'))
@@ -51,7 +51,7 @@
 @endif
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
-            <p style="margin-left: 600px;">{{ $message }}</p>
+            <p style="text-align: center;">{{ $message }}</p>
         </div>
     @endif
 <div class="page-wrapper">

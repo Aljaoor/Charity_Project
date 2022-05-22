@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Event_volunteer;
 use App\Models\Office;
 use App\Models\Requestt;
 use Illuminate\Http\Request;
@@ -32,6 +33,17 @@ class RequesttController extends Controller
 
     }
 
+    public function yourRequest($id){
+
+        if (\auth()->user()->role_id==3){
+            $status=Event_volunteer::whereVolunteerId($id)->get();
+            return view('website.request.yourRequest')->with('status',$status);
+
+
+
+        }
+
+    }
 
 
 }

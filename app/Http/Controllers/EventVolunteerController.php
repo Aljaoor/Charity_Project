@@ -52,6 +52,30 @@ class EventVolunteerController extends Controller
     public function view()
     {
         $volunteerrequest = Event_volunteer::get();
+        $event=Event::select('title')->get();
+        return view('website.request.acceptingrequests',compact('event','volunteerrequest'));
+
+
+    }
+    public function acceptable()
+    {
+        $volunteerrequest = Event_volunteer::whereStatus(1)->get();
+
+        return view('website.request.acceptingrequests')->with('volunteerrequest', $volunteerrequest);
+
+
+    }
+    public function rejected()
+    {
+        $volunteerrequest = Event_volunteer::whereStatus(2)->get();
+
+        return view('website.request.acceptingrequests')->with('volunteerrequest', $volunteerrequest);
+
+
+    }
+    public function pending()
+    {
+        $volunteerrequest = Event_volunteer::whereStatus(3)->get();
 
         return view('website.request.acceptingrequests')->with('volunteerrequest', $volunteerrequest);
 
@@ -61,9 +85,39 @@ class EventVolunteerController extends Controller
 
     public function processing($vid , $eid)
     {
-        dd($vid,$eid);
-        $volunteerrequest = Event_volunteer::get();
+        $request_accept=Event_volunteer::whereVolunteerId($vid)->whereEventId($eid)->firstOrFail();
+        $request_accept->status=1;
+        $request_accept->cancellation_reason="";
+        $request_accept->update();
+
+         $volunteerrequest = Event_volunteer::get();
+
         return view('website.request.acceptingrequests')->with('volunteerrequest', $volunteerrequest);
+
+    }
+    public function deny(Request $request)
+    {
+//dd($request->vid,$request->eid,$request->Reason);
+//        dd("dss");
+        $request_deny=Event_volunteer::whereVolunteerId($request->vid)->whereEventId($request->eid)->firstOrFail();
+        $request_deny->status=2;
+        $request_deny->cancellation_reason=$request->Reason;
+        $request_deny->update();
+        $volunteerrequest = Event_volunteer::get();
+
+        return view('website.request.acceptingrequests')->with('volunteerrequest', $volunteerrequest);
+
+
+    }
+
+
+    public function searchEvent(Request $request)
+    {
+        $event_name=$request->search;
+        $event_id=Event::select('id')->whereTitle($request->search)->first();
+        $volunteerrequest = Event_volunteer::whereEventId($event_id->id)->get();
+        $event=Event::select('title')->get();
+        return view('website.request.acceptingrequests',compact('event','volunteerrequest','event_name'));
 
 
     }

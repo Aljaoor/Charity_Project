@@ -1,3 +1,5 @@
+
+
 <div class="tp-upper-footer">
     <div class="container">
         <div class="row">
@@ -60,12 +62,12 @@
                         <h3>Instagram</h3>
                     </div>
                     <ul class="d-flex">
-                        <li><a href="#"><img src="assets/images/instragram/1.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="assets/images/instragram/2.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="assets/images/instragram/3.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="assets/images/instragram/4.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="assets/images/instragram/5.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="assets/images/instragram/6.jpg" alt=""></a></li>
+                        <li><a href="#"><img src="{{asset('website/images/instragram/1.jpg')}}" alt=""></a></li>
+                        <li><a href="#"><img src="{{asset('website/images/instragram/2.jpg')}}" alt=""></a></li>
+                        <li><a href="#"><img src="{{asset('website/images/instragram/3.jpg')}}" alt=""></a></li>
+                        <li><a href="#"><img src="{{asset('website/images/instragram/4.jpg')}}" alt=""></a></li>
+                        <li><a href="#"><img src="{{asset('website/images/instragram/5.jpg')}}" alt=""></a></li>
+                        <li><a href="#"><img src="{{asset('website/images/instragram/6.jpg')}}" alt=""></a></li>
                     </ul>
                 </div>
             </div>

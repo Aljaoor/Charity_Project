@@ -22,9 +22,14 @@ Route::get('/tt', function () {
     return view('website.test.page2');
 });
 
+Route::get('/rr', function () {
+    return view('website.test.page1');
+});
+
 Route::get('contact', function () {
     return view('website.contact');
 });
+
 Route::get('/markAsRead', function(){
 
     auth()->user()->unreadNotifications->markAsRead();
@@ -82,7 +87,18 @@ Route::controller(\App\Http\Controllers\EventVolunteerController::class)
 
         Route::get('/volunteering/{id}', 'volunteering')->name('volunteering');
         Route::get('/view', 'view')->name('view');
+
+        Route::get('/acceptable', 'acceptable')->name('acceptable');
+        Route::get('/rejected', 'rejected')->name('rejected');
+        Route::get('/pending', 'pending')->name('pending');
+
+
+
         Route::get('/processing/{vid}/{eid}', 'processing')->name('processing-accept');
+        Route::post('/deny', 'deny')->name('deny');
+        Route::post('/searchEvent', 'searchEvent')->name('searchEvent');
+
+
 
     });
 
@@ -121,12 +137,12 @@ Route::controller(RequesttController::class)
     ->as('request.')
    ->middleware(['auth'])
     ->group(function () {
-       // Route::get('/index', 'index')->name('index');
-        //Route::get('/single/{id}', 'single')->name('single');
         Route::get('/add', 'add')->name('add');
         Route::post('/create', 'create')->name('create');
+
+        Route::get('/yourRequest/{id}', 'yourRequest')->name('yourRequest');
+
 //        Route::post('/update', 'update')->name('update');
-//        Route::get('/edit/{id}', 'edit')->name('edit');
 //        Route::get('/delete/{id}', 'delete')->name('delete');
 //        Route::post('/test', 'test')->name('test');
 

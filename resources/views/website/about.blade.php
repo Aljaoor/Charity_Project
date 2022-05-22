@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon.png">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon.png">
@@ -545,12 +545,12 @@
                                      <h3>Instagram</h3>
                                 </div>
                                 <ul class="d-flex">
-                                    <li><a href="#"><img src="assets/images/instragram/1.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/images/instragram/2.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/images/instragram/3.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/images/instragram/4.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/images/instragram/5.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="assets/images/instragram/6.jpg" alt=""></a></li>
+                                    <li><a href="#"><img src="{{asset('website/images/images/instragram/1.jpg')}}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{asset('website/images/images/instragram/2.jpg')}}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{asset('website/images/images/instragram/3.jpg')}}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{asset('website/images/images/instragram/4.jpg')}}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{asset('website/images/images/instragram/5.jpg')}}" alt=""></a></li>
+                                    <li><a href="#"><img src="{{asset('website/images/images/instragram/6.jpg')}}" alt=""></a></li>
                                 </ul>
                             </div>
                         </div>
