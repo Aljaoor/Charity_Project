@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Event_volunteer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
+
 
 class EventVolunteerController extends Controller
 {
@@ -15,10 +19,7 @@ class EventVolunteerController extends Controller
         $counter = Event_volunteer::whereEventId($id)->count();
 
 
-//$d=Event_volunteer::whereEventId($id)->first();
-//if($d!=null){}
-//$ds=$d->volunteer_id;
-//            if($ds!=$id){
+
 
         if (auth()->user()->role_id == 3) {
 
@@ -37,9 +38,6 @@ class EventVolunteerController extends Controller
 
             }
         }
-//            }
-//            else{                return redirect()->route('home')->with('volunteering','you join to this event  ');
-//            }
 
         else {
             return redirect()->route('home')->with('volunteering', 'please sign in as a volunteer and try again  ');
@@ -59,25 +57,26 @@ class EventVolunteerController extends Controller
     }
     public function acceptable()
     {
-        $volunteerrequest = Event_volunteer::whereStatus(1)->get();
 
-        return view('website.request.acceptingrequests')->with('volunteerrequest', $volunteerrequest);
+        $volunteerrequest = Event_volunteer::whereStatus(1)->get();
+        $event=Event::select('title')->get();
+        return view('website.request.acceptingrequests')->with(['volunteerrequest'=>$volunteerrequest,'event'=>$event]);
 
 
     }
     public function rejected()
     {
         $volunteerrequest = Event_volunteer::whereStatus(2)->get();
-
-        return view('website.request.acceptingrequests')->with('volunteerrequest', $volunteerrequest);
+        $event=Event::select('title')->get();
+        return view('website.request.acceptingrequests')->with(['volunteerrequest'=>$volunteerrequest,'event'=>$event]);
 
 
     }
     public function pending()
     {
         $volunteerrequest = Event_volunteer::whereStatus(3)->get();
-
-        return view('website.request.acceptingrequests')->with('volunteerrequest', $volunteerrequest);
+        $event=Event::select('title')->get();
+        return view('website.request.acceptingrequests')->with(['volunteerrequest'=>$volunteerrequest,'event'=>$event]);
 
 
     }
@@ -90,22 +89,24 @@ class EventVolunteerController extends Controller
         $request_accept->cancellation_reason="";
         $request_accept->update();
 
-         $volunteerrequest = Event_volunteer::get();
+//        $volunteerrequest = Event_volunteer::get();
+//        $event=Event::select('title')->get();
 
-        return view('website.request.acceptingrequests')->with('volunteerrequest', $volunteerrequest);
+
+
+        return redirect()->back();
 
     }
     public function deny(Request $request)
     {
-//dd($request->vid,$request->eid,$request->Reason);
-//        dd("dss");
+
         $request_deny=Event_volunteer::whereVolunteerId($request->vid)->whereEventId($request->eid)->firstOrFail();
         $request_deny->status=2;
         $request_deny->cancellation_reason=$request->Reason;
         $request_deny->update();
         $volunteerrequest = Event_volunteer::get();
-
-        return view('website.request.acceptingrequests')->with('volunteerrequest', $volunteerrequest);
+        $event=Event::select('title')->get();
+        return redirect()->back()->with(['volunteerrequest'=>$volunteerrequest,'event'=>$event]);
 
 
     }
@@ -114,7 +115,7 @@ class EventVolunteerController extends Controller
     public function searchEvent(Request $request)
     {
         $event_name=$request->search;
-        $event_id=Event::select('id')->whereTitle($request->search)->first();
+        $event_id=Event::select('id')->whereTitle($event_name)->firstOrFail();
         $volunteerrequest = Event_volunteer::whereEventId($event_id->id)->get();
         $event=Event::select('title')->get();
         return view('website.request.acceptingrequests',compact('event','volunteerrequest','event_name'));

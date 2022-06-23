@@ -45,7 +45,7 @@
                     <select id="Reason" class="form-control" name="search" required  autofocus style="height: 30px; margin-bottom: 20px;">
                         <option value="" selected disabled> {{ $event_name??"Choose an event" }}</option>
                         @foreach($event as $event)
-                            <option value="{{$event->title}}" >{{$event->title}} </option>
+                          <option value="{{$event->title}}" >{{$event->title}} </option>
 
                         @endforeach
                     </select>
@@ -62,7 +62,6 @@
 
     </style>
 
-    {{--<a class="btn btn-success" style="float:left;margin-right:20px;" href="https://codepen.io/collection/XKgNLN/" target="_blank">Other examples on Codepen</a>--}}
     <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
         <tr>
@@ -123,7 +122,7 @@
                      @endif
 
                                 <td class="btn-group" style="margin-top: 13px;" >
-                                <a href="{{route('eventsvolunteer.processing-accept',[$volunteerrequest->volunteer_id,$volunteerrequest->event_id])}}"> <button  style="width:100px;   padding-left:15px ;height: 45px; background-color: 2db85d; color: black;">accept </button> </a>
+                                <a href="{{route('eventsvolunteer.processing-accept',[$volunteerrequest->volunteer_id,$volunteerrequest->event_id])}}" > <button style="width:100px;   padding-left:15px ;height: 45px; background-color: 2db85d; color: black;">accept </button> </a>
                                     <button type="button"
                                             class="btn-block"
                                             data-toggle="modal"
@@ -134,7 +133,6 @@
                                     >
                                         deny
                                     </button>
-{{--                                    <input name="vid" id="vid" value="{{$volunteerrequest->event_id}}" type="text" >--}}
                                 </td>
 
                           </tr>
@@ -193,19 +191,6 @@
 
 
 </div>
-
-{{--<script--}}
-{{--    type="text/javascript"--}}
-{{--    charset="utf8"--}}
-{{--    src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"--}}
-{{--></script>--}}
-{{--<script--}}
-{{--    type="text/javascript"--}}
-{{--    charset="utf8"--}}
-{{--    src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"--}}
-{{--></script>--}}
-
-
 
 <script>
 

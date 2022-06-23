@@ -82,7 +82,7 @@
                                                             <a href="{{ url('open_nitification')}}/{{ $notification->data['id']}}/{{ $notification->id }}"><img src="{{asset('website/images/shop/mini/img-1.jpg')}}" alt="Hoodie with zipper"></a>
                                                         </div>
                                                         <div class="mini-cart-item-des">
-                                                            <a href="{{ url('open_nitification')}}/{{ $notification->data['id']}}/{{ $notification->id }}"">{{ $notification->data['title'] }} : <span style="color: #1b6d85">{{ $notification->data['user'] }}</span></a>
+                                                            <a href="{{ url('open_nitification')}}/{{ $notification->data['id']}}/{{ $notification->id }}">{{ $notification->data['title'] }} : <span style="color: #1b6d85">{{ $notification->data['user'] }}</span></a>
                                                             <span class="mini-cart-item-price">{{ $notification->created_at }}</span>
                                                             <span class="mini-cart-item-quantity" style="margin-top: 40px;">x 1</span>
                                                         </div>

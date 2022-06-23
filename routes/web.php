@@ -94,9 +94,9 @@ Route::controller(\App\Http\Controllers\EventVolunteerController::class)
 
 
 
-        Route::get('/processing/{vid}/{eid}', 'processing')->name('processing-accept');
-        Route::post('/deny', 'deny')->name('deny');
-        Route::post('/searchEvent', 'searchEvent')->name('searchEvent');
+        Route::match(['post','get'],'/processing/{vid}/{eid}', 'processing')->name('processing-accept');
+        Route::match(['get','post'],'/deny', 'deny')->name('deny');
+        Route::match(['get','post'],'/searchEvent', 'searchEvent')->name('searchEvent');
 
 
 
@@ -135,7 +135,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::controller(RequesttController::class)
     ->prefix('/request')
     ->as('request.')
-   ->middleware(['auth'])
+    ->middleware(['auth'])
     ->group(function () {
         Route::get('/add', 'add')->name('add');
         Route::post('/create', 'create')->name('create');
