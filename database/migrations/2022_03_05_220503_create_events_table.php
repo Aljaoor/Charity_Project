@@ -22,6 +22,8 @@ class CreateEventsTable extends Migration
             $table->date('from_date');
             $table->date('to_date');
             $table->integer('count_of_volunteers');
+            $table->integer('count_of_request')->default('0');
+
             $table->text('location');
 
 

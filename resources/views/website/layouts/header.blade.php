@@ -44,7 +44,7 @@
                         <li><a href="{{route('request.add')}}">send request</a></li>
                         @if(auth()->user())
 
-                        <li><a href="{{route('request.yourRequest',auth()->user()->id)}}">your request</a></li>
+                        <li><a href="{{route('request.yourRequest')}}">your request</a></li>
                         @endif
 
                     </ul>
@@ -65,44 +65,124 @@
             </ul>
 
         </div><!-- end of nav-collapse -->
+
+
+{{--      -----------------  notification------------------------------}}
+
 @if(auth()->user())
         <div class="cart-search-contact">
             <div class="mini-cart">
-                <button class="cart-toggle-btn"> <i class="fi flaticon-shopping-bag"></i> <span class="cart-count">{{ auth()->user()->unreadNotifications->count() }}</span></button>
+                <button class="cart-toggle-btn"> <img src="{{asset('website/images/notfication.png')}}" style="width: 45px;"> <span class="cart-count">{{ auth()->user()->unreadNotifications->count() }}</span></button>
                 <div class="mini-cart-content">
                     <div class="mini-cart-title" style="background: #9aebff;">
                         <p>
                             Number of notifications :  <span class="mini-checkout-price" style="color: #2ebd61">{{ auth()->user()->unreadNotifications->count() }} </span>
                         </p>
                      </div>
+
+                  <?php  $event_name= array();?>
+
                     @foreach(auth()->user()->unreadNotifications as $notification)
+
+                        @if($notification->data['id']=='accept')
+                            <div class="mini-cart-items">
+                                <div class="mini-cart-item clearfix">
+                                    <div class="mini-cart-item-image">
+                                       <img src="{{asset('website/images/accept_request.png')}}" alt="Hoodie with zipper">
+                                    </div>
+                                    <a href="{{route('eventsvolunteer.read_notification',$notification->id)}}" style="color: #2db85d">
+                                    <div class="mini-cart-item-des">
+                                        {{ $notification->data['data'] }}
+                                        <span style="color: #1b6d85">{{ $notification->data['event'] }}</span>
+                                        <span class="mini-cart-item-price">{{ $notification->created_at }}</span>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        @elseif($notification->data['id']=='deny')
+                            <div class="mini-cart-items">
+                                <div class="mini-cart-item clearfix">
+                                    <div class="mini-cart-item-image">
+                                        <img src="{{asset('website/images/deny.png')}}" alt="Hoodie with zipper">
+                                    </div>
+                                    <a href="{{route('eventsvolunteer.read_notification',$notification->id)}}" style="color: #c9302c">
+                                    <div class="mini-cart-item-des">
+                                        {{ $notification->data['data'] }}
+                                        <span style="color: #1b6d85">{{ $notification->data['event'] }}</span>
+                                        <span class="mini-cart-item-price">{{ $notification->created_at }}</span>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        @elseif($notification->data['id']=='send')
+
+
+
+                            <?php      $result = in_array($notification->data['event'], $event_name);?>
+
+
+                                @if($result==false)
+
+
+                                    <?php         array_push($event_name, $notification->data['event']); ?>
+
+                                    <div class="mini-cart-items">
+                                        <div class="mini-cart-item clearfix">
+                                            <div class="mini-cart-item-image">
+                                                <img src="{{asset('website/images/OIP.jfif')}}" alt="Hoodie with zipper">
+                                            </div>
+                                            <a href="{{route('eventsvolunteer.read_notification',$notification->id)}}" style="color: black">
+                                                <div class="mini-cart-item-des">
+                                                    <span style="color: red"> {{ \App\Models\Event::where('title', $notification->data['event'])->first()->count_of_request }}</span>
+                                                    {{ $notification->data['data'] }}
+                                                    <span style="color: #1b6d85">{{ $notification->data['event'] }}</span>
+                                                    <span class="mini-cart-item-price">{{ $notification->created_at }}</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                                @endif
+
+
+
+
+                        @else
+
                                                 <div class="mini-cart-items">
                                                     <div class="mini-cart-item clearfix">
                                                         <div class="mini-cart-item-image">
-                                                            <a href="{{ url('open_nitification')}}/{{ $notification->data['id']}}/{{ $notification->id }}"><img src="{{asset('website/images/shop/mini/img-1.jpg')}}" alt="Hoodie with zipper"></a>
+                                                            <a href="{{ url('open_nitification')}}/{{ $notification->data['id']}}/{{ $notification->id }}"><img src="{{asset('website/images/Accept.png')}}" alt="Hoodie with zipper"></a>
                                                         </div>
                                                         <div class="mini-cart-item-des">
-                                                            <a href="{{ url('open_nitification')}}/{{ $notification->data['id']}}/{{ $notification->id }}">{{ $notification->data['title'] }} : <span style="color: #1b6d85">{{ $notification->data['user'] }}</span></a>
-                                                            <span class="mini-cart-item-price">{{ $notification->created_at }}</span>
+                                                            <a href="{{ url('open_nitification')}}/{{ $notification->data['id']}}/{{ $notification->id }}">{{ $notification->data['data'] }} : <span style="color: #1b6d85">{{ $notification->data['user'] }}</span></a>                                                            <span class="mini-cart-item-price">{{ $notification->created_at }}</span>
                                                             <span class="mini-cart-item-quantity" style="margin-top: 40px;">x 1</span>
                                                         </div>
                                                     </div>
                                                 </div>
+                        @endif
                     @endforeach
+
+
+
+
+
                                                 <div class="mini-cart-action clearfix">
                                                     <a href="{{route('mark')}}" class="theme-btn" style="background: #3ecfff">mark all read</a>
                                                 </div>
                                             </div>
                                         </div>
 
+
 @endif
             @if(auth()->user()===null)
                 <div class="cart-search-contact">
                     <div class="mini-cart">
-                        <button class="cart-toggle-btn"> <i class="fi flaticon-shopping-bag"></i> <span class="cart-count">02</span></button>
+                        <button class="cart-toggle-btn"> <i class="fi flaticon-shopping-bag"></i> <span class="cart-count">01</span></button>
                         <div class="mini-cart-content">
                             <div class="mini-cart-title">
-                                <p>Shopping Cart</p>
+                                <p style="color: #2db85d">Notification</p>
                             </div>
                             <div class="mini-cart-items">
                                 <div class="mini-cart-item clearfix">
@@ -110,29 +190,51 @@
                                         <a href="#"><img src="{{asset('website/images/shop/mini/img-1.jpg')}}" alt="Hoodie with zipper"></a>
                                     </div>
                                     <div class="mini-cart-item-des">
-                                        <a href="#">Hoodie with zipper</a>
-                                        <span class="mini-cart-item-price">$25.15</span>
-                                        <span class="mini-cart-item-quantity">x 1</span>
+                                        <a href="#">You have to login</a>
                                     </div>
                                 </div>
-                                <div class="mini-cart-item clearfix">
-                                    <div class="mini-cart-item-image">
-                                        <a href="#"><img src="{{asset('website/assets/images/shop/mini/img-2.jpg')}}" alt="Hoodie with zipper"></a>
-                                    </div>
-                                    <div class="mini-cart-item-des">
-                                        <a href="#">Hoodie with zipper</a>
-                                        <span class="mini-cart-item-price">$12.99</span>
-                                        <span class="mini-cart-item-quantity">x 2</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mini-cart-action clearfix">
-                                <span class="mini-checkout-price">$255.12</span>
-                                <a href="" class="theme-btn">View Cart</a>
+
                             </div>
                         </div>
                     </div>
             @endif
+{{--                    @if(auth()->user()===null)--}}
+{{--                        <div class="cart-search-contact">--}}
+{{--                            <div class="mini-cart">--}}
+{{--                                <button class="cart-toggle-btn"> <i class="fi flaticon-shopping-bag"></i> <span class="cart-count">01</span></button>--}}
+{{--                                <div class="mini-cart-content">--}}
+{{--                                    <div class="mini-cart-title">--}}
+{{--                                        <p>Shopping Cart</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="mini-cart-items">--}}
+{{--                                        <div class="mini-cart-item clearfix">--}}
+{{--                                            <div class="mini-cart-item-image">--}}
+{{--                                                <a href="#"><img src="{{asset('website/images/shop/mini/img-1.jpg')}}" alt="Hoodie with zipper"></a>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="mini-cart-item-des">--}}
+{{--                                                <a href="#">Hoodie with zipper</a>--}}
+{{--                                                <span class="mini-cart-item-price">$25.15</span>--}}
+{{--                                                <span class="mini-cart-item-quantity">x 1</span>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="mini-cart-item clearfix">--}}
+{{--                                            <div class="mini-cart-item-image">--}}
+{{--                                                <a href="#"><img src="{{asset('website/assets/images/shop/mini/img-2.jpg')}}" alt="Hoodie with zipper"></a>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="mini-cart-item-des">--}}
+{{--                                                <a href="#">Hoodie with zipper</a>--}}
+{{--                                                <span class="mini-cart-item-price">$12.99</span>--}}
+{{--                                                <span class="mini-cart-item-quantity">x 2</span>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="mini-cart-action clearfix">--}}
+{{--                                        <span class="mini-checkout-price">$255.12</span>--}}
+{{--                                        <a href="" class="theme-btn">View Cart</a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            @endif--}}
             <div class="header-search-form-wrapper">
                 <button class="search-toggle-btn"><i class="fi flaticon-magnifying-glass"></i></button>
                 <div class="header-search-form">

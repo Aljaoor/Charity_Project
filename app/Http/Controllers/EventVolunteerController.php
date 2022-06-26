@@ -30,6 +30,25 @@ class EventVolunteerController extends Controller
                 $eventvolunteer->volunteer_id = auth()->user()->id;
                 $eventvolunteer->status = 3;
                 $eventvolunteer->save();
+                $count_of_request=Event::whereId($id)->firstOrFail();
+
+                $count_of_request->count_of_request++;
+                $count_of_request->update();
+
+                $event_name=Event::whereId($id)->first('title')->title;
+
+
+                $details = [
+                    'event' => $event_name,
+                    'body' => 'People have sent a request to volunteer for the event :',
+                    'id' => 'send',
+//                    'count' => $count_of_request->count_of_request,
+                ];
+
+
+                $user = Auth::user()->whereRoleId(1)->get();
+
+                Notification::send($user, new \App\Notifications\process($details));
                 return redirect()->route('home')->with('alert', 'welcome to our Event');
 
             } else {
@@ -88,10 +107,25 @@ class EventVolunteerController extends Controller
         $request_accept->status=1;
         $request_accept->cancellation_reason="";
         $request_accept->update();
+        $event_name=Event::whereId($eid)->first('title')->title;
+
+
 
 //        $volunteerrequest = Event_volunteer::get();
 //        $event=Event::select('title')->get();
 
+        $details = [
+            'event' => $event_name,
+            'body' => 'Your request has been approved to volunteer at the event:',
+            'id' => 'accept',
+            'thanks' => 'Thank you for visiting codechief.org!',
+        ];
+
+
+        $user = User::whereId($vid)->first();
+
+
+        Notification::send($user, new \App\Notifications\process($details));
 
 
         return redirect()->back();
@@ -106,6 +140,24 @@ class EventVolunteerController extends Controller
         $request_deny->update();
         $volunteerrequest = Event_volunteer::get();
         $event=Event::select('title')->get();
+        $event_name=Event::whereId($request->eid)->first('title')->title;
+
+
+        $details = [
+            'event' => $event_name,
+            'body' => 'Your request to volunteer for the event has been rejected:',
+            'id' => 'deny',
+            'thanks' => 'Thank you for visiting codechief.org!',
+        ];
+
+
+        $user = Auth::user()->whereId($request->vid)->first();
+
+        Notification::send($user, new \App\Notifications\process($details));
+
+
+
+
         return redirect()->back()->with(['volunteerrequest'=>$volunteerrequest,'event'=>$event]);
 
 
@@ -119,6 +171,31 @@ class EventVolunteerController extends Controller
         $volunteerrequest = Event_volunteer::whereEventId($event_id->id)->get();
         $event=Event::select('title')->get();
         return view('website.request.acceptingrequests',compact('event','volunteerrequest','event_name'));
+
+
+    }
+
+
+    public function read_notification($notification_id){
+
+        $notification_send=Auth::user()->unreadNotifications()->whereId($notification_id)->first()->data;
+
+        
+       if ($notification_send['id']=='send'){
+
+
+        $event_name=$notification_send['event'];
+        $event_id=Event::select('id')->whereTitle($event_name)->firstOrFail();
+        $volunteerrequest = Event_volunteer::whereEventId($event_id->id)->get();
+        $event=Event::select('title')->get();
+        return view('website.request.acceptingrequests',compact('event','volunteerrequest','event_name'));
+
+       }
+       else{
+
+        Auth::user()->unreadNotifications()->whereId($notification_id)->first()->markAsRead();
+        return redirect()->route('request.yourRequest');
+           }
 
 
     }

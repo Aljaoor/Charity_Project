@@ -91,6 +91,7 @@ Route::controller(\App\Http\Controllers\EventVolunteerController::class)
         Route::get('/acceptable', 'acceptable')->name('acceptable');
         Route::get('/rejected', 'rejected')->name('rejected');
         Route::get('/pending', 'pending')->name('pending');
+        Route::get('/read_notification/{notification_id}', 'read_notification')->name('read_notification');
 
 
 
@@ -140,11 +141,9 @@ Route::controller(RequesttController::class)
         Route::get('/add', 'add')->name('add');
         Route::post('/create', 'create')->name('create');
 
-        Route::get('/yourRequest/{id}', 'yourRequest')->name('yourRequest');
+        Route::get('/yourRequest', 'yourRequest')->name('yourRequest');
 
 //        Route::post('/update', 'update')->name('update');
-//        Route::get('/delete/{id}', 'delete')->name('delete');
-//        Route::post('/test', 'test')->name('test');
 
 
     });

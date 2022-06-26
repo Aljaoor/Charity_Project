@@ -29,26 +29,19 @@ class add_event extends Notification
 
     public function via($notifiable)
     {
-//        return ['mail','database'];
+
         return ['database'];
 
     }
 
-//    public function toMail($notifiable)
-//    {
-//        return (new MailMessage)
-//            ->greeting($this->details['greeting'])
-//            ->line($this->details['body'])
-//            ->line($this->details['thanks']);
-//
-//    }
+
 
     public function toDatabase($notifiable)
     {
         return [
-//            'data' => $this->details['body']
+
             'id'=> $this->event_id,
-            'title'=>'An event has been added by :',
+            'data'=>'An event has been added by :',
             'user'=> Auth::user()->name,
         ];
     }

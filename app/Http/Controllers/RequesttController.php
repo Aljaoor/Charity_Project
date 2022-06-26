@@ -33,10 +33,10 @@ class RequesttController extends Controller
 
     }
 
-    public function yourRequest($id){
+    public function yourRequest(){
 
         if (\auth()->user()->role_id==3){
-            $status=Event_volunteer::whereVolunteerId($id)->get();
+            $status=Event_volunteer::whereVolunteerId(\auth()->user()->id)->get();
             return view('website.request.yourRequest')->with('status',$status);
 
 
