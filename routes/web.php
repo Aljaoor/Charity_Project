@@ -51,6 +51,11 @@ Route::get('/403', function () {
 })->name('403');
 
 
+Route::get('/403', function () {
+    return view('website.about');
+})->name('about');
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

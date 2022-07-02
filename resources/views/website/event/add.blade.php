@@ -72,6 +72,20 @@
                                 <div class="col-md-6">
                                     <div class="volunteer-contact" >
                                         <div class="volunteer-contact-form" style="background: black;">
+
+                                            @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <button type="button" class="close" data-bs-dismiss="alert">
+                                                        x
+                                                    </button>
+                                                    <ol>
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ol>
+                                                </div>
+                                            @endif
+
                                             <form  action="{{route('event.create')}}" method="post" class="contact-validation-active" enctype="multipart/form-data" >
                                                 {{ csrf_field() }}
                                                 <div class="row">
@@ -81,8 +95,11 @@
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group form-group-in">
                                                         <label for="file">Upload Event Image</label>
                                                         <div  style="font-size: 10px; color: red">Attachment Format:jpeg ,.jpg , png</div>
-                                                        <input id="file" type="file" class="form-control" name="event_image" accept=".jpg, .png, image/jpeg, image/png">
+                                                        <input id="file" type="file"  class="@error('event_image') is-invalid @enderror form-control" name="event_image" accept=".jpg, .png, image/jpeg, image/png">
                                                         <i class="ti-cloud-up"></i>
+{{--                                                        @error('event_image')--}}
+{{--                                                        <div class="alert alert-danger">{{ $message }}</div>--}}
+{{--                                                        @enderror--}}
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
                                                         <div  style="font-size: 20px; margin-left: 5px;"> Start At:</div>
@@ -94,11 +111,20 @@
 
                                                         <input type="date" class="form-control" name="to_date" id="to_date">
                                                     </div>
+
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group clearfix">
-                                                        <input type="text" class="form-control" name="count_of_volunteers" id="count_of_volunteers" placeholder="Number of volunteers">
+                                                        <input type="text" class="@error('count_of_volunteers') is-invalid @enderror form-control"  name="count_of_volunteers" id="count_of_volunteers" placeholder="Number of volunteers">
+{{--                                                        @error('count_of_volunteers')--}}
+{{--                                                        <div class="alert alert-danger">{{ $message }}</div>--}}
+{{--                                                        @enderror--}}
+
                                                     </div>
+
                                                     <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                                        <input type="text" class="form-control" name="where" id="where" placeholder="ُEnter the place...">
+                                                        <input type="text" class="@error('count_of_volunteers') is-invalid @enderror form-control"  name="where" id="where" placeholder="ُEnter the place...">
+{{--                                                        @error('where')--}}
+{{--                                                        <div class="alert alert-danger">{{ $message }}</div>--}}
+{{--                                                        @enderror--}}
                                                     </div>
 
 

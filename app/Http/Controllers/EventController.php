@@ -40,12 +40,21 @@ class EventController extends Controller
         $validatedData = $request->validate([
             'where' => 'required|max:255',
             'count_of_volunteers' => 'required',
-        ], [
+            'event_image' => 'required'
+        ],
+        );
 
-            'where.required' => 'يرجي ادخال اسم المكان',
-            'count_of_volunteers.required' => 'يرجي ادخال عدد المتطوعين',
-
-        ]);
+//        $validatedData = $request->validate([
+//            'where' => 'required|max:255',
+//            'count_of_volunteers' => 'required',
+//        ],
+//            [
+//
+//                'where.required' => 'يرجي ادخال اسم المكان',
+//                'count_of_volunteers.required' => 'يرجي ادخال عدد المتطوعين',
+//
+//            ]
+//        );
 
         $event = new Event();
         $event->where = $request->where;

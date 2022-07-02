@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Event_volunteer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
+use App\Mail\process;
 
 
 class EventVolunteerController extends Controller
@@ -118,7 +119,7 @@ class EventVolunteerController extends Controller
             'event' => $event_name,
             'body' => 'Your request has been approved to volunteer at the event:',
             'id' => 'accept',
-            'thanks' => 'Thank you for visiting codechief.org!',
+            'thanks' => 'Thank you ',
         ];
 
 
@@ -126,6 +127,8 @@ class EventVolunteerController extends Controller
 
 
         Notification::send($user, new \App\Notifications\process($details));
+
+        \Mail::to($user)->send(new process($details));
 
 
         return redirect()->back();
@@ -147,7 +150,7 @@ class EventVolunteerController extends Controller
             'event' => $event_name,
             'body' => 'Your request to volunteer for the event has been rejected:',
             'id' => 'deny',
-            'thanks' => 'Thank you for visiting codechief.org!',
+            'thanks' => $request->Reason ,
         ];
 
 
@@ -155,6 +158,7 @@ class EventVolunteerController extends Controller
 
         Notification::send($user, new \App\Notifications\process($details));
 
+        \Mail::to($user)->send(new process($details));
 
 
 
@@ -180,7 +184,7 @@ class EventVolunteerController extends Controller
 
         $notification_send=Auth::user()->unreadNotifications()->whereId($notification_id)->first()->data;
 
-        
+
        if ($notification_send['id']=='send'){
 
 

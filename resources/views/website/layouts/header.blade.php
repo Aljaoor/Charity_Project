@@ -14,7 +14,7 @@
             <button class="close-navbar"><i class="ti-close"></i></button>
             <ul class="nav navbar-nav">
                 <li><a class="active" href="{{ route('home') }}">home</a></li>
-                <li><a class="active" href="about.html">About</a></li>
+                <li><a class="active" href="{{route('about')}}">About</a></li>
                 <li class="menu-item-has-children">
                     <a href="#">Offices +</a>
                     <ul class="sub-menu">
@@ -23,7 +23,7 @@
                     </ul>
                 </li>
                 <li class="menu-item-has-children">
-                    <a href="">Event +</a>
+                    <a href="{{route('event.index')}}">Event +</a>
                     <ul class="sub-menu">
                         <li><a href="{{route('event.index')}}">Event</a></li>
                         <li><a href="{{route('event.add')}}">add Event</a></li>
@@ -32,7 +32,7 @@
                 <li class="menu-item-has-children">
                     <a href="#">Pages +</a>
                     <ul class="sub-menu">
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="{{route('about')}}">About</a></li>
                         <li><a href="donate.html">Donate</a></li>
                         <li><a href="volunteer.html">Volunteer</a></li>
                         <li><a href="{{url('404')}}">404 Page</a></li>
@@ -274,25 +274,20 @@
 
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="your email..." style="height: 50px; margin-bottom: 20px;">
+                        <input id="email" type="email" class="form-control  is-invalid " name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="your email..." style="height: 50px; margin-bottom: 20px;">
 
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+{{--                        @error('email')
+                       <span class="invalid-feedback" role="alert">
+                                       <strong>{{ $message }}</strong>
                         </span>
-                        @enderror
+{{--                        @enderror--}}
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="your password..." style="height: 50px; margin-bottom: 20px;">
+                        <input id="password" type="password" class="form-control  is-invalid " name="password" required autocomplete="current-password" placeholder="your password..." style="height: 50px; margin-bottom: 20px;">
                     </div>
-                    @error('password')
-                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                    @enderror
                 </div>
             </div>
 
