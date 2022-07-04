@@ -48,16 +48,6 @@
             <div class="volunteer-wrap section-padding">
                 <div class="container">
                     <div class="row">
-
-{{--                        <div class="col-md-6">--}}
-{{--                            <div class="volunteer-item">--}}
-{{--                                <div class="volunteer-img-wrap">--}}
-{{--                                    <div class="volunter-img">--}}
-{{--                                        <img src="{{asset('website/images/about/img-1.jpg')}}" alt="">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
                         <div class="col-md-6">
                             <div class="volunteer-contact">
                                 <div class="volunteer-contact-form" style="width: 1200px;">
@@ -73,15 +63,6 @@
                                                 <input id="file" type="file" class="form-control" name="proof_image" accept=".jpg, .png, image/jpeg, image/png">
                                                 <i class="ti-cloud-up"></i>
                                             </div>
-{{--                                            --}}
-{{--                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group form-group-in">--}}
-{{--                                                <label for="file">Upload proof Image</label>--}}
-{{--                                                <div  style="font-size: 10px; color: red;"> Attachment Format:jpeg ,.jpg , png</div>--}}
-{{--                                                <input id="file" type="file" class="form-control" name="proof_image" accept=".jpg, .png, image/jpeg, image/png">--}}
-{{--                                                <i class="ti-cloud-up"></i>--}}
-{{--                                            </div>--}}
-
-
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group clearfix">
                                                 <select name="office_id" id="office_id" class="form-control" required>
                                                     <option value="" selected disabled> chose an offices</option>
@@ -90,22 +71,19 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-
-
-
                                             <div class="col-lg-12 col-12 form-group">
                                                 <textarea class="form-control" name="cancellation_reason" id="cancellation_reason" placeholder="Enter reason request"></textarea>
                                             </div>
 
-
                                             <div class="submit-area col-lg-12 col-12">
-                                                <button type="submit" class="theme-btn submit-btn">Send Request</button>
+                                                <button type="submit" class="submit-btn" style="background-color:midnightblue; color: whitesmoke ">Send Request</button>
                                                 <div id="loader">
                                                     <i class="ti-reload"></i>
                                                 </div>
                                             </div>
 
                                         </div>
+{{--                                        -------------------------------how used this----------------------}}
                                             <div class="clearfix error-handling-messages">
                                                 <div id="success">Thank you</div>
                                                 <div id="error"> Error occurred while sending email. Please try again later. </div>

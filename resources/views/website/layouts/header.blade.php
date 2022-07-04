@@ -16,7 +16,7 @@
                 <li><a class="active" href="{{ route('home') }}">home</a></li>
                 <li><a class="active" href="{{route('about')}}">About</a></li>
                 <li class="menu-item-has-children">
-                    <a href="#">Offices +</a>
+                    <a href="{{route('office.show')}}">Offices +</a>
                     <ul class="sub-menu">
                         <li><a href="{{route('office.show')}}">offices</a></li>
                         <li><a href="{{route('office.add')}}">add office</a></li>
@@ -133,7 +133,10 @@
                                             </div>
                                             <a href="{{route('eventsvolunteer.read_notification',$notification->id)}}" style="color: black">
                                                 <div class="mini-cart-item-des">
-                                                    <span style="color: red"> {{ \App\Models\Event::where('title', $notification->data['event'])->first()->count_of_request }}</span>
+{{--                                                    {{ \app\Models\Event::whereTitle($notification->data['event'])->first()->id }}--}}
+                                                    <span style="color: red"> {{ \App\Models\Event_volunteer::where('status', '3')->whereEventId( \App\Models\Event::whereTitle($notification->data['event'])->first()->id)->count()}}</span>
+
+                                                    {{--                                                    <span style="color: red"> {{ \App\Models\Event::where('title', $notification->data['event'])->first()->count_of_request }}</span>--}}
                                                     {{ $notification->data['data'] }}
                                                     <span style="color: #1b6d85">{{ $notification->data['event'] }}</span>
                                                     <span class="mini-cart-item-price">{{ $notification->created_at }}</span>
@@ -259,15 +262,17 @@
     </div><!-- end of container -->
 </nav>
 <!-- Modal -->
+
+
 <form action="{{ route('login') }}" method="post">
     @csrf
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="exampleModalLongTitle">log in</h2>
+                <h2 class="modal-title" id="exampleModalLongTitle" style="color: #2db85d">log in</h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true" style="color: red">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -276,11 +281,11 @@
                     <div class="col-md-6">
                         <input id="email" type="email" class="form-control  is-invalid " name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="your email..." style="height: 50px; margin-bottom: 20px;">
 
-{{--                        @error('email')
+                      @error('email')
                        <span class="invalid-feedback" role="alert">
                                        <strong>{{ $message }}</strong>
                         </span>
-{{--                        @enderror--}}
+                      @enderror
                     </div>
                 </div>
 
@@ -288,6 +293,11 @@
                     <div class="col-md-6">
                         <input id="password" type="password" class="form-control  is-invalid " name="password" required autocomplete="current-password" placeholder="your password..." style="height: 50px; margin-bottom: 20px;">
                     </div>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                                       <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
 

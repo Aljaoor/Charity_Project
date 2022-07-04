@@ -24,11 +24,11 @@
                     <div class="container">
                         <div class="row">
                             <div class="col col-xs-12">
-                                <h1 style="color: whitesmoke;font-size: 100px; margin-top: 0px;">403</h1>
-                                <h3 style="color: red; font-size: 65px; ">Oops! Not allowed</h3>
+                                <h1 style="color: red;font-size: 100px; margin-top: 0px;">403</h1>
+                                <h3 style="color: whitesmoke; font-size: 65px; ">Oops! Not allowed</h3>
                                 <ol class="breadcrumb">
-                                    <p style="color: whitesmoke; font-size: 50px">If you want to do this, you must first login or join..</p>
-                                    <a href="{{route('home')}}" class="theme-btn" style="margin-top: 50px">Back to home</a>
+                                    <p style="color: whitesmoke; font-size: 70px">Please log in or join us first..</p>
+
 
 
                                 </ol>
@@ -43,5 +43,13 @@
 
 
     </div>
+
+
+        <script>
+            $(function() {
+                $('#exampleModalCenter').modal('show');
+            });
+        </script>
+
 
 @endsection

@@ -38,33 +38,10 @@
         @include('website.layouts.header')
     </header>
     <!-- end of header -->
-
-    <form action="{{route('eventsvolunteer.searchEvent')}}" method="post">
+            <form action="{{route('eventsvolunteer.searchEvent')}}" method="post">
                 @csrf
                 <button type="submit" class="theme-btn" style="height: 30px;padding-top: 3px;">search</button>
-        <button type="button"
-                class="theme-btn"
-                id="acceptChecked"
-                data-toggle="modal"
-                data-target="#acceptCheck"
-                style="height: 30px;padding-top: 3px;"
-                data-vid="11"
-
-        >
-            accept checked
-        </button>
-        <button type="button"
-                class="theme-btn"
-                id="denyChecked"
-                data-toggle="modal"
-                data-target="#denyCheck"
-                style=" height: 30px; padding-top: 3px;"
-
-        >
-            deny checked
-        </button>
-
-        <div class="col-md-3" style="margin-left: 200px; margin-top: 0px; margin-bottom: 0px;">
+                <div class="col-md-3" style="margin-left: 500px; margin-top: 0px; margin-bottom: 0px;">
                     <select id="Reason" class="form-control" name="search" required  autofocus style="height: 30px; margin-bottom: 20px;">
                         <option value="" selected disabled> {{ $event_name??"Choose an event" }}</option>
                         @foreach($event as $event)
@@ -72,7 +49,7 @@
 
                         @endforeach
                     </select>
-                    <input type="hidden" value="0" name="status">
+                    <input type="hidden" value="3" name="status">
                 </div>
             </form>
     <style>
@@ -90,7 +67,6 @@
         <thead>
         <tr>
             <th style="text-align: left;">*</th>
-
             <th style="text-align: left;">volunteer name</th>
             <th style="text-align: left;">volunteer age</th>
             <th style="text-align: left;">volunteer mobile</th>
@@ -99,8 +75,6 @@
             <th style="text-align: left;">acount status</th>
             <th style="text-align: left;">status</th>
             <th style="text-align: left;">Modify</th>
-            <th style="text-align: left;">select</th>
-
         </tr>
         </thead>
         <tfoot>
@@ -114,21 +88,17 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
 
         </tr>
         </tfoot>
         <tbody>
-
                 @php $i=0; @endphp
 
 
                 @foreach($volunteerrequest as $volunteerrequest)
                     @php $i++; @endphp
-                    <tr id="eid{{$volunteerrequest->event_id}}">
+                    <tr>
                         <td style="background-color: whitesmoke"> {{$i}}</td>
-
-
 
                         <td>{{$volunteerrequest->user->name}} </td>
                             <td>{{$volunteerrequest->user->age}} </td>
@@ -166,18 +136,8 @@
                                     </button>
                                 </td>
 
-
-                        <td>
-                            <input type="checkbox" name="ids"  class="checkBoxClass" value="{{$volunteerrequest->event_id}}" data-volunteer="{{$volunteerrequest->volunteer_id}}" style="margin-left: 20px; margin-top: 35px;">
-                        </td>
-
-
-
-
                           </tr>
                 @endforeach
-
-
         </tbody>
     </table>
 
@@ -186,7 +146,6 @@
 
 
 
-    {{--  -------------------------  modal for deny once-----------------------------}}
 
 
 
@@ -229,88 +188,6 @@
             </div>
         </div>
     </form>
-
-
-    {{--  -------------------------  modal for accept checked-----------------------------}}
-
-    <form action="{{route('eventsvolunteer.acceptcheck')}}" method="post">
-        @csrf
-        <div class="modal fade" id="acceptCheck" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="modal-title" id="exampleModalLongTitle" style="color: lightblue">Accept all of checkedbox</h2>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <input name="volunteer_ids" id="volunteer_ids" value="" type="hidden" >
-                        <input name="event_ids" id="event_ids" value="" type="hidden">
-
-
-                    </div>
-
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" style="background: lightblue;color: black">yes</button>
-                </div>
-            </div>
-        </div>
-    </form>
-
-
-    {{--  -------------------------  modal for deny checked-----------------------------}}
-
-    <form action="{{route('eventsvolunteer.denycheck')}}" method="post">
-        @csrf
-        <div class="modal fade" id="denyCheck" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="modal-title" id="exampleModalLongTitle" style="color: red;">Deny all of checkedbox</h2>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <input name="volunteer_ids" id="volunteer_ids" value="" type="hidden" >
-                        <input name="event_ids" id="event_ids" value="" type="hidden">
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label>Reason for rejection</label>
-
-                                <select id="Reason" class="form-control" name="Reason" required autocomplete="Reason" autofocus placeholder=" Reason..." style="height: 50px; margin-bottom: 20px;">
-
-                                    <option value="" selected disabled> Choose a reason</option>
-                                    <option value="Not eligible for this event " >Not eligible for this event </option>
-                                    <option value="Does't have a enough time " > Does't have a enough time </option>
-                                    <option value="The age is not appropriate"> The age is not appropriate</option>
-
-
-                                </select>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" style="background: red;color: whitesmoke  ">yes</button>
-                </div>
-            </div>
-        </div>
-    </form>
-
-
-
 
 
 
@@ -356,51 +233,10 @@
 </body>
 </html>
 
-<script>
-
-    {{--$(function (e){--}}
-
-    {{--    $("#acceptChecked").click(function (e){--}}
-
-
-    {{--        e.preventDefault();--}}
-    {{--        var  event_id = [];--}}
-
-    {{--        $("input:checkbox[name=ids]:checked").each(function (){--}}
-
-    {{--            event_id.push($(this).val());--}}
-    {{--        })--}}
-    {{--        console.log(event_id);--}}
-
-    {{--        --}}
-
-    {{--        --}}{{--$.ajax({--}}
-    {{--        --}}{{--    uri:"{{route('test')}}",--}}
-    {{--        --}}{{--    type:"POST",--}}
-    {{--        --}}{{--    data:{--}}
-    {{--        --}}{{--        _token:$("input[name=_token]").val(),--}}
-    {{--        --}}{{--        ids:event_id,--}}
-    {{--        --}}{{--    },--}}
-    {{--        --}}{{--    success:function (response){--}}
-    {{--        --}}{{--        $.each(event_id,function (key,val){--}}
-    {{--        --}}{{--            $("#ids"+val).remove();--}}
-    {{--        --}}{{--        })--}}
-
-    {{--        --}}{{--    }--}}
-    {{--        --}}{{--})--}}
-
-    {{--    })--}}
-
-
-
-    {{--})--}}
-
-
-</script>
 
 
 <script>
-
+    console.log('asdsa');
     $('#deny').on('show.bs.modal', function (event) {
 
         var button = $(event.relatedTarget) // Button that triggered the modal
@@ -421,91 +257,4 @@
     });
 
 </script>
-
-
-{{-----------------------------script for accept checked--------------------------}}
-
-
-<script>
-
-
-
-
-$('#acceptCheck').on('show.bs.modal', function (event) {
-
-
-
-    var  event_id = [];
-
-    var  volunteer_id = [];
-
-    $("input:checkbox[name=ids]:checked").each(function (){
-
-        event_id.push($(this).val());
-        volunteer_id.push($(this).data('volunteer'));
-
-    })
-
-    console.log(event_id);
-
-
-    console.log(volunteer_id);
-
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this)
-    modal.find('.modal-body #volunteer_ids').val(volunteer_id)
-
-    modal.find('.modal-body #event_ids').val(event_id)
-})
-
-
-
-
-</script>
-
-
-{{-----------------------------script for deny checked--------------------------}}
-
-
-<script>
-
-
-
-
-    $('#denyCheck').on('show.bs.modal', function (event) {
-
-
-
-        var  event_id = [];
-
-        var  volunteer_id = [];
-
-        $("input:checkbox[name=ids]:checked").each(function (){
-
-            event_id.push($(this).val());
-            volunteer_id.push($(this).data('volunteer'));
-
-        })
-
-        console.log(event_id);
-
-
-        console.log(volunteer_id);
-
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var modal = $(this)
-        modal.find('.modal-body #volunteer_ids').val(volunteer_id)
-
-        modal.find('.modal-body #event_ids').val(event_id)
-    })
-
-
-
-
-</script>
-
-
-
 

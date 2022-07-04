@@ -9,6 +9,7 @@ use App\Models\Event_volunteer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use App\Mail\process;
+use function MongoDB\BSON\toJSON;
 
 
 class EventVolunteerController extends Controller
@@ -50,7 +51,7 @@ class EventVolunteerController extends Controller
                 $user = Auth::user()->whereRoleId(1)->get();
 
                 Notification::send($user, new \App\Notifications\process($details));
-                return redirect()->route('home')->with('alert', 'welcome to our Event');
+                return redirect()->route('home')->with('alert', '  You will receive an email in the answer to your request or you can see the result on the website');
 
             } else {
                 return redirect()->route('home')->with('volunteering', 'Sorry,we have enough number of volunteers');
@@ -80,7 +81,7 @@ class EventVolunteerController extends Controller
 
         $volunteerrequest = Event_volunteer::whereStatus(1)->get();
         $event=Event::select('title')->get();
-        return view('website.request.acceptingrequests')->with(['volunteerrequest'=>$volunteerrequest,'event'=>$event]);
+        return view('website.request.accept')->with(['volunteerrequest'=>$volunteerrequest,'event'=>$event]);
 
 
     }
@@ -88,7 +89,7 @@ class EventVolunteerController extends Controller
     {
         $volunteerrequest = Event_volunteer::whereStatus(2)->get();
         $event=Event::select('title')->get();
-        return view('website.request.acceptingrequests')->with(['volunteerrequest'=>$volunteerrequest,'event'=>$event]);
+        return view('website.request.rejected')->with(['volunteerrequest'=>$volunteerrequest,'event'=>$event]);
 
 
     }
@@ -96,7 +97,7 @@ class EventVolunteerController extends Controller
     {
         $volunteerrequest = Event_volunteer::whereStatus(3)->get();
         $event=Event::select('title')->get();
-        return view('website.request.acceptingrequests')->with(['volunteerrequest'=>$volunteerrequest,'event'=>$event]);
+        return view('website.request.pending')->with(['volunteerrequest'=>$volunteerrequest,'event'=>$event]);
 
 
     }
@@ -170,11 +171,41 @@ class EventVolunteerController extends Controller
 
     public function searchEvent(Request $request)
     {
+        if ($request->status==0) {
+            $event_name=$request->search;
+            $event_id=Event::select('id')->whereTitle($event_name)->firstOrFail();
+            $volunteerrequest = Event_volunteer::whereEventId($event_id->id)->get();
+            $event=Event::select('title')->get();
+
+            return view('website.request.acceptingrequests',compact('event','volunteerrequest','event_name'));
+
+
+
+        }
+
+        elseif ($request->status==1){
         $event_name=$request->search;
         $event_id=Event::select('id')->whereTitle($event_name)->firstOrFail();
-        $volunteerrequest = Event_volunteer::whereEventId($event_id->id)->get();
+        $volunteerrequest = Event_volunteer::whereEventId($event_id->id)->whereStatus($request->status)->get();
         $event=Event::select('title')->get();
-        return view('website.request.acceptingrequests',compact('event','volunteerrequest','event_name'));
+        return view('website.request.accept',compact('event','volunteerrequest','event_name'));
+        }
+        elseif ($request->status==2){
+            $event_name=$request->search;
+            $event_id=Event::select('id')->whereTitle($event_name)->firstOrFail();
+            $volunteerrequest = Event_volunteer::whereEventId($event_id->id)->whereStatus($request->status)->get();
+            $event=Event::select('title')->get();
+            return view('website.request.rejected',compact('event','volunteerrequest','event_name'));
+        }
+        elseif ($request->status==3){
+            $event_name=$request->search;
+            $event_id=Event::select('id')->whereTitle($event_name)->firstOrFail();
+            $volunteerrequest = Event_volunteer::whereEventId($event_id->id)->whereStatus($request->status)->get();
+            $event=Event::select('title')->get();
+            return view('website.request.pending',compact('event','volunteerrequest','event_name'));
+        }
+
+
 
 
     }
@@ -203,4 +234,104 @@ class EventVolunteerController extends Controller
 
 
     }
+
+
+
+    public function acceptcheck(Request  $request){
+
+
+        $volunteer_ids=$request->volunteer_ids;
+        $volunteer_ids=explode(",",$volunteer_ids );
+
+        $event_ids=$request->event_ids;
+        $event_ids=explode(",",$event_ids );
+
+        $i=0;
+        foreach ($volunteer_ids as $volunteer_ids){
+
+
+            $request_accept=Event_volunteer::whereVolunteerId($volunteer_ids)->whereEventId($event_ids[$i])->firstOrFail();
+            $request_accept->status=1;
+            $request_accept->cancellation_reason="";
+            $request_accept->update();
+
+
+
+            $event_name=Event::whereId($event_ids[$i])->first('title')->title;
+
+
+
+            $details = [
+                'event' => $event_name,
+                'body' => 'Your request has been approved to volunteer at the event:',
+                'id' => 'accept',
+                'thanks' => 'Thank you ',
+            ];
+
+
+            $user = User::whereId($volunteer_ids)->first();
+
+
+            Notification::send($user, new \App\Notifications\process($details));
+
+            \Mail::to($user)->send(new process($details));
+
+
+
+
+
+
+            $i++;
+
+        }
+
+        return redirect()->back();
+
+    }
+
+
+
+    public function denycheck(Request  $request){
+
+
+        $volunteer_ids=$request->volunteer_ids;
+        $volunteer_ids=explode(",",$volunteer_ids );
+
+        $event_ids=$request->event_ids;
+        $event_ids=explode(",",$event_ids );
+
+        $i=0;
+        foreach ($volunteer_ids as $volunteer_ids){
+
+
+            $request_deny=Event_volunteer::whereVolunteerId($volunteer_ids)->whereEventId($event_ids[$i])->firstOrFail();
+            $request_deny->status=2;
+            $request_deny->cancellation_reason=$request->Reason;
+            $request_deny->update();
+            $event_name=Event::whereId($event_ids[$i])->first('title')->title;
+
+
+            $details = [
+                'event' => $event_name,
+                'body' => 'Your request to volunteer for the event has been rejected:',
+                'id' => 'deny',
+                'thanks' => $request->Reason ,
+            ];
+
+            $user = Auth::user()->whereId($volunteer_ids)->first();
+
+            Notification::send($user, new \App\Notifications\process($details));
+
+            \Mail::to($user)->send(new process($details));
+
+            $i++;
+        }
+        $volunteerrequest = Event_volunteer::get();
+        $event=Event::select('title')->get();
+
+        return redirect()->back()->with(['volunteerrequest'=>$volunteerrequest,'event'=>$event]);
+
+
+    }
+
 }

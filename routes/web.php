@@ -22,9 +22,11 @@ Route::get('/tt', function () {
     return view('website.test.page2');
 });
 
-Route::get('/rr', function () {
+Route::get('/11', function () {
     return view('website.test.page1');
 });
+
+//Route::post('/test', [App\Http\Controllers\EventVolunteerController::class, 'test'])->name('test');
 
 Route::get('contact', function () {
     return view('website.contact');
@@ -51,7 +53,7 @@ Route::get('/403', function () {
 })->name('403');
 
 
-Route::get('/403', function () {
+Route::get('/about', function () {
     return view('website.about');
 })->name('about');
 
@@ -103,6 +105,11 @@ Route::controller(\App\Http\Controllers\EventVolunteerController::class)
         Route::match(['post','get'],'/processing/{vid}/{eid}', 'processing')->name('processing-accept');
         Route::match(['get','post'],'/deny', 'deny')->name('deny');
         Route::match(['get','post'],'/searchEvent', 'searchEvent')->name('searchEvent');
+
+        Route::match(['get','post'],'/acceptcheck', 'acceptcheck')->name('acceptcheck');
+        Route::match(['get','post'],'/denycheck', 'denycheck')->name('denycheck');
+
+
 
 
 

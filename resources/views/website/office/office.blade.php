@@ -96,7 +96,7 @@
 
 
 
-                                    <h2>number of families helped by this office :  <span style="color: #1b6d85"> 0</span></h2>
+                                    <h2>number of families helped by this office :  <span style="color: #1b6d85"> {{App\Models\Beneficiary::whereOfficeId($office->id)->count();}}</span></h2>
                                 </div>
                             </div>
                         </div>
