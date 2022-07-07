@@ -5,8 +5,8 @@ use App\Http\Controllers\EventController;
 use App\Models\User;
 use Illuminate\Notifications\Notification;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RequesttController;
 
+use App\Http\Controllers\RequestForHelpController;
 
 
 
@@ -86,6 +86,10 @@ Route::controller(EventController::class)
 
 
     });
+
+
+
+
 Route::controller(\App\Http\Controllers\EventVolunteerController::class)
     ->prefix('/eventsvolunteer')
     ->as('eventsvolunteer.')
@@ -145,9 +149,12 @@ Route::group(['middleware' => ['auth']], function () {
 //    Route::resource('users', \App\Http\Controllers\UserController::class);
 
 });
-Route::controller(RequesttController::class)
-    ->prefix('/request')
-    ->as('request.')
+
+
+
+Route::controller(RequestforhelpController::class)
+    ->prefix('/request_for_help')
+    ->as('request_for_help.')
     ->middleware(['auth'])
     ->group(function () {
         Route::get('/add', 'add')->name('add');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRequesttsTable extends Migration
+class CreateRequestForHelpsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRequesttsTable extends Migration
      */
     public function up()
     {
-        Schema::create('requestts', function (Blueprint $table) {
+        Schema::create('request_for_helps', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('status')->default(3);
             $table->integer('family_count');
@@ -21,7 +21,6 @@ class CreateRequesttsTable extends Migration
             $table->integer('member_id')->unsigned();
             $table->integer('office_id')->unsigned();
             $table->text('cancellation_reason')->nullable();
-            $table->string('proof_image');
             $table->foreign('office_id')->on('offices')->references('id')->onDelete('cascade');
             $table->foreign('member_id')->on('users')->references('id')->onDelete('cascade');
 
@@ -37,6 +36,6 @@ class CreateRequesttsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requestts');
+        Schema::dropIfExists('request_for_helps');
     }
 }

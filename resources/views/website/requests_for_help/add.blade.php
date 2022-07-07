@@ -2,6 +2,22 @@
 
 @section('content')
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    @if ($message = Session::get('failed'))
+        <script>
+
+            swal({
+                title: 'oops',
+                text: "{!! Session::get('failed') !!}",
+                icon: "error",
+                button: "close!",
+            });
+        </script>
+    @endif
+
     <!-- start page-wrapper -->
     <div class="page-wrapper">
         <!-- start preloader -->
@@ -50,8 +66,21 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="volunteer-contact">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-bs-dismiss="alert">
+                                            x
+                                        </button>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>* {{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                <p style="width: 1000px; text-align: right; color: midnightblue;">For proof, you can enter more than one file or photo, but please collect all the documents in one pdf file if possible.</p>
                                 <div class="volunteer-contact-form" style="width: 1200px;">
-                                    <form  action="{{route('request.create')}}" method="post" class="contact-validation-active" enctype="multipart/form-data">
+                                    <form  action="{{route('request_for_help.create')}}" method="post" class="contact-validation-active" enctype="multipart/form-data">
                                         {{ csrf_field() }}
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
@@ -59,8 +88,8 @@
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group form-group-in">
                                                 <label for="file">Upload Event Image</label>
-                                                <div  style="font-size: 10px; color: red">Attachment Format:jpeg ,.jpg , png</div>
-                                                <input id="file" type="file" class="form-control" name="proof_image" accept=".jpg, .png, image/jpeg, image/png">
+                                                <div  style="font-size: 10px; color: red">Attachment Format:jpeg ,.jpg , png ,pdf</div>
+                                                <input id="file" type="file" class="@error('proof_image') is-invalid @enderror form-control" name="proof_image[]" multiple accept=".jpg, .png, image/jpeg, image/png, pdf" >
                                                 <i class="ti-cloud-up"></i>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group clearfix">
@@ -76,7 +105,7 @@
                                             </div>
 
                                             <div class="submit-area col-lg-12 col-12">
-                                                <button type="submit" class="submit-btn" style="background-color:midnightblue; color: whitesmoke ">Send Request</button>
+                                                <button type="submit" class="submit-btn" style="background-color:midnightblue; color: whitesmoke; border-radius: 20px; ">send Request</button>
                                                 <div id="loader">
                                                     <i class="ti-reload"></i>
                                                 </div>

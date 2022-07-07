@@ -46,47 +46,56 @@
                     <div class="container">
                         <div class="row">
 
+                        @if(empty($status[0]))
+
+
+                                <h1 style="color: red; text-align: center;">You don't have requests. </h1>
+
+
+                            @else
 
 
 
+                                <table style="text-align: center;width:100%; border: 1px #2db85d solid;padding:0px; ">
+                                    <tr  style="background: #3ac060 ;padding-left:0px;  border: 1px;" >
 
-
-
-                            <table style="text-align: center;width:100%; border: 1px #2db85d solid;padding:0px; ">
-                                <tr  style="background: #3ac060 ;padding-left:0px;  border: 1px;" >
-
-                                    <th style="text-align: center;">your request</th>
-                                    <th style="text-align: center;"> status</th>
-                                    <th style="text-align: center;"> caceltion reason</th>
-                                    <th style="text-align: center;">event name</th>
-
-
-                                </tr>
-                                @php $i=0; @endphp
-
-                                @foreach($status as $status)
-                                    @php $i++; @endphp
-                                    <tr style="padding:20px; width:200px;">
-                                        <td style="  width: 200px"> {{$i}}</td>
-                                        @if($status->status==3)
-                                            <td style="padding:10px; width:150px; color: purple">pending </td>
-                                        @elseif ($status->status==1)
-                                            <td style="padding:10px; width:100px; color: #2db85d">accept </td>
-                                        @elseif ($status->status==2)
-                                            <td style="padding:10px; width:100px; color: red">rejected </td>
-                                        @endif
-
-                                        <td style="padding:50px; width:200px">{{$status->cancellation_reason}} </td>
-                                        <td style="padding:20px; width:150px">{{$status->event->title}} </td>
-
+                                        <th style="text-align: center;">your request</th>
+                                        <th style="text-align: center;"> status</th>
+                                        <th style="text-align: center;"> caceltion reason</th>
+                                        <th style="text-align: center;">event name</th>
 
 
                                     </tr>
 
 
-                                @endforeach
 
-                            </table>
+                                    @php $i=0; @endphp
+
+                                    @foreach($status as $status)
+                                        @php $i++; @endphp
+                                        <tr style="padding:20px; width:200px;">
+                                            <td style="  width: 200px"> {{$i}}</td>
+                                            @if($status->status==3)
+                                                <td style="padding:10px; width:150px; color: purple">pending </td>
+                                            @elseif ($status->status==1)
+                                                <td style="padding:10px; width:100px; color: #2db85d">accept </td>
+                                            @elseif ($status->status==2)
+                                                <td style="padding:10px; width:100px; color: red">rejected </td>
+                                            @endif
+
+                                            <td style="padding:50px; width:200px">{{$status->cancellation_reason}} </td>
+                                            <td style="padding:20px; width:150px">{{$status->event->title}} </td>
+
+
+
+                                        </tr>
+
+                                    @endforeach
+
+                                </table>
+
+                        @endif
+
 
                         </div>
                     </div>

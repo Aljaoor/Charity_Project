@@ -229,7 +229,7 @@ class EventVolunteerController extends Controller
        else{
 
         Auth::user()->unreadNotifications()->whereId($notification_id)->first()->markAsRead();
-        return redirect()->route('request.yourRequest');
+        return redirect()->route('request_for_help.yourRequest');
            }
 
 

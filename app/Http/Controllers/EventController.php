@@ -115,6 +115,7 @@ class EventController extends Controller
         $event->can_enrol = false;
         if ($user and $user->role_id == 3) {
             $enroled = Event_volunteer::whereEventId($id)->whereVolunteerId($user->id)->first();
+
             if ($enroled) {
                 $event->can_enrol = false;
             } else {

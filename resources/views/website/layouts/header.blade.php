@@ -41,10 +41,10 @@
                 <li class="menu-item-has-children">
                     <a href="#">Request</a>
                     <ul class="sub-menu">
-                        <li><a href="{{route('request.add')}}">send request</a></li>
+                        <li><a href="{{route('request_for_help.add')}}">send request</a></li>
                         @if(auth()->user())
 
-                        <li><a href="{{route('request.yourRequest')}}">your request</a></li>
+                        <li><a href="{{route('request_for_help.yourRequest')}}">your request</a></li>
                         @endif
 
                     </ul>
