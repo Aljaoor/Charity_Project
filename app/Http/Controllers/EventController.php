@@ -61,7 +61,6 @@ class EventController extends Controller
         $event->describe = $request->describe;
         $event->from_date = $request->from_date;
         $event->to_date = $request->to_date;
-        $event->location = $request->location;
         $l = $request->location;
         $lls = substr($l, 13, -130);
         $event->location = $lls;

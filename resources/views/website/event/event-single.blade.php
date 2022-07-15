@@ -71,6 +71,7 @@
                                                 <div id="Map" class="tab-pane">
                                                     <div class="contact-map">
 
+
                                                         <iframe src="{{$event-> location}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                                                     </div>

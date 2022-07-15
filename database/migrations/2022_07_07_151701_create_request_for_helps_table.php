@@ -21,6 +21,7 @@ class CreateRequestForHelpsTable extends Migration
             $table->integer('member_id')->unsigned();
             $table->integer('office_id')->unsigned();
             $table->text('cancellation_reason')->nullable();
+            $table->text('reason_of_request')->nullable();
             $table->foreign('office_id')->on('offices')->references('id')->onDelete('cascade');
             $table->foreign('member_id')->on('users')->references('id')->onDelete('cascade');
 

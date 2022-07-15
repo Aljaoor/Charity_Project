@@ -41,11 +41,20 @@
                 <li class="menu-item-has-children">
                     <a href="#">Request</a>
                     <ul class="sub-menu">
-                        <li><a href="{{route('request_for_help.add')}}">send request</a></li>
-                        @if(auth()->user())
+                        @if(auth()->user() and (auth()->user()->role_id==2  or auth()->user()->role_id==3) )
+                            <li><a href="{{route('request_for_help.add')}}">send request</a></li>
 
-                        <li><a href="{{route('request_for_help.yourRequest')}}">your request</a></li>
+                            <li><a href="{{route('request_for_help.yourRequest')}}">your request</a></li>
+                        @elseif(auth()->user() and auth()->user()->role_id==1)
+
+                            <li><a href="{{route('request_for_help.Waiting')}}">Waiting</a></li>
+
+                            <li><a href="{{route('request_for_help.yourRequest')}}">Rejected</a></li>
+
+                            <li><a href="{{route('request_for_help.yourRequest')}}">Benefitors</a></li>
+
                         @endif
+
 
                     </ul>
                 </li>
@@ -67,13 +76,14 @@
         </div><!-- end of nav-collapse -->
 
 
+
 {{--      -----------------  notification------------------------------}}
 
 @if(auth()->user())
-        <div class="cart-search-contact">
+        <div class="cart-search-contact"">
             <div class="mini-cart">
                 <button class="cart-toggle-btn"> <img src="{{asset('website/images/notfication.png')}}" style="width: 45px;"> <span class="cart-count">{{ auth()->user()->unreadNotifications->count() }}</span></button>
-                <div class="mini-cart-content">
+                <div class="mini-cart-content" style="width: 320px;">
                     <div class="mini-cart-title" style="background: #9aebff;">
                         <p>
                             Number of notifications :  <span class="mini-checkout-price" style="color: #2ebd61">{{ auth()->user()->unreadNotifications->count() }} </span>
@@ -85,22 +95,23 @@
                     @foreach(auth()->user()->unreadNotifications as $notification)
 
                         @if($notification->data['id']=='accept')
-                            <div class="mini-cart-items">
+                            <div style="margin-top: 10px; margin-bottom: 0px; padding-left: 10px;">
                                 <div class="mini-cart-item clearfix">
-                                    <div class="mini-cart-item-image">
-                                       <img src="{{asset('website/images/accept_request.png')}}" alt="Hoodie with zipper">
+                                    <div class="mini-cart-item-image" >
+                                       <img src="{{asset('website/images/accept_request.png')}}" >
                                     </div>
-                                    <a href="{{route('eventsvolunteer.read_notification',$notification->id)}}" style="color: #2db85d">
+                                    <a style=" min-width: 300px; min-width: 128.13px;" href="{{route('eventsvolunteer.read_notification',$notification->id)}}" style="color: #2db85d">
                                     <div class="mini-cart-item-des">
-                                        {{ $notification->data['data'] }}
-                                        <span style="color: #1b6d85">{{ $notification->data['event'] }}</span>
+                                        <div style="color: #2db85d"> {{ $notification->data['data'] }} </div>
+                                        <span style="">{{ $notification->data['event'] }}</span>
                                         <span class="mini-cart-item-price">{{ $notification->created_at }}</span>
                                     </div>
                                     </a>
                                 </div>
+
                             </div>
                         @elseif($notification->data['id']=='deny')
-                            <div class="mini-cart-items">
+                            <div class="mini-cart-items"  style="margin-top: 10px; margin-bottom: 0px; padding-left: 10px;">
                                 <div class="mini-cart-item clearfix">
                                     <div class="mini-cart-item-image">
                                         <img src="{{asset('website/images/deny.png')}}" alt="Hoodie with zipper">
@@ -109,7 +120,8 @@
                                     <div class="mini-cart-item-des">
                                         {{ $notification->data['data'] }}
                                         <span style="color: #1b6d85">{{ $notification->data['event'] }}</span>
-                                        <span class="mini-cart-item-price">{{ $notification->created_at }}</span>
+
+                                        <span class="mini-cart-item-price">{{ $notification->created_at}}</span>
                                     </div>
                                     </a>
                                 </div>
@@ -133,7 +145,6 @@
                                             </div>
                                             <a href="{{route('eventsvolunteer.read_notification',$notification->id)}}" style="color: black">
                                                 <div class="mini-cart-item-des">
-{{--                                                    {{ \app\Models\Event::whereTitle($notification->data['event'])->first()->id }}--}}
                                                     <span style="color: red"> {{ \App\Models\Event_volunteer::where('status', '3')->whereEventId( \App\Models\Event::whereTitle($notification->data['event'])->first()->id)->count()}}</span>
 
                                                     {{--                                                    <span style="color: red"> {{ \App\Models\Event::where('title', $notification->data['event'])->first()->count_of_request }}</span>--}}
@@ -159,7 +170,7 @@
                                                             <a href="{{ url('open_nitification')}}/{{ $notification->data['id']}}/{{ $notification->id }}"><img src="{{asset('website/images/Accept.png')}}" alt="Hoodie with zipper"></a>
                                                         </div>
                                                         <div class="mini-cart-item-des">
-                                                            <a href="{{ url('open_nitification')}}/{{ $notification->data['id']}}/{{ $notification->id }}">{{ $notification->data['data'] }} : <span style="color: #1b6d85">{{ $notification->data['user'] }}</span></a>                                                            <span class="mini-cart-item-price">{{ $notification->created_at }}</span>
+                                                            <a href="{{ url('open_nitification')}}/{{ $notification->data['id']}}/{{ $notification->id }}">{{ $notification->data['data'] }}  <span style="color: #1b6d85">{{ $notification->data['user'] }}</span></a>                                                            <span class="mini-cart-item-price">{{ $notification->created_at }}</span>
                                                             <span class="mini-cart-item-quantity" style="margin-top: 40px;">x 1</span>
                                                         </div>
                                                     </div>
@@ -172,7 +183,7 @@
 
 
                                                 <div class="mini-cart-action clearfix">
-                                                    <a href="{{route('mark')}}" class="theme-btn" style="background: #3ecfff">mark all read</a>
+                                                    <a href="{{route('mark')}}" class="theme-btn" style="background: #3ecfff;">mark all read</a>
                                                 </div>
                                             </div>
                                         </div>

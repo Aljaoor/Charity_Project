@@ -162,6 +162,12 @@ Route::controller(RequestforhelpController::class)
 
         Route::get('/yourRequest', 'yourRequest')->name('yourRequest');
 
+        Route::get('/Waiting', 'Waiting')->name('Waiting');
+
+        Route::get('/details/{request_id}', 'details')->name('details');
+
+
+
 //        Route::post('/update', 'update')->name('update');
 
 

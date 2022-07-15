@@ -78,14 +78,20 @@
                         <a href="{{route('event.single',$event->id)}}">
                         <div class="event-item">
                             <div class="event-img">
-                                <img src="{{asset('/Event_Attachments')}}/{{$event->id}}/{{$event->image}}" alt="">
+                                <img style="min-width: 200px; max-width: 200px; min-height: 200px; max-height: 200px;" src="{{asset('/Event_Attachments')}}/{{$event->id}}/{{$event->image}}" alt="">
 
                             </div>
                             <div class="event-text">
                                 <div class="event-left">
-                                    <div  class="event-l-text" style="" >
-                                        <span>{{ $event->from_date  }} </span>
-                                        <h4>9:00 AM </h4>
+                                    <div style="min-width: 110.06px; max-width: 110.06px; min-height: 200px; max-height: 200px; border-radius: 5px"  class="event-l-text">
+                                        <?php
+                                        $month=substr($event->from_date, 5, 2);
+                                        ?>
+                                        <span style="font-size: 20px; margin-left: 2000 px; padding-left: 20000 px;">
+
+                                          {{                                    date("M", mktime(0, 0, 0,03, 10))}}
+                                        </span>
+                                        <h4>  {{substr($event->from_date, 8, 2)}}</h4>
                                     </div>
                                 </div>
                                 <div class="event-right">

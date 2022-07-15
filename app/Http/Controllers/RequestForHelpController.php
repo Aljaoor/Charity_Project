@@ -62,7 +62,7 @@ class RequestForHelpController extends Controller
         $req= new request_for_help();
         $req->family_count = $request->family_count;
         $req->office_id = $request->office_id;
-        $req->cancellation_reason = $request->cancellation_reason;
+        $req->reason_of_request = $request->reason_of_request;
         $req->member_id=auth()->user()->id;
 
 
@@ -80,9 +80,11 @@ class RequestForHelpController extends Controller
 
 
                     if($proof_image->move(public_path('proof_image/'.$request->office_id), $name)) {
+                        $request_id=request_for_help::latest()->first()->id;
+
 
                         $files[]            =       $name;
-                        $upload_status      =       request_proof::create(["image_name" => $name,"request_id"=>$request->office_id]);
+                        $upload_status      =       request_proof::create(["image_name" => $name,"request_id"=>$request_id]);
 
                     }
                 }
@@ -98,6 +100,30 @@ class RequestForHelpController extends Controller
 
         }
     }
+
+
+
+    public function Waiting()
+    {
+        $request_Waiting = request_for_help::whereStatus(3)->get();
+//        $event=Event::select('title')->get();
+
+        return view('website.requests_for_help.request_waiting')->with(['request_Waiting'=>$request_Waiting]);
+
+
+    }
+
+
+    public function details($request_id)
+    {
+        $details = request_for_help::whereId($request_id)->first();
+        $request_proof = request_proof::whereRequestId($request_id)->get();
+
+        return view('website.requests_for_help.details')->with(['details'=>$details,'request_proof'=>$request_proof]);
+
+
+    }
+
 
 
 

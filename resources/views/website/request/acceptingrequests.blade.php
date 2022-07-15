@@ -10,6 +10,8 @@
     />
     @include('website.layouts.head')
 
+
+
 </head>
 
 
@@ -124,7 +126,7 @@
 
 
                 @foreach($volunteerrequest as $volunteerrequest)
-                    @php $i++; @endphp
+                        @php $i++; @endphp
                     <tr id="eid{{$volunteerrequest->event_id}}">
                         <td style="background-color: whitesmoke"> {{$i}}</td>
 
@@ -356,47 +358,7 @@
 </body>
 </html>
 
-<script>
 
-    {{--$(function (e){--}}
-
-    {{--    $("#acceptChecked").click(function (e){--}}
-
-
-    {{--        e.preventDefault();--}}
-    {{--        var  event_id = [];--}}
-
-    {{--        $("input:checkbox[name=ids]:checked").each(function (){--}}
-
-    {{--            event_id.push($(this).val());--}}
-    {{--        })--}}
-    {{--        console.log(event_id);--}}
-
-    {{--        --}}
-
-    {{--        --}}{{--$.ajax({--}}
-    {{--        --}}{{--    uri:"{{route('test')}}",--}}
-    {{--        --}}{{--    type:"POST",--}}
-    {{--        --}}{{--    data:{--}}
-    {{--        --}}{{--        _token:$("input[name=_token]").val(),--}}
-    {{--        --}}{{--        ids:event_id,--}}
-    {{--        --}}{{--    },--}}
-    {{--        --}}{{--    success:function (response){--}}
-    {{--        --}}{{--        $.each(event_id,function (key,val){--}}
-    {{--        --}}{{--            $("#ids"+val).remove();--}}
-    {{--        --}}{{--        })--}}
-
-    {{--        --}}{{--    }--}}
-    {{--        --}}{{--})--}}
-
-    {{--    })--}}
-
-
-
-    {{--})--}}
-
-
-</script>
 
 
 <script>
@@ -416,9 +378,9 @@
     })
 
 
-    document.addEventListener('DOMContentLoaded', function () {
-        let table = new DataTable('#example');
-    });
+        document.addEventListener('DOMContentLoaded', function () {
+            let table = new DataTable('#example');
+        });
 
 </script>
 

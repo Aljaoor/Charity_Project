@@ -101,7 +101,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-lg-12 col-12 form-group">
-                                                <textarea class="form-control" name="cancellation_reason" id="cancellation_reason" placeholder="Enter reason request"></textarea>
+                                                <textarea class="form-control" name="reason_of_request" id="cancellation_reason" placeholder="Enter reason request"></textarea>
                                             </div>
 
                                             <div class="submit-area col-lg-12 col-12">

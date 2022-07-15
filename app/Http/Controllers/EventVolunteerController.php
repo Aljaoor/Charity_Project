@@ -118,7 +118,7 @@ class EventVolunteerController extends Controller
 
         $details = [
             'event' => $event_name,
-            'body' => 'Your request has been approved to volunteer at the event:',
+            'body' => 'Your request has been approved to the event:',
             'id' => 'accept',
             'thanks' => 'Thank you ',
         ];
