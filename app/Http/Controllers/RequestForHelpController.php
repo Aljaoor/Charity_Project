@@ -252,7 +252,11 @@ class RequestForHelpController extends Controller
         $request_deny=request_for_help::whereId($request->request_id)->firstOrFail();
         $request_deny->status=2;
         $request_deny->cancellation_reason=$request->Reason;
+        $request_deny->request_verified_at= now();
+
         $request_deny->update();
+
+        Beneficiary::whereOfficeId($request_deny->office_id)->whereMemberId($request_deny->member_id)->delete();
 
 
 //        $details = [
@@ -277,6 +281,8 @@ class RequestForHelpController extends Controller
 
 
     }
+
+
 
 
 

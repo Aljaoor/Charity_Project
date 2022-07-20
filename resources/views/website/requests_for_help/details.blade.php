@@ -39,10 +39,28 @@
 
 
 
-    <h1 style="text-align: center;">Details request of {{$details->user->name}} </h1>
-    <div>
+    <h1 style="text-align: center;">status of request
+        @if($details->status==3)
+          <span style="color: gray">pending</span>
+        @elseif ($details->status==1)
+            <span style="color: #3ac060">accept</span>
+        @elseif ($details->status==2)
+            <span style="color: #c9302c"> rejected</span>
+        @endif
 
-    <button class="theme-btn"  style="margin-left: 1000px;">accept this request </button>
+
+    </h1>
+
+
+    <div>
+    <span style="padding-left: 100px; font: bold; font-size: 25px;">Details request of {{$details->user->name}}</span>
+
+    <button class="theme-btn"  style="margin-left: 650px;"
+            data-toggle="modal"
+            data-target="#accept"
+            data-accept_request_id="{{$details->id}}"
+            id="btnaccept" >
+            accept this request </button>
     <button class="theme-btn"
             data-toggle="modal"
             data-target="#deny"
@@ -78,6 +96,30 @@
             </td>
 
         </tr>
+        @if($details->status==2)
+
+
+        <tr>
+            <td id="left">cancellation reason</td>
+            <td>{{$details->cancellation_reason}} </td>
+
+        </tr>
+        @elseif($details->status==1)
+            <tr>
+                <td id="left">type of help</td>
+                <td>{{ \App\Models\Beneficiary::where('member_id', $details->member_id)->whereOfficeId($details->office_id)->first()->help}}</td>
+
+            </tr>
+
+
+        @endif
+
+        <tr>
+            <td id="left">request verified at</td>
+            <td>{{$details->request_verified_at}} </td>
+
+        </tr>
+
         <tr>
             <td id="left">number of family count</td>
             <td>{{$details->family_count}} </td>
@@ -110,11 +152,13 @@
         </tr>
 
 
+
     </table>
 
 
 {{--==========================deny modal ======================================--}}
     <form action="{{route('request_for_help.deny')}}" method="post">
+
         @csrf
         <div class="modal fade" id="deny" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -160,13 +204,115 @@
 
         // Get value from data table
         $(document).on("click", "#btndeny", function (e) {
-            console.log("moj");
+
             $('#deny #request_id').attr("value", $(this).attr("data-request_id"));
         })
     </script>
 
 {{--==========================accept modal ======================================--}}
 
+    <form action="{{route('Beneficiary.accept')}}" method="post">
+
+        @csrf
+        <div class="modal fade" id="accept" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="title" style="color: #3ac060">Type of help provided</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div>
+                            <div>
+                                <label for="money" style="margin-left: 150px; font-size: 25px;"> money</label>
+                                <input type="radio" id="money" value="money" name="type" >
+                                <label for="bail" style="padding-left: 50px; font-size: 25px;" > bail</label>
+                                <input type="radio" id="bail" value="bail" name="type" >
+                            </div>
+
+
+                        </div>
+
+                        <input name="request_id" id="accept_request_id" value="" type="hidden" >
+
+
+                                 <div class="select money">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <select class="form-control" name="sum"  autocomplete="Reason" autofocus placeholder=" Reason..." style="   height: 50px; margin-bottom: 20px; border: 2px solid whitesmoke;">
+                                    <option value="" selected disabled>Choose a sum of money</option>
+                                    <option value=" 50,000 S.P " >50,000 S.P </option>
+                                    <option value=" 100,000 S.P" > 100,000 S.P </option>
+                                    <option value=" 200,000 S.P "> 200,000 S.P</option>
+                                    <option value="300,000 S.P "> 300,000 S.P</option>
+
+
+
+                                </select>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="select bail">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <select class="form-control" name="sum"  style="height: 50px; margin-bottom: 20px;  border: 2px solid #2db85d; border-radius: 5px; ">
+                                        <option  value="" selected disabled > Choose the type of bail</option>
+                                        <option value="Orphan bail  " >Orphan bail  </option>
+                                        <option value="Ensuring a study " > Ensuring a study </option>
+                                        <option value="Housing bail"> Housing bail</option>
+
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" style="background: whitesmoke;color: #3ac060">accept</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        $(".money ").hide();
+        $(".bail ").hide();
+
+
+
+
+        $(document).ready(function() {
+            $('input[type="radio"]').click(function() {
+                var inputValue = $(this).attr("value");
+                var targetBox = $("." + inputValue);
+                $(".select").not(targetBox).hide();
+                $(targetBox).show();
+            });
+        });
+    </script>
+
+    <script>
+
+
+
+
+        // Get value from data table
+        $(document).on("click", "#btnaccept", function (e) {
+            $('#accept #accept_request_id').attr("value", $(this).attr("data-accept_request_id"));
+        })
+    </script>
 
 
 

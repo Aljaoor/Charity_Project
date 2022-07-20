@@ -175,6 +175,9 @@ Route::controller(RequestforhelpController::class)
 
         Route::post('/deny', 'deny')->name('deny');
 
+        Route::post('/accept', 'accept')->name('accept');
+
+
         Route::match(['post','get'],'/search_office', 'search_office')->name('search_office');
 
 
@@ -198,3 +201,15 @@ Route::controller(\App\Http\Controllers\RequestProofController::class)
 
     });
 
+Route::controller(\App\Http\Controllers\BeneficiaryController::class)
+    ->prefix('/Beneficiary')
+    ->as('Beneficiary.')
+    ->group(function () {
+
+        Route::post('/accept', 'accept')->name('accept');
+
+
+
+
+
+    });
