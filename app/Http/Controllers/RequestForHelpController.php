@@ -40,7 +40,7 @@ class RequestForHelpController extends Controller
 
         $validatedData = $request->validate([
             'proof_image' => 'required',
-        ],);
+        ]);
 
 
         $office_count_family=Office::whereId($request->office_id)->firstOrFail()->family_count_condition;
@@ -78,9 +78,9 @@ class RequestForHelpController extends Controller
                     $name               =       $proof_image->getClientOriginalName();
 
 
+                    $request_id=request_for_help::latest()->first()->id;
 
-                    if($proof_image->move(public_path('proof_image/'.$request->office_id), $name)) {
-                        $request_id=request_for_help::latest()->first()->id;
+                    if($proof_image->move(public_path('proof_image/'.$request_id), $name)) {
 
 
                         $files[]            =       $name;
@@ -102,16 +102,44 @@ class RequestForHelpController extends Controller
     }
 
 
-
-    public function Waiting()
+    public function all()
     {
-        $request_Waiting = request_for_help::whereStatus(3)->get();
-//        $event=Event::select('title')->get();
+        $request_Waiting = request_for_help::get();
+        $office=Office::select('name')->get();
 
-        return view('website.requests_for_help.request_waiting')->with(['request_Waiting'=>$request_Waiting]);
+        return view('website.requests_for_help.all_request')->with(['request_Waiting'=>$request_Waiting ,"office"=>$office]);
 
 
     }
+    public function Waiting()
+    {
+        $request_Waiting = request_for_help::whereStatus(3)->get();
+        $office=Office::select('name')->get();
+
+        return view('website.requests_for_help.request_waiting')->with(['request_Waiting'=>$request_Waiting ,"office"=>$office]);
+
+
+    }
+    public function rejected()
+    {
+        $request_Waiting = request_for_help::whereStatus(2)->get();
+        $office=Office::select('name')->get();
+
+        return view('website.requests_for_help.request_rejected')->with(['request_Waiting'=>$request_Waiting ,"office"=>$office]);
+
+
+    }
+    public function Beneficiaries()
+    {
+        $request_Waiting = request_for_help::whereStatus(1)->get();
+        $office=Office::select('name')->get();
+
+        return view('website.requests_for_help.Beneficiaries')->with(['request_Waiting'=>$request_Waiting ,"office"=>$office]);
+
+
+    }
+
+
 
 
     public function details($request_id)
@@ -120,6 +148,132 @@ class RequestForHelpController extends Controller
         $request_proof = request_proof::whereRequestId($request_id)->get();
 
         return view('website.requests_for_help.details')->with(['details'=>$details,'request_proof'=>$request_proof]);
+
+
+    }
+
+    public function delete_request($request_id){
+
+        File::deleteDirectory(public_path('/proof_image' . '/' . $request_id));
+
+        request_for_help::whereId($request_id)->first()->delete();
+        return back();
+
+
+
+    }
+
+    public function search_office(Request $request){
+
+        if ($request->status==0) {
+            if ($request->search=="all"){
+                $request_Waiting = request_for_help::get();
+                $office = Office::select('name')->get();
+
+                return view('website.requests_for_help.all_request')->with(['request_Waiting' => $request_Waiting, "office" => $office]);
+
+
+            }else{
+                $office_name=$request->search;
+                $office_id = Office::whereName($office_name)->first()->id;
+                $request_Waiting = request_for_help::whereOfficeId($office_id)->get();
+                $office = Office::select('name')->get();
+
+                return view('website.requests_for_help.all_request')->with(['request_Waiting' => $request_Waiting, "office" => $office,"office_name"=>$office_name]);
+
+            }}
+
+
+        if ($request->status==3) {
+            if ($request->search=="all"){
+                $request_Waiting = request_for_help::whereStatus(3)->get();
+                $office = Office::select('name')->get();
+
+                return view('website.requests_for_help.request_waiting')->with(['request_Waiting' => $request_Waiting, "office" => $office]);
+
+
+            }else{
+            $office_name=$request->search;
+            $office_id = Office::whereName($office_name)->first()->id;
+            $request_Waiting = request_for_help::whereOfficeId($office_id)->whereStatus(3)->get();
+            $office = Office::select('name')->get();
+
+            return view('website.requests_for_help.request_waiting')->with(['request_Waiting' => $request_Waiting, "office" => $office,"office_name"=>$office_name]);
+
+        }}
+
+        if ($request->status==2) {
+            if ($request->search=="all"){
+                $request_Waiting = request_for_help::whereStatus(2)->get();
+                $office = Office::select('name')->get();
+
+                return view('website.requests_for_help.request_rejected')->with(['request_Waiting' => $request_Waiting, "office" => $office]);
+
+
+            }else{
+                $office_name=$request->search;
+                $office_id = Office::whereName($office_name)->first()->id;
+                $request_Waiting = request_for_help::whereOfficeId($office_id)->whereStatus(2)->get();
+                $office = Office::select('name')->get();
+
+                return view('website.requests_for_help.request_rejected')->with(['request_Waiting' => $request_Waiting, "office" => $office,"office_name"=>$office_name]);
+
+            }}
+
+        if ($request->status==1) {
+            if ($request->search=="all"){
+                $request_Waiting = request_for_help::whereStatus(1)->get();
+                $office = Office::select('name')->get();
+
+                return view('website.requests_for_help.Beneficiaries')->with(['request_Waiting' => $request_Waiting, "office" => $office]);
+
+
+            }else{
+                $office_name=$request->search;
+                $office_id = Office::whereName($office_name)->first()->id;
+                $request_Waiting = request_for_help::whereOfficeId($office_id)->whereStatus(1)->get();
+                $office = Office::select('name')->get();
+
+                return view('website.requests_for_help.Beneficiaries')->with(['request_Waiting' => $request_Waiting, "office" => $office,"office_name"=>$office_name]);
+
+            }}
+
+
+
+
+
+    }
+
+
+    public function deny(Request $request)
+    {
+
+
+        $request_deny=request_for_help::whereId($request->request_id)->firstOrFail();
+        $request_deny->status=2;
+        $request_deny->cancellation_reason=$request->Reason;
+        $request_deny->update();
+
+
+//        $details = [
+//            'event' => $event_name,
+//            'body' => 'Your request to volunteer for the event has been rejected:',
+//            'id' => 'deny',
+//            'thanks' => $request->Reason ,
+//        ];
+
+
+//        $user = Auth::user()->whereId($request->vid)->first();
+//
+//        Notification::send($user, new \App\Notifications\process($details));
+//
+//        \Mail::to($user)->send(new process($details));
+
+
+
+
+        return back();
+
 
 
     }

@@ -20,7 +20,7 @@
 
                 @endforeach
             </select>
-            <input type="hidden" value="3" name="status">
+            <input type="hidden" value="1" name="status">
         </div>
     </form>
 

@@ -46,12 +46,13 @@
 
                             <li><a href="{{route('request_for_help.yourRequest')}}">your request</a></li>
                         @elseif(auth()->user() and auth()->user()->role_id==1)
+                            <li><a href="{{route('request_for_help.all')}}">All Request</a></li>
 
                             <li><a href="{{route('request_for_help.Waiting')}}">Waiting</a></li>
 
-                            <li><a href="{{route('request_for_help.yourRequest')}}">Rejected</a></li>
+                            <li><a href="{{route('request_for_help.rejected')}}">Rejected</a></li>
 
-                            <li><a href="{{route('request_for_help.yourRequest')}}">Benefitors</a></li>
+                            <li><a href="{{route('request_for_help.Beneficiaries')}}">Beneficiaries</a></li>
 
                         @endif
 

@@ -161,14 +161,39 @@ Route::controller(RequestforhelpController::class)
         Route::post('/create', 'create')->name('create');
 
         Route::get('/yourRequest', 'yourRequest')->name('yourRequest');
-
+        Route::get('/all', 'all')->name('all');
         Route::get('/Waiting', 'Waiting')->name('Waiting');
+        Route::get('/rejected', 'rejected')->name('rejected');
+        Route::get('/Beneficiaries', 'Beneficiaries')->name('Beneficiaries');
+
+
+
 
         Route::get('/details/{request_id}', 'details')->name('details');
 
+        Route::get('/delete_request/{request_id}', 'delete_request')->name('delete_request');
+
+        Route::post('/deny', 'deny')->name('deny');
+
+        Route::match(['post','get'],'/search_office', 'search_office')->name('search_office');
 
 
-//        Route::post('/update', 'update')->name('update');
+
+
+
+    });
+
+
+Route::controller(\App\Http\Controllers\RequestProofController::class)
+    ->prefix('/request_proof')
+    ->as('request_proof.')
+    ->group(function () {
+
+        Route::get('/show/{file_name}/{request_id}', 'show')->name('show');
+        Route::get('/download/{file_name}/{request_id}', 'download')->name('download');
+        Route::get('/delete/{file_name}/{request_id}', 'delete')->name('delete');
+
+
 
 
     });

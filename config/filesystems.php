@@ -59,6 +59,10 @@ return [
             'driver' => 'local',
             'root'   => public_path() . '/Event_Attachments',
         ],
+        'public_proof' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/proof_image',
+        ],
 
         's3' => [
             'driver' => 's3',

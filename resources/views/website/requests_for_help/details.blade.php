@@ -41,9 +41,13 @@
 
     <h1 style="text-align: center;">Details request of {{$details->user->name}} </h1>
     <div>
-  
+
     <button class="theme-btn"  style="margin-left: 1000px;">accept this request </button>
-    <button class="theme-btn"  >deny this request </button>
+    <button class="theme-btn"
+            data-toggle="modal"
+            data-target="#deny"
+            data-request_id="{{$details->id}}"
+            id="btndeny" >deny this request </button>
     </div>
 
     <table id="customers">
@@ -58,9 +62,9 @@
 
 {{--                {{$request_proof->image_name}}--}}
                 <div style="height: 50px;">
-                   <a> <button class="btn-group"> show attachment {{$i}} </button></a>
-                    <a> <button class="btn-group" style="color: black"> download attachment {{$i}}</button></a>
-                    <a> <button class="btn-group" style="color: red"> delete this attachment {{$i}}</button></a>
+                   <a href="{{route('request_proof.show',[$request_proof->image_name,$request_proof->request_id])}}"> <button class="btn-group"> show attachment {{$i}} </button></a>
+                    <a href="{{route('request_proof.download',[$request_proof->image_name,$request_proof->request_id])}}"> <button class="btn-group" style="color: black"> download attachment {{$i}}</button></a>
+                    <a href="{{route('request_proof.delete',[$request_proof->image_name,$request_proof->request_id])}}"> <button class="btn-group" style="color: red"> delete this attachment {{$i}}</button></a>
 
                     <hr>
                 </div>
@@ -107,6 +111,64 @@
 
 
     </table>
+
+
+{{--==========================deny modal ======================================--}}
+    <form action="{{route('request_for_help.deny')}}" method="post">
+        @csrf
+        <div class="modal fade" id="deny" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLongTitle" style="color: red">Reason of refuse</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input name="request_id" id="request_id" value="" type="hidden" >
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <select id="Reason" class="form-control" name="Reason" required autocomplete="Reason" autofocus placeholder=" Reason..." style="height: 50px; margin-bottom: 20px;">
+                                    <option value="" selected disabled> Choose a reason</option>
+                                    <option value="Not eligible for this event " >The proof files are not enough. </option>
+                                    <option value="Does't have a enough time " > He doesn't need help </option>
+                                    <option value="The age is not appropriate"> This office is not specialized in these cases.</option>
+
+
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" style="background: whitesmoke;color: red">deny</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+
+
+
+
+        // Get value from data table
+        $(document).on("click", "#btndeny", function (e) {
+            console.log("moj");
+            $('#deny #request_id').attr("value", $(this).attr("data-request_id"));
+        })
+    </script>
+
+{{--==========================accept modal ======================================--}}
+
+
+
 
 
 
