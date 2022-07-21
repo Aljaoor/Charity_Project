@@ -33,18 +33,10 @@ class process extends Notification
 
     public function via($notifiable)
     {
-//        return ['mail','database'];
         return ['database'];
     }
 
-//    public function toMail($notifiable)
-//    {
-//        return (new MailMessage)
-//            ->greeting($this->details['greeting'])
-//            ->line($this->details['body'])
-//            ->line($this->details['thanks']);
-//
-//    }
+
 
     public function toDatabase($notifiable)
     {
@@ -55,7 +47,6 @@ class process extends Notification
             'id' => $this->details['id'],
             'data' => $this->details['body'],
             'event' => $this->details['event'],
-//            'count' => $this->details['count'],
 
         ];
     }

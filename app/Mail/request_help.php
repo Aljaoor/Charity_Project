@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class process extends Mailable
+class request_help extends Mailable
 {
     use Queueable, SerializesModels;
     public $details;
@@ -30,6 +30,6 @@ class process extends Mailable
     public function build()
     {
         return $this->subject('Bright Of Hope')
-            ->view('website.mail.response');
+            ->view('website.mail.response_help');
     }
 }

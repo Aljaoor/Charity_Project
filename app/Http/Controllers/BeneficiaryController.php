@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\request_help;
 use App\Models\Beneficiary;
 use App\Models\request_for_help;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Notification;
+use App\Models\User;
 
 class BeneficiaryController extends Controller
 {
@@ -30,27 +34,20 @@ class BeneficiaryController extends Controller
 
 
 
-//        $event_name=Event::whereId($eid)->first('title')->title;
+        $details = [
+            'type' => $beneficiary->help,
+            'body' => 'Your request has been accepted and you will receive',
+            'id' => 'accept_help',
+            'thanks' => 'Thank you ',
+        ];
 
 
+        $user = User::whereId($request_accept->member_id)->first();
 
-//        $volunteerrequest = Event_volunteer::get();
-//        $event=Event::select('title')->get();
 
-//        $details = [
-//            'event' => $event_name,
-//            'body' => 'Your request has been approved to the event:',
-//            'id' => 'accept',
-//            'thanks' => 'Thank you ',
-//        ];
-//
-//
-//        $user = User::whereId($vid)->first();
-//
-//
-//        Notification::send($user, new \App\Notifications\process($details));
-//
-//        \Mail::to($user)->send(new process($details));
+        Notification::send($user, new \App\Notifications\request_help($details));
+
+        \Mail::to($user)->send(new request_help($details));
 
 
         return redirect()->back();

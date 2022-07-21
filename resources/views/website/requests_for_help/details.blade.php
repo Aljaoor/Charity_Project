@@ -130,7 +130,7 @@
             <td>{{$details->office->name}} </td>
 
         </tr>
-        <tr style="height: 150px;">
+        <tr>
             <td id="left">reason of request</td>
             <td>{{$details->reason_of_request}} </td>
 
@@ -175,9 +175,9 @@
                             <div class="col-md-6">
                                 <select id="Reason" class="form-control" name="Reason" required autocomplete="Reason" autofocus placeholder=" Reason..." style="height: 50px; margin-bottom: 20px;">
                                     <option value="" selected disabled> Choose a reason</option>
-                                    <option value="Not eligible for this event " >The proof files are not enough. </option>
-                                    <option value="Does't have a enough time " > He doesn't need help </option>
-                                    <option value="The age is not appropriate"> This office is not specialized in these cases.</option>
+                                    <option value="The proof files are not enough " >The proof files are not enough. </option>
+                                    <option value="He doesn't need help " > He doesn't need help </option>
+                                    <option value="This office is not specialized in these cases"> This office is not specialized in these cases.</option>
 
 
                                 </select>

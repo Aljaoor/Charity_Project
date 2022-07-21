@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\request_help;
 use App\Models\Beneficiary;
 use App\Models\request_proof;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ use Illuminate\Support\Facades\Storage;
 use File;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use function PHPUnit\Framework\isEmpty;
+use Illuminate\Support\Facades\Notification;
+
 
 
 class RequestForHelpController extends Controller
@@ -65,9 +67,19 @@ class RequestForHelpController extends Controller
         $req->reason_of_request = $request->reason_of_request;
         $req->member_id=auth()->user()->id;
 
-
-
         $req->save();
+
+        $office_name=Office::whereId($request->office_id)->first()->name;
+            $details = [
+                'type' => $office_name,
+                'body' => 'People have sent a request need to help from this office :',
+                'id' => 'send_help',
+            ];
+
+
+            $user = Auth::user()->whereRoleId(1)->get();
+
+            Notification::send($user, new \App\Notifications\request_help($details));
 
             $files          =       array();
 
@@ -91,7 +103,10 @@ class RequestForHelpController extends Controller
             }
 
             if(!is_null($upload_status)) {
-                return redirect()->route('home')->with('alert','Your request has been sent and you will be contacted as soon as possible.  ');            }
+                return redirect()->route('home')->with('alert','Your request has been sent and you will be contacted as soon as possible.  ');
+
+
+            }
 
             else {
                 return back()->with('failed', 'Alert! images not uploaded');
@@ -249,6 +264,7 @@ class RequestForHelpController extends Controller
     {
 
 
+
         $request_deny=request_for_help::whereId($request->request_id)->firstOrFail();
         $request_deny->status=2;
         $request_deny->cancellation_reason=$request->Reason;
@@ -259,19 +275,20 @@ class RequestForHelpController extends Controller
         Beneficiary::whereOfficeId($request_deny->office_id)->whereMemberId($request_deny->member_id)->delete();
 
 
-//        $details = [
-//            'event' => $event_name,
-//            'body' => 'Your request to volunteer for the event has been rejected:',
-//            'id' => 'deny',
-//            'thanks' => $request->Reason ,
-//        ];
+        $details = [
+
+            'body' => 'Your request was refused help because:',
+            'id' => 'deny_help',
+            'type'=> $request_deny->cancellation_reason,
+            'thanks' => "thank you" ,
+        ];
 
 
-//        $user = Auth::user()->whereId($request->vid)->first();
-//
-//        Notification::send($user, new \App\Notifications\process($details));
-//
-//        \Mail::to($user)->send(new process($details));
+        $user = Auth::user()->whereId($request_deny->member_id)->first();
+
+        Notification::send($user, new \App\Notifications\request_help($details));
+
+        \Mail::to($user)->send(new request_help($details));
 
 
 
@@ -300,10 +317,20 @@ class RequestForHelpController extends Controller
             return view('website.request.yourRequest')->with('status',$status);
 
 
+        }
+        elseif (\auth()->user()->role_id==2){
+            $status=request_for_help::whereMemberId(\auth()->user()->id)->get();
+
+
+                return view('website.requests_for_help.yourRequest')->with(["status" => $status]);
 
         }
 
     }
+
+
+
+
 
 
 }

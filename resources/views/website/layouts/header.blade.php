@@ -91,7 +91,7 @@
                         </p>
                      </div>
 
-                  <?php  $event_name= array();?>
+                  <?php  $event_name= array();    $office_name= array();   ?>
 
                     @foreach(auth()->user()->unreadNotifications as $notification)
 
@@ -111,6 +111,22 @@
                                 </div>
 
                             </div>
+                        @elseif($notification->data['id']=='accept_help')
+                                <div style="margin-top: 10px; margin-bottom: 0px; padding-left: 10px;">
+                                    <div class="mini-cart-item clearfix">
+                                        <div class="mini-cart-item-image" >
+                                            <img src="{{asset('website/images/accept_request.png')}}" >
+                                        </div>
+                                        <a style=" min-width: 300px; min-width: 128.13px;" href="{{route('eventsvolunteer.read_notification',$notification->id)}}" style="color: #2db85d">
+                                            <div class="mini-cart-item-des">
+                                                <div style="color: #2db85d"> {{ $notification->data['data'] }} </div>
+                                                <span style="">{{ $notification->data['type'] }}</span>
+                                                <span class="mini-cart-item-price">{{ $notification->created_at }}</span>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                </div>
                         @elseif($notification->data['id']=='deny')
                             <div class="mini-cart-items"  style="margin-top: 10px; margin-bottom: 0px; padding-left: 10px;">
                                 <div class="mini-cart-item clearfix">
@@ -124,6 +140,22 @@
 
                                         <span class="mini-cart-item-price">{{ $notification->created_at}}</span>
                                     </div>
+                                    </a>
+                                </div>
+                            </div>
+                        @elseif($notification->data['id']=='deny_help')
+                            <div class="mini-cart-items"  style="margin-top: 10px; margin-bottom: 0px; padding-left: 10px;">
+                                <div class="mini-cart-item clearfix">
+                                    <div class="mini-cart-item-image">
+                                        <img src="{{asset('website/images/deny.png')}}" alt="Hoodie with zipper">
+                                    </div>
+                                    <a href="{{route('eventsvolunteer.read_notification',$notification->id)}}" style="color: #c9302c">
+                                        <div class="mini-cart-item-des">
+                                            {{ $notification->data['data'] }}
+                                            <span style="color: #1b6d85">{{ $notification->data['type'] }}</span>
+
+                                            <span class="mini-cart-item-price">{{ $notification->created_at}}</span>
+                                        </div>
                                     </a>
                                 </div>
                             </div>
@@ -148,7 +180,6 @@
                                                 <div class="mini-cart-item-des">
                                                     <span style="color: red"> {{ \App\Models\Event_volunteer::where('status', '3')->whereEventId( \App\Models\Event::whereTitle($notification->data['event'])->first()->id)->count()}}</span>
 
-                                                    {{--                                                    <span style="color: red"> {{ \App\Models\Event::where('title', $notification->data['event'])->first()->count_of_request }}</span>--}}
                                                     {{ $notification->data['data'] }}
                                                     <span style="color: #1b6d85">{{ $notification->data['event'] }}</span>
                                                     <span class="mini-cart-item-price">{{ $notification->created_at }}</span>
@@ -156,11 +187,47 @@
                                             </a>
                                         </div>
                                     </div>
+                                @else
+                                    {{$notification->markAsRead()}}
 
 
                                 @endif
 
 
+                        @elseif($notification->data['id']=='send_help')
+
+
+
+                            <?php      $result_help = in_array($notification->data['type'], $office_name);?>
+
+
+
+                            @if($result_help==false)
+
+
+                                <?php         array_push($office_name, $notification->data['type']); ?>
+
+                                <div class="mini-cart-items">
+                                    <div class="mini-cart-item clearfix">
+                                        <div class="mini-cart-item-image">
+                                            <img src="{{asset('website/images/OIP.jfif')}}" alt="Hoodie with zipper">
+                                        </div>
+                                        <a href="{{route('eventsvolunteer.read_notification',$notification->id)}}" style="color: black">
+                                            <div class="mini-cart-item-des">
+                                                <span style="color: red"> {{ \App\Models\request_for_help::where('status', '3')->whereOfficeId( \App\Models\Office::whereName($notification->data['type'])->first()->id)->count()}}</span>
+                                                {{ $notification->data['data'] }}
+                                                <span style="color: #1b6d85">{{ $notification->data['type'] }}</span>
+                                                <span class="mini-cart-item-price">{{ $notification->created_at }}</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                @else
+                                    {{$notification->markAsRead()}}
+
+
+
+                                @endif
 
 
                         @else

@@ -10,24 +10,24 @@
                    cellspacing="0" class="col-550" width="550">
                 <tbody>
                 <tr>
-                    @if($details['id']=="deny" )
-                        <td align="center" style="background-color: #c9302c;
+                    @if($details['id']=="deny_help" )
+                    <td align="center" style="background-color: #c9302c;
 										height: 50px;">
 
 
-                            <a href="#" style="text-decoration: none;">
+                        <a href="#" style="text-decoration: none;">
 
 
 
 
-                                <p style="color:white;
+                            <p style="color:white;
 												font-weight:bold;">
-                                    Bright Of Hope
-                                </p>
+                                Bright Of Hope
+                            </p>
 
 
-                            </a>
-                        </td>
+                        </a>
+                    </td>
                     @else
                         <td align="center" style="background-color: #4cb96b;
 										height: 50px;">
@@ -52,6 +52,7 @@
             </table>
         </td>
     </tr>
+
     <tr style="height: 300px;">
         <td align="center" style="border: none;
 						border-bottom: 2px solid #4cb96b;
@@ -62,14 +63,16 @@
 							color:black;">
                 {{   $details['body']  }}
                 <br>
-                @if($details['id']=="deny" )
-                <p style="color:#c9302c; font-size: 30px;">{{ $details['event']}}</p>
-                 @else
-                <p style="color:#4cb96b; font-size: 30px;">{{ $details['event']}}</p>
-                @endif
+            @if($details['id']=="deny_help" )
+            <p style="color:#c9302c; font-size: 30px;">{{ $details['type']}}</p>
+            @else
+            <p style="color:#4cb96b; font-size: 30px;">{{ $details['type']}}</p>
+            @endif
             </p>
         </td>
+
     </tr>
+
 
     <tr style="display: inline-block;">
         <td style="height: 150px;

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Office;
+use App\Models\request_for_help;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Event_volunteer;
@@ -216,14 +218,34 @@ class EventVolunteerController extends Controller
         $notification_send=Auth::user()->unreadNotifications()->whereId($notification_id)->first()->data;
 
 
-       if ($notification_send['id']=='send'){
 
+
+        if ($notification_send['id']=='send'){
+
+
+        Auth::user()->unreadNotifications()->whereId($notification_id)->first()->markAsRead();
 
         $event_name=$notification_send['event'];
         $event_id=Event::select('id')->whereTitle($event_name)->firstOrFail();
         $volunteerrequest = Event_volunteer::whereEventId($event_id->id)->get();
         $event=Event::select('title')->get();
         return view('website.request.acceptingrequests',compact('event','volunteerrequest','event_name'));
+
+       }
+       elseif ($notification_send['id']=='send_help'){
+
+
+          Auth::user()->unreadNotifications()->whereId($notification_id)->first()->markAsRead();
+
+
+           $office_name=$notification_send['type'];
+           $office_id=Office::select('id')->whereName($office_name)->firstOrFail()->id;
+
+
+           $request_Waiting = request_for_help::whereStatus(3)->whereOfficeId($office_id)->get();
+           $office=Office::select('name')->get();
+
+           return view('website.requests_for_help.request_waiting')->with(['request_Waiting'=>$request_Waiting ,"office"=>$office,"office_name"=>$office_name]);
 
        }
        else{
