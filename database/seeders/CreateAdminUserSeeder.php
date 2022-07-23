@@ -24,7 +24,7 @@ class CreateAdminUserSeeder extends Seeder
             'role_id' => 1,
             'mobile' => '0932174371',
             'age' => 24,
-//            'roles'=>["Admin"],
+//            'roles'=>[0=>"Admin"],
 
 
         ]);

@@ -20,16 +20,30 @@ class PermissionTableSeeder extends Seeder
             'role-edit',
             'role-delete',
 
-            'add_office',
-            'edit_office',
-            'delete_office',
+            'user-list',
+            'user-create',
+            'user-edit',
+            'user-delete',
 
-            'add_event',
-            'delete_event',
-            'edit_event',
-            'delete_image_event',
+            'add office',
+            'edit office',
+            'delete office',
+
+            'add event',
+            'delete event',
+            'edit event',
+            'delete image event',
+
+            'show volunteer request',
 
             'volunteer',
+            'show request help',
+
+            'send request help',
+
+            'permission',
+
+
 
 
 

@@ -7,7 +7,10 @@
         <div class="pull-left">
             <h2>Edit Role</h2>
         </div>
-        <div class="pull-right">
+        <div style="  position: absolute;
+    top: 25px;
+  right: 10px;
+  font-size: 18px;">
             <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
         </div>
     </div>
@@ -15,7 +18,7 @@
 
 
 @if (count($errors) > 0)
-    <div class="alert alert-danger">
+    <div class="alert alert-danger" >
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
         <ul>
         @foreach ($errors->all() as $error)
@@ -46,7 +49,7 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Submit</button>
     </div>
 </div>
 {!! Form::close() !!}

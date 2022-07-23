@@ -16,6 +16,14 @@ use function MongoDB\BSON\toJSON;
 
 class EventVolunteerController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('permission:show volunteer request');
+
+    }
+
+
     public function volunteering($id)
     {
         $co = Event::whereId($id)->firstOrFail();

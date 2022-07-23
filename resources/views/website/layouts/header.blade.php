@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html"><img src="{{asset('website/images/logo/logo.png')}}" alt="logo">الأمل<span> &nbsp;شعاع  </span></a>
+            <a class="navbar-brand" href="{{route('home')}}" style="font-size: 25px; font-family:    cursive ; padding-top: 13px;" ><img src="{{asset('website/images/logo/logo.png')}}" alt="logo">Bright<span>Of</span>Hope</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse navigation-holder">
             <button class="close-navbar"><i class="ti-close"></i></button>
@@ -19,31 +19,31 @@
                     <a href="{{route('office.show')}}">Offices +</a>
                     <ul class="sub-menu">
                         <li><a href="{{route('office.show')}}">offices</a></li>
-                        <li><a href="{{route('office.add')}}">add office</a></li>
+                        @can('add office')
+                            <li><a href="{{route('office.add')}}">add office</a></li>
+
+                        @endcan
                     </ul>
                 </li>
                 <li class="menu-item-has-children">
                     <a href="{{route('event.index')}}">Event +</a>
                     <ul class="sub-menu">
                         <li><a href="{{route('event.index')}}">Event</a></li>
-                        <li><a href="{{route('event.add')}}">add Event</a></li>
+                        @can('add event')
+                            <li><a href="{{route('event.add')}}">add Event</a></li>
+
+                        @endcan
                     </ul>
                 </li>
-                <li class="menu-item-has-children">
-                    <a href="#">Pages +</a>
-                    <ul class="sub-menu">
-                        <li><a href="{{route('about')}}">About</a></li>
-                        <li><a href="donate.html">Donate</a></li>
-                        <li><a href="volunteer.html">Volunteer</a></li>
-                        <li><a href="{{url('404')}}">404 Page</a></li>
-                    </ul>
-                </li>
+
                 <li class="menu-item-has-children">
                     <a href="#">Request</a>
                     <ul class="sub-menu">
                         @if(auth()->user() and (auth()->user()->role_id==2  or auth()->user()->role_id==3) )
-                            <li><a href="{{route('request_for_help.add')}}">send request</a></li>
+                            @can('send request help')
+                                <li><a href="{{route('request_for_help.add')}}">send request</a></li>
 
+                            @endcan
                             <li><a href="{{route('request_for_help.yourRequest')}}">your request</a></li>
                         @elseif(auth()->user() and auth()->user()->role_id==1)
                             <li><a href="{{route('request_for_help.all')}}">All Request</a></li>
@@ -60,6 +60,9 @@
                     </ul>
                 </li>
                 <li><a href="{{url('contact')}}">Contact</a></li>
+                @can('show volunteer request')
+
+
                 <li class="menu-item-has-children">
                     <a href="#">Volunteer</a>
                     <ul class="sub-menu">
@@ -72,7 +75,43 @@
 
 
                     </ul>
+                @endcan
+                @can('role-list')
+
+
+
+                <li class="menu-item-has-children">
+                    <a>Permission </a>
+                    <ul class="sub-menu">
+                            <li><a href="{{route('users.index')}}"> Manage users</a></li>
+                            <li><a href="{{route('roles.index')}}"> Manage roles</a></li>
+                    </ul>
+                </li>
+                @elsecan('send request help')
+                    <li class="menu-item-has-children">
+                        <a href="#">Pages +</a>
+                        <ul class="sub-menu">
+                            <li><a href="{{route('about')}}">About</a></li>
+                            <li><a href="{{url('donate')}}">Donate</a></li>
+                            <li><a href="volunteer.html">Volunteer</a></li>
+                            <li><a href="{{url('404')}}">404 Page</a></li>
+                        </ul>
+                    </li>
+                @elsecan('volunteer')
+                    <li class="menu-item-has-children">
+                        <a href="#">Pages +</a>
+                        <ul class="sub-menu">
+                            <li><a href="{{route('about')}}">About</a></li>
+                            <li><a href="{{url('donate')}}">Donate</a></li>
+                            <li><a href="volunteer.html">Volunteer</a></li>
+                            <li><a href="{{url('404')}}">404 Page</a></li>
+                        </ul>
+                    </li>
+
+                @endcan
+
             </ul>
+
 
         </div><!-- end of nav-collapse -->
 
@@ -317,17 +356,23 @@
 {{--                                </div>--}}
 {{--                            </div>--}}
 {{--                            @endif--}}
-            <div class="header-search-form-wrapper">
-                <button class="search-toggle-btn"><i class="fi flaticon-magnifying-glass"></i></button>
-                <div class="header-search-form">
-                    <form>
-                        <div>
-                            <input type="text" class="form-control" placeholder="Search here...">
-                            <button type="submit"><i class="fi flaticon-magnifying-glass"></i></button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+
+
+{{--   ------------------------------                       search button     -------------                   --}}
+
+{{--                    --}}
+{{--            <div class="header-search-form-wrapper">--}}
+{{--                <button class="search-toggle-btn"><i class="fi flaticon-magnifying-glass"></i></button>--}}
+{{--                <div class="header-search-form">--}}
+{{--                    <form>--}}
+{{--                        <div>--}}
+{{--                            <input type="text" class="form-control" placeholder="Search here...">--}}
+{{--                            <button type="submit"><i class="fi flaticon-magnifying-glass"></i></button>--}}
+{{--                        </div>--}}
+{{--                    </form>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
             <div class="vollenter-btn">
                 <a class="theme-btn-s2" href="{{url('join')}}">Join</a>
 

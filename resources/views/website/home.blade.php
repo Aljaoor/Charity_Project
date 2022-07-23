@@ -86,7 +86,7 @@
                             <div class="thumb-text">
                                 <span>ABOUT US</span>
                             </div>
-                            <h2>Khairah is <span>Nonprofit</span> Organization <span>For Help</span> Children.</h2>
+                            <h2>Bright Of Hope is <span>Nonprofit</span> Organization <span>For Help</span> Children.</h2>
                         </div>
                         <p>It is a long established fact that a reader will be distracted by thethe readable content off a page when looking at its layout point using Lorem Ipsum is that it has.</p>
                         <div class="ab-icon-area">

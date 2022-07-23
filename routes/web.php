@@ -23,7 +23,7 @@ Route::get('/tt', function () {
 });
 
 Route::get('/11', function () {
-    return view('website.test.page1');
+    return view('website.volunteer');
 });
 
 //Route::post('/test', [App\Http\Controllers\EventVolunteerController::class, 'test'])->name('test');

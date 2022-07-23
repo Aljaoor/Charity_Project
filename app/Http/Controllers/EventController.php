@@ -18,6 +18,15 @@ use function GuzzleHttp\Promise\all;
 
 class EventController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('permission:add event', ['only' => ['create','add']]);
+        $this->middleware('permission:edit event', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete event', ['only' => ['delete']]);
+    }
+
+
     public function index()
     {
         $event = Event::get();

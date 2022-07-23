@@ -17,6 +17,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    function __construct()
+    {
+        $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:user-create', ['only' => ['create','store']]);
+        $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+    }
+
     public function index(Request $request)
     {
         $data = User::orderBy('id','DESC')->paginate(5);
@@ -66,7 +76,7 @@ class UserController extends Controller
         elseif ($request->roles[0]=="admin"){
         $user->role_id = 1;
         }
-        else{
+        elseif ($request->roles[0]=="volunteer"){
             $user->role_id = 3;
 
         }
@@ -142,7 +152,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
-            'roles' => 'required'
+//            'roles' => 'required'
         ]);
 
         $input = $request->all();
@@ -153,7 +163,29 @@ class UserController extends Controller
         }
 
         $user = User::find($id);
-        $user->update($input);
+
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->mobile=$request->mobile;
+        $user->age=$request->age;
+        $user->is_active=$request->is_active;
+
+        if ($request->roles[0]=="user"){
+            $user->role_id = 2;
+        }
+        elseif ($request->roles[0]=="admin"){
+            $user->role_id = 1;
+        }
+        elseif ($request->roles[0]=="volunteer"){
+            $user->role_id = 3;
+
+        }
+        $user->update();
+
+
+
+
+//        $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
 
         $user->assignRole($request->input('roles'));

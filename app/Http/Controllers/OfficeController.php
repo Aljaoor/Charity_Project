@@ -12,7 +12,17 @@ use Illuminate\Support\Facades\Storage;
 
 class OfficeController extends Controller
 {
-    //
+
+
+    function __construct()
+    {
+        $this->middleware('permission:add office|edit office|delete office', ['only' => ['add','create']]);
+        $this->middleware('permission:add office', ['only' => ['create','add']]);
+        $this->middleware('permission:edit office', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete office', ['only' => ['delete']]);
+    }
+
+
     public function  show(){
 
 

@@ -135,13 +135,25 @@
                             <div class="widget tag-widget">
                                 <h3>option</h3>
                                 <ul>
+                                    @can('delete event')
                                     <button type="button" class="theme-btn submit-btn" data-toggle="modal" data-target="#exampleModal">
                                         <li><a>Delete Event</a></li>
                                     </button>
-                                    <li class="theme-btn submit-btn"><a href="{{route('event.edit',$event->id)}}">Edit</a></li>
+                                    @endcan
+                                    @can('edit event')
+                                        <li class="theme-btn submit-btn"><a href="{{route('event.edit',$event->id)}}">Edit</a></li>
+
+                                    @endcan
+                                    @can('delete image event')
+                                        <li class="theme-btn submit-btn"><a href="{{route('events_attachment.delete',$event->id)}}">delete image</a></li>
+
+                                    @endcan
+
+
+
+
                                     <li class="theme-btn submit-btn"><a href="{{route('events_attachment.show',$event->id)}}">show image</a></li>
                                     <li class="theme-btn submit-btn"><a href="{{route('events_attachment.download',$event->id)}}">download image</a></li>
-                                    <li class="theme-btn submit-btn"><a href="{{route('events_attachment.delete',$event->id)}}">delete image</a></li>
                                     @if($event->can_enrol)
                                         <li class="theme-btn submit-btn"><a href="{{route('eventsvolunteer.volunteering',$event->id)}}">volunteering</a></li>
 {{--                                    @else--}}

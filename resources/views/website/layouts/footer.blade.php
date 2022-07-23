@@ -6,7 +6,7 @@
             <div class="col col-lg-3 col-md-3 col-sm-6">
                 <div class="widget about-widget">
                     <div class="footer-logo widget-title">
-                        <a href="index.html"><img src="{{asset('website/images/logo/logo.png')}}" alt="logo">الأمل<span> &nbsp;شعاع  </span></a>
+                        <a href="index.html" style="font-size: 20px; font-family:    cursive ; "><img src="{{asset('website/images/logo/logo.png')}}" alt="logo">Bright<span>Of</span>Hope</a>
                     </div>
                     <p>Build and Earn with your online store with lots of cool and exclusive tp-features </p>
                     <ul>
@@ -78,7 +78,7 @@
     <div class="container">
         <div class="row">
             <div class="col col-xs-12">
-                <p class="copyright">&copy; 2022 شعاع الأمل معك دائما</p>
+                <p class="copyright">&copy; 2022 Brught Of Hope always with you</p>
             </div>
         </div>
     </div>

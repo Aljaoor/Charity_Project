@@ -21,7 +21,7 @@
 @endif
 
 
-<table class="table table-bordered">
+<table class="table table-bordered" style="margin-bottom: 80px;">
  <tr>
    <th>No</th>
    <th>Name</th>

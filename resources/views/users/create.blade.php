@@ -7,7 +7,10 @@
         <div class="pull-left">
             <h2>Create New User</h2>
         </div>
-        <div class="pull-right">
+        <div style="  position: absolute;
+    top: 25px;
+  right: 10px;
+  font-size: 18px;">
             <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
         </div>
     </div>

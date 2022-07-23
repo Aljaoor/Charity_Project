@@ -7,10 +7,10 @@
         <div class="pull-left">
             <h2>Role Management</h2>
         </div>
-        <div class="pull-right">
+        <div style="  position: absolute; right: 15px; top: 20px; font-size: 18px;">
         @can('role-create')
             <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
-            @endcan
+        @endcan
         </div>
     </div>
 </div>
@@ -23,7 +23,7 @@
 @endif
 
 
-<table class="table table-bordered">
+<table class="table table-bordered" style="margin-bottom: 70px;">
   <tr>
      <th>No</th>
      <th>Name</th>

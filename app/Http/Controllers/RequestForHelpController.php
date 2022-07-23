@@ -21,6 +21,16 @@ use Illuminate\Support\Facades\Notification;
 class RequestForHelpController extends Controller
 {
 
+    function __construct()
+    {
+        $this->middleware('permission:show request help|send request help', ['only' => ['add','create']]);
+
+        $this->middleware('permission:show request help',['only' => ['all','Waiting','rejected','Beneficiaries','details','delete_request','search_office','deny','']]);
+
+
+
+    }
+
     public function add(){
 
         $offices=Office::get();
