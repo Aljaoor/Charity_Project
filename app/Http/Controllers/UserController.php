@@ -31,9 +31,9 @@ class UserController extends Controller
      */
     public function create()
     {
-//        $roles = Role::pluck('name','name')->all();
-//        return view('users.create',compact('roles'));
-        return  view('website.user.add');
+            $roles = Role::pluck('name','name')->all();
+            return view('users.create',compact('roles'));
+//        return  view('website.user.add');
 
     }
 
@@ -45,6 +45,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -59,10 +60,19 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->age = $request->age;
         $user->mobile = $request->mobile;
-        $user->role_id = $request->role_id;
+        if ($request->roles[0]=="user"){
+            $user->role_id = 2;
+        }
+        elseif ($request->roles[0]=="admin"){
+        $user->role_id = 1;
+        }
+        else{
+            $user->role_id = 3;
+
+        }
         $user->save();
 
-//       $user->assignRole($request->input('roles'));
+       $user->assignRole($request->input('roles'));
 
        return redirect()->route('home')
            ->with('success',' welcome user account created successfully');

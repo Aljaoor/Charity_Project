@@ -27,6 +27,7 @@ class User extends Authenticatable
         'office_id',
         'age',
         'is_active',
+        'roles',
     ];
 
     /**
@@ -46,5 +47,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+//        'roles'=>'array',
     ];
 }

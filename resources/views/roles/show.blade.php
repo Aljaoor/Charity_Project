@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 
-@section('content')
+@section('permissions')
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
@@ -32,5 +32,4 @@
         </div>
     </div>
 </div>
-<p class="text-center text-primary"><small>Tutorial by GateForLearner.com</small></p>
 @endsection

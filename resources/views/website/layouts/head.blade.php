@@ -3,9 +3,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" type="image/png" href="{{asset('website/images/icon.png')}}">
-<link rel="shortcut icon" type="image/png" href="{{asset('website/images/icon.png')}}">
+{{--<link rel="shortcut icon" type="image/png" href="{{asset('website/images/icon.png')}}">--}}
 <meta name="author" content="wpoceans">
-<title>Khairah - Charity Nonprofit HTML 5 Template</title>
+<title>Bright of hope</title>
 
 <link href="{{asset('website/css/themify-icons.css')}}" rel="stylesheet">
 <link href="{{asset('website/css/font-awesome.min.css')}}" rel="stylesheet">

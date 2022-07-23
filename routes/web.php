@@ -144,9 +144,11 @@ Route::controller(\App\Http\Controllers\OfficeController::class)
 
 
 
-Route::group(['middleware' => ['auth']], function () {
-//    Route::resource('roles', [\App\Http\Controllers\RoleController::class]);
-//    Route::resource('users', \App\Http\Controllers\UserController::class);
+Route::group(['middleware' => ['auth']], function() {
+
+    Route::resource('roles', \App\Http\Controllers\RoleController::class);
+
+    Route::resource('users', \App\Http\Controllers\UserController::class);
 
 });
 
