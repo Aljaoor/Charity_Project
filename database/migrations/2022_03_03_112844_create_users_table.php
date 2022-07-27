@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
 
 //            $table->string('roles');
             $table->integer('role_id');
-            $table->integer('mobile');
+            $table->bigInteger('mobile');
             $table->integer('office_id')->nullable()->unsigned();
             $table->integer('age');
             $table->boolean('is_active')->default(true);

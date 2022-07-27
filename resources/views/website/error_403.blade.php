@@ -24,10 +24,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col col-xs-12">
-                                <h1 style="color: red;font-size: 100px; margin-top: 0px;">403</h1>
-                                <h3 style="color: whitesmoke; font-size: 65px; ">Oops! Not allowed</h3>
+
                                 <ol class="breadcrumb">
-                                    <p style="color: whitesmoke; font-size: 70px">Please log in or join us first..</p>
+                                    <p style="color: whitesmoke; font-size: 70px ; margin-top: 200px;" >Please log in or join us first..</p>
 
 
 

@@ -22,7 +22,7 @@ class CreateAdminUserSeeder extends Seeder
             'email' => 'mohammed.aljaoor6@gmail.com',
             'password' => Hash::make('11111111'),
             'role_id' => 1,
-            'mobile' => '0932174371',
+            'mobile' => '963932174371',
             'age' => 24,
 //            'roles'=>[0=>"Admin"],
 

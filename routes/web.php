@@ -5,6 +5,7 @@ use App\Http\Controllers\EventController;
 use App\Models\User;
 use Illuminate\Notifications\Notification;
 use App\Http\Controllers\HomeController;
+use App\Http\Middleware\acountStatus;
 
 use App\Http\Controllers\RequestForHelpController;
 
@@ -72,7 +73,7 @@ Route::get('/open_nitification/{id}/{n_id}', [App\Http\Controllers\EventControll
 Route::controller(EventController::class)
     ->prefix('/events')
     ->as('event.')
-//   ->middleware(['auth'])
+   ->middleware(['auth','acountStatus'])
     ->group(function () {
         Route::get('/index', 'index')->name('index');
         Route::get('/single/{id}', 'single')->name('single');
@@ -93,7 +94,7 @@ Route::controller(EventController::class)
 Route::controller(\App\Http\Controllers\EventVolunteerController::class)
     ->prefix('/eventsvolunteer')
     ->as('eventsvolunteer.')
-   ->middleware(['auth'])
+   ->middleware(['auth','acountStatus'])
     ->group(function () {
 
         Route::get('/volunteering/{id}', 'volunteering')->name('volunteering');
@@ -132,6 +133,7 @@ Route::controller(\App\Http\Controllers\EventAttachmentController::class)
 Route::controller(\App\Http\Controllers\OfficeController::class)
     ->prefix('/offices')
     ->as('office.')
+    ->middleware(['auth','acountStatus'])
     ->group(function () {
         Route::post('/create', 'create')->name('create');
         Route::get('/delete/{id}', 'delete')->name('delete');
@@ -157,7 +159,7 @@ Route::group(['middleware' => ['auth']], function() {
 Route::controller(RequestforhelpController::class)
     ->prefix('/request_for_help')
     ->as('request_for_help.')
-    ->middleware(['auth'])
+    ->middleware(['auth','acountStatus'])
     ->group(function () {
         Route::get('/add', 'add')->name('add');
         Route::post('/create', 'create')->name('create');

@@ -49,6 +49,42 @@ class BeneficiaryController extends Controller
 
         \Mail::to($user)->send(new request_help($details));
 
+        //        whats app message        ===================
+        $user=User::find($request_accept->member_id);
+        $name_user=$user->name;
+        $mobile=$user->mobile;
+
+
+        $message="hello $name_user
+'Your request has been accepted and you will receive:
+$beneficiary->help
+thank you
+Bright Of Hope";
+
+
+
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.ultramsg.com/instance13013/messages/chat",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_SSL_VERIFYHOST => 0,
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "token=7gptlblt2p3ihi56&to=$mobile&body=$message&priority=10&referenceId=",
+            CURLOPT_HTTPHEADER => array(
+                "content-type: application/x-www-form-urlencoded"
+            ),
+        ));
+
+        curl_exec($curl);
+//        whats app message        ===================
+
 
         return redirect()->back();
 

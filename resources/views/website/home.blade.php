@@ -1,6 +1,7 @@
 ﻿@include('sweetalert::alert')
 @extends('website.layouts.main')
 @section('content')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @if (config('sweetalert.alwaysLoadJS') === true && config('sweetalert.neverLoadJS') === false )
     <script src="{{ $cdn ?? asset('vendor/sweetalert/sweetalert.all.js')  }}"></script>
@@ -38,6 +39,26 @@
             });
         </script>
     @endif
+@if ($message = Session::get('status'))
+    <script>
+
+        Swal.fire({
+            title: "{!! Session::get('status') !!}",
+            width: 600,
+            padding: '3em',
+            color: '#716add',
+            background: '#fff url(/images/trees.png)',
+            backdrop: `
+    rgba(123,0,0,0.6)
+    url("/images/nyan-cat.gif")
+    left top
+    no-repeat
+  `
+        })
+    </script>
+@endif
+
+
 @if ($message = Session::get('volunteering'))
     <script>
 

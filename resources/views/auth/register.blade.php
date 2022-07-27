@@ -114,6 +114,8 @@
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group" style="margin-top: 33px;">
                                                     <input type="text" class="form-control" name="mobile" id="mobile" placeholder="your Number..." style="height: 50px;">
+                                                    <label for="mobile" style="font-size: 15px; color: #5cb85c; "> strat +963 So we can contact you on whatsapp</label>
+
                                                 </div>
                                                 <div class="submit-area col-lg-12 col-12">
                                                     <button type="submit" class="theme-btn submit-btn">send</button>

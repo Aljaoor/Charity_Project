@@ -36,6 +36,8 @@ class PermissionTableSeeder extends Seeder
 
             'show volunteer request',
 
+            'read notification',
+
             'volunteer',
             'show request help',
 

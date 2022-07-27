@@ -19,7 +19,10 @@ class EventVolunteerController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission:show volunteer request');
+        $this->middleware('permission:show volunteer request|read notification',['only'=>'read_notification']);
+        $this->middleware('permission:show volunteer request|volunteer',['only'=>'volunteering']);
+        $this->middleware('permission:show volunteer request',['only'=>'view','acceptable','rejected','pending','processing','searchEvent','acceptcheck','denycheck']);
+
 
     }
 
@@ -142,6 +145,47 @@ class EventVolunteerController extends Controller
         \Mail::to($user)->send(new process($details));
 
 
+
+//        whats app message        ===================
+        $user=User::find($vid);
+        $name_user=$user->name;
+        $mobile=$user->mobile;
+        $event=Event::whereId($eid)->first();
+        $star_at=$event->from_date;
+        $end_at=$event->to_date;
+        $location=$event->location;
+        $message="hello $name_user
+Your request has been approved to the event:$event_name
+its start at: $star_at
+and end at:$end_at
+in the location $location
+thank you
+Bright Of Hope";
+
+
+
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.ultramsg.com/instance13013/messages/chat",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_SSL_VERIFYHOST => 0,
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "token=7gptlblt2p3ihi56&to=$mobile&body=$message&priority=10&referenceId=",
+            CURLOPT_HTTPHEADER => array(
+                "content-type: application/x-www-form-urlencoded"
+            ),
+        ));
+
+        curl_exec($curl);
+//        whats app message        ===================
+
         return redirect()->back();
 
     }
@@ -170,6 +214,41 @@ class EventVolunteerController extends Controller
         Notification::send($user, new \App\Notifications\process($details));
 
         \Mail::to($user)->send(new process($details));
+//      ====  whats app message        ===================
+        $user=User::find($request->vid);
+        $name_user=$user->name;
+        $mobile=$user->mobile;
+        $event=Event::whereId($request->eid)->first();
+
+        $message="sorry $name_user
+Your request to volunteer for the event has been rejected:
+$event_name
+thank you
+Bright Of Hope";
+
+
+
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.ultramsg.com/instance13013/messages/chat",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_SSL_VERIFYHOST => 0,
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => "token=7gptlblt2p3ihi56&to=$mobile&body=$message&priority=10&referenceId=",
+            CURLOPT_HTTPHEADER => array(
+                "content-type: application/x-www-form-urlencoded"
+            ),
+        ));
+
+        curl_exec($curl);
+//        whats app message        ===================
 
 
 
@@ -307,6 +386,46 @@ class EventVolunteerController extends Controller
             \Mail::to($user)->send(new process($details));
 
 
+//        whats app message        ===================
+            $user=User::find($volunteer_ids);
+            $name_user=$user->name;
+            $mobile=$user->mobile;
+            $event=Event::whereId($event_ids[$i])->first();
+            $star_at=$event->from_date;
+            $end_at=$event->to_date;
+            $location=$event->location;
+            $message="hello $name_user
+Your request has been approved to the event:$event_name
+its start at: $star_at
+and end at:$end_at
+in the location $location
+thank you
+Bright Of Hope";
+
+
+
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => "https://api.ultramsg.com/instance13013/messages/chat",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_SSL_VERIFYHOST => 0,
+                CURLOPT_SSL_VERIFYPEER => 0,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_POSTFIELDS => "token=7gptlblt2p3ihi56&to=$mobile&body=$message&priority=10&referenceId=",
+                CURLOPT_HTTPHEADER => array(
+                    "content-type: application/x-www-form-urlencoded"
+                ),
+            ));
+
+            curl_exec($curl);
+//        whats app message        ===================
+
 
 
 
@@ -354,10 +473,51 @@ class EventVolunteerController extends Controller
 
             \Mail::to($user)->send(new process($details));
 
+
+
+            //      ====  whats app message        ===================
+            $user=User::find($volunteer_ids);
+            $name_user=$user->name;
+            $mobile=$user->mobile;
+            $event=Event::whereId($event_ids[$i])->first();
+
+            $message="sorry $name_user
+Your request to volunteer for the event has been rejected:
+$event_name
+thank you
+Bright Of Hope";
+
+
+
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => "https://api.ultramsg.com/instance13013/messages/chat",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_SSL_VERIFYHOST => 0,
+                CURLOPT_SSL_VERIFYPEER => 0,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_POSTFIELDS => "token=7gptlblt2p3ihi56&to=$mobile&body=$message&priority=10&referenceId=",
+                CURLOPT_HTTPHEADER => array(
+                    "content-type: application/x-www-form-urlencoded"
+                ),
+            ));
+
+            curl_exec($curl);
+//        whats app message        ===================
+
             $i++;
+
         }
         $volunteerrequest = Event_volunteer::get();
         $event=Event::select('title')->get();
+
+
 
         return redirect()->back()->with(['volunteerrequest'=>$volunteerrequest,'event'=>$event]);
 
