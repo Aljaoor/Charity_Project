@@ -79,7 +79,8 @@
                                             {{ csrf_field() }}
                                             <div class="row" style="height: 385px;">
                                                 <div class="col-md-6">
-                                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="your name..." style="height: 50px;">
+                                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"
+                                                       required autocomplete="name" autofocus placeholder="your name..." style="height: 50px;">
 
                                                     @error('name')
                                                     <span class="invalid-feedback" role="alert">
@@ -91,7 +92,8 @@
                                                     <input type="number" class="form-control" name="age" id="age" placeholder="your age..." style="height: 50px;">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="your email..." style="height: 50px;">
+                                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
+                                                       required autocomplete="email" placeholder="your email..." style="height: 50px;">
 
                                                     @error('email')
                                                     <span class="invalid-feedback" role="alert">
@@ -101,7 +103,8 @@
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="your passwoad..." style="height: 50px;">
+                                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"
+                                                       required autocomplete="new-password" placeholder="your passwoad..." style="height: 50px;">
 
                                                     @error('password')
                                                     <span class="invalid-feedback" role="alert">
@@ -110,7 +113,8 @@
                                                     @enderror
                                                 </div>
                                                 <div class="col-md-6" style="margin-top: 33px;">
-                                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="confirg password..." style="height: 50px;">
+                                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+                                                       required autocomplete="new-password" placeholder="confirg password..." style="height: 50px;">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group" style="margin-top: 33px;">
                                                     <input type="text" class="form-control" name="mobile" id="mobile" placeholder="your Number..." style="height: 50px;">

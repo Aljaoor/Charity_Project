@@ -19,6 +19,7 @@ Route::get('/join', function () {
     return view('auth.register');
 });
 
+
 Route::get('/tt', function () {
     return view('website.test.page2');
 });

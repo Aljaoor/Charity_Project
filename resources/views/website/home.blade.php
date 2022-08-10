@@ -104,28 +104,25 @@
                 <div class="col-md-6 col-md-offset-1 grid  col-sm-12 col-12">
                     <div class="about-text">
                         <div class="section-title">
-                            <div class="thumb-text">
-                                <span>ABOUT US</span>
-                            </div>
                             <h2>Bright Of Hope is <span>Nonprofit</span> Organization <span>For Help</span> Children.</h2>
                         </div>
-                        <p>It is a long established fact that a reader will be distracted by thethe readable content off a page when looking at its layout point using Lorem Ipsum is that it has.</p>
+                        <p>A development charity concerned with the care of orphaned children and needy and poor families within the city of Homs</p>
                         <div class="ab-icon-area">
                             <div class="about-icon-wrap">
                                 <div class="about-icon-item">
                                     <div class="ab-icon">
-                                        <img draggable="false" src="{{asset('website/images/about/1.jpg')}}" alt="">
+                                        <img draggable="false" src="{{asset('website/images/about/1.png')}}" alt="">
                                     </div>
                                     <div class="ab-text">
-                                        <h2><a href="causes-single.html">Save <br> Children.</a></h2>
+                                        <h2><a href="causes-single.html">Save <br> Orphan</a></h2>
                                     </div>
                                 </div>
                                 <div class="about-icon-item">
                                     <div class="ab-icon ab-icon2">
-                                        <img draggable="false" src="{{asset('website/images/about/2.png')}}" alt="">
+                                        <img draggable="false" src="{{asset('website/images/about/1.png')}}" alt="">
                                     </div>
                                     <div class="ab-text">
-                                        <h2><a href="causes-single.html">Fresh And <br> Clean Water.</a></h2>
+                                        <h2><a href="causes-single.html">save <br> Children</a></h2>
                                     </div>
                                 </div>
                             </div>
@@ -151,8 +148,8 @@
                             </div>
                         </div>
                         <h2>The great journey to end poverty for good begins with a child.</h2>
-                        <p>It is a long established fact that reader distracted by the the readable content off page looking at its layout point that it has.</p>
-                        <a href="#" class="theme-btn">Donate Now<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                        <p>Contribute now, donate to save thousands of lives and help them live a decent life and build their future.</p>
+                        <a href="{{url('donate')}}" class="theme-btn">Donate Now<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <div class="col-md-7">
@@ -164,7 +161,7 @@
                                         <img draggable="false" src="{{asset('website/images/features/img-1.png')}}" alt="">
                                     </div>
                                     <div class="features-content">
-                                        <h2><a href="causes-single.html">Cancer Treatment</a></h2>
+                                        <h2><a href="causes-single.html">bail of orphan</a></h2>
                                     </div>
                                 </div>
                             </div>
@@ -174,7 +171,7 @@
                                         <img draggable="false" src="{{asset('website/images/features/img-2.png')}}" alt="">
                                     </div>
                                     <div class="features-content">
-                                        <h2><a href="causes-single.html">Hospital Build</a></h2>
+                                        <h2><a href="causes-single.html">Hope Operator</a></h2>
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +191,7 @@
                                         <img draggable="false" src="{{asset('website/images/features/img-4.png')}}" alt="">
                                     </div>
                                     <div class="features-content">
-                                        <h2><a href="causes-single.html">Food & Build Home</a></h2>
+                                        <h2><a href="causes-single.html">Fasting food & Sacrifice</a></h2>
                                     </div>
                                 </div>
                             </div>
@@ -211,10 +208,9 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="section-title section-title2 text-center">
                     <div class="thumb-text">
-                        <span>CAUSES</span>
+                        <span>Bailouts</span>
                     </div>
-                    <h2>Latest Caused of Khairah.</h2>
-                    <p>It is a long established fact that reader distracted by the the readable content off page looking at its layout point.</p>
+                    <h2>Latest Bailouts of our Charity </h2>
                 </div>
             </div>
             <div class="row">
@@ -224,17 +220,16 @@
                             <div class="cause-img">
                                 <img src="{{asset('website/images/cause/img-1.png')}}" alt="">
                                 <div class="case-btn">
-                                    <a href="donate.html" class="theme-btn">Donate Now<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                    <a href="{{url('donate')}}" class="theme-btn">Donate Now<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="cause-text">
                             <ul>
-                                <li><a href="#">GOAL : $9860</a></li>
-                                <li><a href="#">RISED : $768</a></li>
+                                <li><a href="{{url('donate')}}">GOAL : 5 millions S.P</a></li>
+                                <li><a href="{{url('donate')}}">RISED : 2 millions S.P</a></li>
                             </ul>
-                            <h3><a href="causes.html">Financial Help for Poor Families</a></h3>
-                            <p>It is a long established fact that a reader will be distracted.</p>
+                            <h3><a href="{{url('donate')}}">Financial Help for Poor Families</a></h3>
                         </div>
                     </div>
                 </div>
@@ -244,77 +239,16 @@
                             <div class="cause-img">
                                 <img src="{{asset('website/images/cause/img-2.jpg')}}" alt="">
                                 <div class="case-btn">
-                                    <a href="donate.html" class="theme-btn">Donate Now<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                    <a href="{{url('donate')}}" class="theme-btn">Donate Now<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="cause-text">
                             <ul>
-                                <li><a href="#">GOAL : $9860</a></li>
-                                <li><a href="#">RISED : $768</a></li>
+                                <li><a href="{{url('donate')}}">GOAL : 8 millions S.P</a></li>
+                                <li><a href="{{url('donate')}}">RISED : 3 millions S.P</a></li>
                             </ul>
-                            <h3><a href="causes.html">Education for Poor Children</a></h3>
-                            <p>It is a long established fact that a reader will be distracted.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="cause-item">
-                        <div class="cause-top">
-                            <div class="cause-img">
-                                <img src="{{asset('website/images/cause/img-3.jpg')}}" alt="">
-                                <div class="case-btn">
-                                    <a href="donate.html" class="theme-btn">Donate Now<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cause-text">
-                            <ul>
-                                <li><a href="#">GOAL : $9860</a></li>
-                                <li><a href="#">RISED : $768</a></li>
-                            </ul>
-                            <h3><a href="causes.html">Send Child to School for a Year</a></h3>
-                            <p>It is a long established fact that a reader will be distracted.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="cause-item">
-                        <div class="cause-top">
-                            <div class="cause-img">
-                                <img src="{{asset('website/images/cause/img-4.jpg')}}" alt="">
-                                <div class="case-btn">
-                                    <a href="donate.html" class="theme-btn">Donate Now<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cause-text">
-                            <ul>
-                                <li><a href="#">GOAL : $9860</a></li>
-                                <li><a href="#">RISED : $768</a></li>
-                            </ul>
-                            <h3><a href="causes.html">Food And Home for Children</a></h3>
-                            <p>It is a long established fact that a reader will be distracted.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="cause-item">
-                        <div class="cause-top">
-                            <div class="cause-img">
-                                <img src="{{asset('website/images/cause/img-5.jpg')}}" alt="">
-                                <div class="case-btn">
-                                    <a href="donate.html" class="theme-btn">Donate Now<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cause-text">
-                            <ul>
-                                <li><a href="#">GOAL : $9860</a></li>
-                                <li><a href="#">RISED : $768</a></li>
-                            </ul>
-                            <h3><a href="causes.html">Pure Water For The World</a></h3>
-                            <p>It is a long established fact that a reader will be distracted.</p>
+                            <h3><a href="{{url('donate')}}">Education for Poor Children</a></h3>
                         </div>
                     </div>
                 </div>
@@ -324,17 +258,16 @@
                             <div class="cause-img">
                                 <img src="{{asset('website/images/cause/img-6.jpg')}}" alt="">
                                 <div class="case-btn">
-                                    <a href="donate.html" class="theme-btn">Donate Now<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                    <a href="{{url('donate')}}" class="theme-btn">Donate Now<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="cause-text">
                             <ul>
-                                <li><a href="#">GOAL : $9860</a></li>
-                                <li><a href="#">RISED : $768</a></li>
+                                <li><a href="{{url('donate')}}">GOAL : 4 millions S.P</a></li>
+                                <li><a href="{{url('donate')}}">RISED : 1 millions S.P</a></li>
                             </ul>
-                            <h3><a href="causes.html">Recycling For Charity</a></h3>
-                            <p>It is a long established fact that a reader will be distracted.</p>
+                            <h3><a href="{{url('donate')}}">Supporting scientific projects</a></h3>
                         </div>
                     </div>
                 </div>
@@ -348,7 +281,8 @@
             <div class="row">
                 <div class="col-lg-5 col-md-12 col-12">
                     <div class="cta-left">
-                        <h2>If You Want To Join With Us As a Volunteer. <a href="{{url('join')}}">Click Here</a> </h2>
+                        <h2>If You Want To Join Us As a Volunteer. <a href="{{url('join')}}"><br>
+                                Click Here</a> </h2>
                     </div>
                 </div>
                 <div class="col-lg-6 col-lg-offset-1 col-md-12 col-12">
@@ -377,12 +311,12 @@
                             <span>EVENTS</span>
                         </div>
                         <h2>Our Upcoming Events</h2>
-                        <p>It is a long established fact that reader distracted by the the readable content off page looking at its layout point.</p>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
+                    <a href="{{route('event.index')}}">
                     <div class="event-item">
                         <div class="event-img">
                             <img src="{{asset('website/images/event/1.jpg')}}" alt="">
@@ -394,16 +328,20 @@
                                     <h4>28</h4>
                                 </div>
                             </div>
+
+
                             <div class="event-right">
                                 <ul>
                                     <li><i class="ti-location-pin"></i> 9:00 AM - 10:00 AM</li>
-                                    <li><i class="ti-location-pin"></i> 968, Mudkarim, Pakistan.</li>
+                                    <li><i class="ti-location-pin"></i> 968, Homs, Syria.</li>
                                 </ul>
-                                <h2><a href="event.html">Fundrising event that could change some poor children.</a></h2>
-                                <p>It is long estblished fact that a reader will be distracted aliquip exea commodo consequat velit esse cillum fugiat.</p>
+                                <h2>التمرات</h2>
+                                <p>توزيع التمر على الصائمين في حمص قبل أذان المغرب</p>
                             </div>
                         </div>
                     </div>
+                    </a>
+                    <a href="{{route('event.index')}}">
                     <div class="event-item">
                         <div class="event-img">
                             <img src="{{asset('website/images/event/2.jpg')}}" alt="">
@@ -411,20 +349,22 @@
                         <div class="event-text">
                             <div class="event-left">
                                 <div class="event-l-text">
-                                    <span>MAR</span>
-                                    <h4>28</h4>
+                                    <span>JUN</span>
+                                    <h4>12</h4>
                                 </div>
                             </div>
                             <div class="event-right">
                                 <ul>
-                                    <li><i class="ti-location-pin"></i> 9:00 AM - 10:00 AM</li>
-                                    <li><i class="ti-location-pin"></i> 968, Mudkarim, Pakistan.</li>
+                                    <li><i class="ti-location-pin"></i> 16:00 PM - 21:00 PM</li>
+                                    <li><i class="ti-location-pin"></i> 968, Homs, Syria.</li>
                                 </ul>
-                                <h2><a href="event.html">Many Children are suffering a lot for food.</a></h2>
-                                <p>It is long estblished fact that a reader will be distracted aliquip exea commodo consequat velit esse cillum fugiat.</p>
+                                <h2><a href="{{route('event.index')}}">رداء الخير</a></h2>
+                                <p>يستقبل الملابس الجديدة والمستعملة والأثاث الجديد والمستعمل ويعيد تأهليها ويتم توزيعها على المحتاجين والأرامل</p>
                             </div>
                         </div>
                     </div>
+                    </a>
+                        <a href="{{route('event.index')}}">
                     <div class="event-item">
                         <div class="event-img">
                             <img src="{{asset('website/images/event/3.jpg')}}" alt="">
@@ -433,19 +373,21 @@
                             <div class="event-left">
                                 <div class="event-l-text">
                                     <span>MAR</span>
-                                    <h4>28</h4>
+                                    <h4>7</h4>
                                 </div>
                             </div>
                             <div class="event-right">
                                 <ul>
-                                    <li><i class="ti-location-pin"></i> 9:00 AM - 10:00 AM</li>
-                                    <li><i class="ti-location-pin"></i> 968, Mudkarim, Pakistan.</li>
+                                    <li><i class="ti-location-pin"></i> 11:00 AM - 14:00 PM</li>
+                                    <li><i class="ti-location-pin"></i> 968, Homs, Syria.</li>
                                 </ul>
-                                <h2><a href="event.html">Be kind for the poor people and the kids.</a></h2>
-                                <p>It is long estblished fact that a reader will be distracted aliquip exea commodo consequat velit esse cillum fugiat.</p>
+                                <h2><a href="{{route('event.index')}}"></a>لتبقى مدينتنا أجمل</h2>
+                                <p>مبادرة تأهيل وتنظيف حديقة الكورنيش</p>
                             </div>
                         </div>
                     </div>
+
+                        </a>
                 </div>
             </div>
         </div>
@@ -462,8 +404,8 @@
                         <div class="thumb-text">
                             <span>Volunteer</span>
                         </div>
-                        <h2>Our Great Volunteer</h2>
-                        <p>It is a long established fact that reader distracted by the the readable content off page looking at its layout point.</p>
+                        <h2>Our Great Team</h2>
+                        <p>Site Programming Team from IT Albaath University</p>
                     </div>
                 </div>
             </div>
@@ -475,7 +417,7 @@
                                 <img src="{{asset('website/images/team/1.png')}}" alt="">
                             </div>
                             <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Adriane Newby</a></h2>
+                                <h2><a href="volunteer.html">Hanan Fattoum</a></h2>
                                 <span>Volunteer</span>
                             </div>
                         </div>
@@ -486,7 +428,7 @@
                                 <img src="{{asset('website/images/team/2.png')}}" alt="">
                             </div>
                             <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Allene Castaneda</a></h2>
+                                <h2><a href="volunteer.html">Layal Deeb</a></h2>
                                 <span>Volunteer</span>
                             </div>
                         </div>
@@ -497,7 +439,7 @@
                                 <img src="{{asset('website/images/team/3.png')}}" alt="">
                             </div>
                             <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Malinda Willoughby</a></h2>
+                                <h2><a href="volunteer.html">Omar Alsalkhadi</a></h2>
                                 <span>Volunteer</span>
                             </div>
                         </div>
@@ -508,8 +450,8 @@
                                 <img src="{{asset('website/images/team/4.png')}}" alt="">
                             </div>
                             <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Wilburn Hatfield</a></h2>
-                                <span>Volunteer</span>
+                                <h2><a href="volunteer.html">Mohammad Aljaoor</a></h2>
+                                <span>Admin</span>
                             </div>
                         </div>
                     </div>
@@ -519,63 +461,6 @@
     </div>
     <!-- volunteer-area start -->
     <!-- start testimonials-section-s2 -->
-    <section class="testimonials-section section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col col-xs-12">
-                    <div class="testimonials-slider">
-                        <div class="testimonial-thumb-active">
-                            <div class="test-img">
-                                <img src="{{asset('website/images/testimonials/img-1.png')}}" alt>
-                            </div>
-                            <div class="test-img">
-                                <img src="{{asset('website/images/testimonials/img-2.png')}}" alt>
-                            </div>
-                        </div>
-                        <div class="testimonial-content-active text-center">
-                            <div class="grid">
-                                <ul>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><span><i class="fa fa-star"></i></span></li>
-                                    <li><span><i class="fa fa-star"></i></span></li>
-                                </ul>
-                                <p>“ There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some
-                                    form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a
-                                    passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden
-                                    in the middle of text all the loss.</p>
-                                <div class="info">
-                                    <h5>Tawana Blackman</h5>
-                                    <p>Volunteer</p>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <ul>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><span><i class="fa fa-star"></i></span></li>
-                                    <li><span><i class="fa fa-star"></i></span></li>
-                                </ul>
-                                <p>“Dicture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered”</p>
-                                <div class="info">
-                                    <h5>Michel Jhone</h5>
-                                    <p>Volunteer</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> <!-- end container -->
-        <div class="testi-shape">
-            <img src="{{asset('website/images/testimonials/img-3.png')}}" alt="">
-        </div>
-        <div class="testi-shape2">
-            <img src="{{asset('website/images/ts.png')}}" alt="">
-        </div>
-    </section>
     <!-- end testimonials-section-s2 -->
     <!-- blog-area start -->
     <div class="blog-area section-padding">
@@ -584,19 +469,18 @@
                 <div class="col-md-6 col-md-offset-3">
                     <div class="section-title section-title2 text-center">
                         <div class="thumb-text">
-                            <span>Blog</span>
+                            <span>News</span>
                         </div>
                         <h2>Our Latest News</h2>
-                        <p>It is a long established fact that reader distracted by the the readable content off page looking at its layout point.</p>
                     </div>
                 </div>
             </div>
             <div class="blog-wrap">
                 <div class="row">
-                    <div class="col col-md-6 col-12">
+                    <div class="col col-md-6 col-12" style="padding-bottom: 0px; margin-bottom: 0px;">
                         <div class="blog-item">
                             <div class="blog-img">
-                                <img src="{{asset('website/images/blog/img-1.jpg')}}" alt="">
+                                <img src="{{asset('website/images/football2.jpg')}}" alt="">
                             </div>
                             <div class="blog-content">
                                 <ul>
@@ -604,7 +488,7 @@
                                     <li><i class="fa fa-heart" aria-hidden="true"></i>56</li>
                                     <li><i class="fa fa-comments-o" aria-hidden="true"></i> 78</li>
                                 </ul>
-                                <h2><a href="blog.html">Best and less published their supplier lists.</a></h2>
+                                <h2>تعلن جمعيتنا عن بدء التسجيل في فريق الأمل لكرة القدم</h2>
                             </div>
                         </div>
                     </div>
@@ -616,14 +500,14 @@
                                     <li><i class="fa fa-heart" aria-hidden="true"></i>56</li>
                                     <li><i class="fa fa-comments-o" aria-hidden="true"></i> 78</li>
                                 </ul>
-                                <h2><a href="blog.html">Best and less published their supplier lists.</a></h2>
+                                <h2>افتتاح مشغل لجمعية شعاع الأمل الخيرية </h2>
                             </div>
                             <div class="blog-img">
-                                <img src="{{asset('website/images/blog/img-2.jpg')}}" alt="">
+                                <img src="{{asset('website/images/party.jpg')}}" alt="">
                             </div>
                         </div>
                     </div>
-                    <div class="col col-md-6 col-12">
+                    <div class="col col-md-6 col-12" style="padding-bottom: 0px; margin-bottom: 0px;">
                         <div class="blog-item">
                             <div class="blog-content">
                                 <ul>
@@ -631,17 +515,17 @@
                                     <li><i class="fa fa-heart" aria-hidden="true"></i>56</li>
                                     <li><i class="fa fa-comments-o" aria-hidden="true"></i> 78</li>
                                 </ul>
-                                <h2><a href="blog.html">Best and less published their supplier lists.</a></h2>
+                                <h2>طفلة من متطوعات الأمل قررت جمع مصروفها في شهر رمضان كاملا وتقديمه كهدية عيد</h2>
                             </div>
                             <div class="blog-img">
-                                <img src="{{asset('website/images/blog/img-3.jpg')}}" alt="">
+                                <img src="{{asset('website/images/girl.jpg')}}" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="col col-md-6 col-12">
                         <div class="blog-item">
                             <div class="blog-img">
-                                <img src="{{asset('website/images/blog/img-4.jpg')}}" alt="">
+                                <img src="{{asset('website/images/folowers.jpg')}}" alt="">
                             </div>
                             <div class="blog-content">
                                 <ul>
@@ -649,7 +533,7 @@
                                     <li><i class="fa fa-heart" aria-hidden="true"></i>56</li>
                                     <li><i class="fa fa-comments-o" aria-hidden="true"></i> 78</li>
                                 </ul>
-                                <h2><a href="blog.html">Best and less published their supplier lists.</a></h2>
+                                <h2>اقامة الحفل الخيري السنوي الرابع تحت شعار (الخير انتم أهله ونحن طريقه) </h2>
                             </div>
                         </div>
                     </div>
@@ -659,32 +543,32 @@
     </div>
     <!-- blog-area start -->
     <!-- start partners-section -->
-    <section class="partners-section section-padding">
-        <h2 class="hidden">Partners</h2>
-        <div class="container">
-            <div class="row">
-                <div class="col col-xs-12">
-                    <div class="partner-grids partners-slider">
-                        <div class="grid">
-                            <img src="{{asset('website/images/partners/1.png')}}" alt>
-                        </div>
-                        <div class="grid">
-                            <img src="{{asset('website/images/partners/2.png')}}" alt>
-                        </div>
-                        <div class="grid">
-                            <img src="{{asset('website/images/partners/3.png')}}" alt>
-                        </div>
-                        <div class="grid">
-                            <img src="{{asset('website/images/partners/4.png')}}" alt>
-                        </div>
-                        <div class="grid">
-                            <img src="{{asset('website/images/partners/5.png')}}" alt>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> <!-- end container -->
-    </section>
+{{--    <section class="partners-section section-padding">--}}
+{{--        <h2 class="hidden">Partners</h2>--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col col-xs-12">--}}
+{{--                    <div class="partner-grids partners-slider">--}}
+{{--                        <div class="grid">--}}
+{{--                            <img src="{{asset('website/images/partners/1.png')}}" alt>--}}
+{{--                        </div>--}}
+{{--                        <div class="grid">--}}
+{{--                            <img src="{{asset('website/images/partners/2.png')}}" alt>--}}
+{{--                        </div>--}}
+{{--                        <div class="grid">--}}
+{{--                            <img src="{{asset('website/images/partners/3.png')}}" alt>--}}
+{{--                        </div>--}}
+{{--                        <div class="grid">--}}
+{{--                            <img src="{{asset('website/images/partners/4.png')}}" alt>--}}
+{{--                        </div>--}}
+{{--                        <div class="grid">--}}
+{{--                            <img src="{{asset('website/images/partners/5.png')}}" alt>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div> <!-- end container -->--}}
+{{--    </section>--}}
     <!-- end partners-section -->
 
 </div>
