@@ -63,7 +63,6 @@
                                 <span>EVENTS</span>
                             </div>
                             <h2>Our  Events</h2>
-                            <p>It is a long established fact that reader distracted by the the readable content off page looking at its layout point.</p>
                         </div>
                     </div>
                 </div>
