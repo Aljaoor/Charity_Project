@@ -1,1 +1,1 @@
-<img src="/Charity_Project/public/website/images/Accept.png" style=" width:60px ; height:60px "  >
+![alt text](https://github.com/Aljaoor/Charity_Project/blob/public/website/images/Accept.png?raw=true)
