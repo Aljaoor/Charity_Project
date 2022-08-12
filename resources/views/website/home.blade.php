@@ -104,8 +104,7 @@
                 <div class="col-md-6 col-md-offset-1 grid  col-sm-12 col-12">
                     <div class="about-text">
                         <div class="section-title">
-                            <h2> <span>Bright</span> <span>Of </span>Hope </h2>
-                        </div>
+                            <h2>Bright Of Hope is <span>Nonprofit</span> Organization <span>For Help</span> Children.</h2>                        </div>
                         <p>A development charity concerned with the care of orphaned children and Provides a helping hand and assistance to people in need, by collecting alms for them</p>
                         <div class="ab-icon-area">
                             <div class="about-icon-wrap">
@@ -226,10 +225,8 @@
                         </div>
                         <div class="cause-text">
                             <ul>
-                                <li><a href="{{url('donate')}}">GOAL : 4 </a>
-                                    <a href="{{url('donate')}}">millions S.P</a><br></li>
-                                <li><a href="{{url('donate')}}">RISED : 1</a>
-                                    <a href="{{url('donate')}}">millions S.P</a><br></li>
+                                <li><a href="{{url('donate')}}">GOAL : 5 millions S.P</a></li>
+                                <li><a href="{{url('donate')}}">RISED : 2 millions S.P</a></li>
                             </ul>
                             <h3><a href="{{url('donate')}}"></a>عربة الطعام</h3>
                         </div>
@@ -247,10 +244,8 @@
                         </div>
                         <div class="cause-text">
                             <ul>
-                                <li><a href="{{url('donate')}}">GOAL : 4 </a>
-                                    <a href="{{url('donate')}}">millions S.P</a><br></li>
-                                <li><a href="{{url('donate')}}">RISED : 1</a>
-                                    <a href="{{url('donate')}}">millions S.P</a><br></li>
+                                <li><a href="{{url('donate')}}">GOAL : 8 millions S.P</a></li>
+                                <li><a href="{{url('donate')}}">RISED : 3 millions S.P</a></li>
                             </ul>
 
                             <h3><a href="{{url('donate')}}">مطبخ بيت المونة</a></h3>
@@ -269,10 +264,8 @@
                         </div>
                         <div class="cause-text">
                             <ul>
-                                <li><a href="{{url('donate')}}">GOAL : 4 </a>
-                                    <a href="{{url('donate')}}">millions S.P</a><br></li>
-                                <li><a href="{{url('donate')}}">RISED : 1</a>
-                                    <a href="{{url('donate')}}">millions S.P</a><br></li>
+                                <li><a href="{{url('donate')}}">GOAL : 4 millions S.P</a></li>
+                                <li><a href="{{url('donate')}}">RISED : 1 millions S.P</a></li>
                             </ul>
                             <h3><a href="{{url('donate')}}">مشغل الأمل</a></h3>
                         </div>
@@ -283,7 +276,30 @@
     </div>
     <!-- case-area-end -->
     <!-- cta-area start -->
-
+    <div class="cta-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-12 col-12">
+                    <div class="cta-left">
+                        <h2>If you want to volunteer with us <a href="{{url('join')}}"><br>
+                                Click Here</a> </h2>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-lg-offset-1 col-md-12 col-12">
+                    <div class="cta-wrap">
+                        <div class="cta-call">
+                            <span>Call Us!</span>
+                            <h3>+963 964 444 111</h3>
+                        </div>
+                        <div class="cta-call" style="margin-left: 100px; ">
+                            <span>E-mail Us!</span>
+                            <h3>    <a href = "mailto: project.4tth@gmail.com"> project.4tth@gmail.com</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- cta-area start -->
     <!-- event-area start -->
     <div class="event-area section-padding">
@@ -480,7 +496,7 @@
                                 <img src="{{asset('website/images/team/o.jpg')}}" alt="">
                             </div>
                             <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Omar Alsalkhadi</a></h2>
+                                <h2><a>Omar Alsalkhadi</a></h2>
                                 <span>Volunteer</span>
                             </div>
                         </div>
@@ -491,7 +507,7 @@
                                 <img src="{{asset('website/images/team/l.jpg')}}" alt="">
                             </div>
                             <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Layal Deeb</a></h2>
+                                <h2><a>Layal Deeb</a></h2>
                                 <span>Volunteer</span>
                             </div>
                         </div>
@@ -502,7 +518,7 @@
                                 <img src="{{asset('website/images/team/h.jpg')}}" alt="">
                             </div>
                             <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Hanan Fattoum</a></h2>
+                                <h2><a>Hanan Fattoum</a></h2>
                                 <span>Volunteer</span>
                             </div>
                         </div>
@@ -515,7 +531,7 @@
                                 <img src="{{asset('website/images/team/m.jpg')}}" alt="">
                             </div>
                             <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Mohammad Aljaoor</a></h2>
+                                <h2><a>Mohammad Aljaoor</a></h2>
                                 <span>Admin</span>
                             </div>
                         </div>
@@ -557,31 +573,6 @@
 {{--        </div> <!-- end container -->--}}
 {{--    </section>--}}
     <!-- end partners-section -->
-    <div class="cta-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-md-12 col-12">
-                    <div class="cta-left">
-                        <h2>If You Want To Join Us As a Volunteer. <a href="{{url('join')}}"><br>
-                                Click Here</a> </h2>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-lg-offset-1 col-md-12 col-12">
-                    <div class="cta-wrap">
-                        <div class="cta-call">
-                            <span>Call Us!</span>
-                            <h3>+963 964 444 111</h3>
-                        </div>
-                        <div class="cta-call" style="margin-left: 100px; ">
-                            <span>E-mail Us!</span>
-                            <h3>    <a href = "mailto: project.4tth@gmail.com"> project.4tth@gmail.com</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 @endsection
 

@@ -343,19 +343,19 @@
                             </div>
                             <div class="grid">
                                 <div>
-                                    <h2><span class="odometer" data-count="80">00</span>+</h2>
+                                    <h2><span class="odometer" data-count="{{\App\Models\Beneficiary::all()->count()}}">00</span>+</h2>
                                 </div>
                                 <p>Beneficiaries</p>
                             </div>
                             <div class="grid">
                                 <div>
-                                    <h2><span class="odometer" data-count="98">00</span>+</h2>
+                                    <h2><span class="odometer" data-count="{{\App\Models\Event_volunteer::all()->count()}}">00</span>+</h2>
                                 </div>
                                 <p>Volunteers</p>
                             </div>
                             <div class="grid">
                                 <div>
-                                    <h2><span class="odometer" data-count="66">00</span>+</h2>
+                                    <h2><span class="odometer" data-count="{{\App\Models\Event::all()->count()}}">00</span>+</h2>
                                 </div>
                                 <p>Projects</p>
                             </div>

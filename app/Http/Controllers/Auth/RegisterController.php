@@ -64,8 +64,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-
          User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -74,23 +72,16 @@ class RegisterController extends Controller
             'age' => $data['age'],
             'mobile' => $data['mobile'],
         ]);
-
         if ($data['role_id']==2){
             $roles=([0 =>'user']);
             $user=User::latest()->first();
             $user->assignRole($roles);
-
         }
         else{
             $roles=([0 =>'volunteer']);
             $user=User::latest()->first();
             $user->assignRole($roles);
-
-
         }
-
         return $user;
-
-
     }
 }
