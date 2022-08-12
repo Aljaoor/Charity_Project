@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon.png">
     <meta name="author" content="wpoceans">
@@ -203,7 +203,6 @@
                                     <li><a href="#"><i class="ti-heart"></i> 35</a></li>
                                 </ul>
                                 <h3><a href="#">Help the helpless who need you.</a></h3>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
                                 <a href="#" class="read-more">Read More...</a>
                             </div>
                             <div class="post format-video">
@@ -219,7 +218,6 @@
                                     <li><a href="#"><i class="ti-heart"></i> 35</a></li>
                                 </ul>
                                 <h3><a href="#">They are waiting for your help.</a></h3>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
                                 <a href="#" class="read-more">Read More...</a>
                             </div>
                             <div class="post format-gallery">
@@ -233,7 +231,6 @@
                                     <li><a href="#"><i class="ti-heart"></i> 35</a></li>
                                 </ul>
                                 <h3><a href="#">They are waiting for your help.</a></h3>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
                                 <a href="#" class="read-more">Read More...</a>
                             </div>
                             <div class="post format-quote">
@@ -243,7 +240,6 @@
                                     <li><a href="#"><i class="ti-heart"></i> 35</a></li>
                                 </ul>
                                 <h3><a href="#">They are waiting for your help.</a></h3>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
                             </div>
                             <div class="pagination-wrapper pagination-wrapper-left">
                                 <ul class="pg-pagination">
@@ -269,7 +265,7 @@
             </div> <!-- end container -->
         </section>
         <!-- end tp-blog-pg-section -->
-       
+
         <!-- start tp-site-footer -->
         <footer class="tp-site-footer">
             <div class="tp-upper-footer">

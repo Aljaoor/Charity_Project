@@ -93,7 +93,6 @@
                         <ul class="sub-menu">
                             <li><a href="{{route('about')}}">About</a></li>
                             <li><a href="{{url('donate')}}">Donate</a></li>
-                            <li><a href="volunteer.html">Volunteer</a></li>
                             <li><a href="{{url('404')}}">404 Page</a></li>
                         </ul>
                     </li>
@@ -120,7 +119,7 @@
 {{--      -----------------  notification------------------------------}}
 
 @if(auth()->user())
-        <div class="cart-search-contact"">
+        <div class="cart-search-contact">
             <div class="mini-cart">
                 <button class="cart-toggle-btn"> <img src="{{asset('website/images/notfication.png')}}" style="width: 45px;"> <span class="cart-count">{{ auth()->user()->unreadNotifications->count() }}</span></button>
                 <div class="mini-cart-content" style="width: 320px;">
@@ -202,7 +201,7 @@
 
 
 
-                            <?php      $result = in_array($notification->data['event'], $event_name);?>
+                            <?php      $result = in_array( $notification->data['event'], $event_name);?>
 
 
                                 @if($result==false)

@@ -104,9 +104,9 @@
                 <div class="col-md-6 col-md-offset-1 grid  col-sm-12 col-12">
                     <div class="about-text">
                         <div class="section-title">
-                            <h2>Bright Of Hope is <span>Nonprofit</span> Organization <span>For Help</span> Children.</h2>
+                            <h2> <span>Bright</span> <span>Of </span>Hope </h2>
                         </div>
-                        <p>A development charity concerned with the care of orphaned children and needy and poor families within the city of Homs</p>
+                        <p>A development charity concerned with the care of orphaned children and Provides a helping hand and assistance to people in need, by collecting alms for them</p>
                         <div class="ab-icon-area">
                             <div class="about-icon-wrap">
                                 <div class="about-icon-item">
@@ -114,7 +114,7 @@
                                         <img draggable="false" src="{{asset('website/images/about/1.png')}}" alt="">
                                     </div>
                                     <div class="ab-text">
-                                        <h2><a href="causes-single.html">Save <br> Orphan</a></h2>
+                                        <h2><a href="">Save <br> Orphan</a></h2>
                                     </div>
                                 </div>
                                 <div class="about-icon-item">
@@ -122,7 +122,7 @@
                                         <img draggable="false" src="{{asset('website/images/about/1.png')}}" alt="">
                                     </div>
                                     <div class="ab-text">
-                                        <h2><a href="causes-single.html">save <br> Children</a></h2>
+                                        <h2><a href="">save <br> Children</a></h2>
                                     </div>
                                 </div>
                             </div>
@@ -144,10 +144,10 @@
                     <div class="features-text">
                         <div class="section-title">
                             <div class="thumb-text">
-                                <span>FEATURES</span>
+                                <span>Sponsorship</span>
                             </div>
                         </div>
-                        <h2>The great journey to end poverty for good begins with a child.</h2>
+                        <h2>You are the people of goodness,and we are its way</h2>
                         <p>Contribute now, donate to save thousands of lives and help them live a decent life and build their future.</p>
                         <a href="{{url('donate')}}" class="theme-btn">Donate Now<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                     </div>
@@ -158,40 +158,40 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="features-item">
                                     <div class="features-icon">
-                                        <img draggable="false" src="{{asset('website/images/features/img-1.png')}}" alt="">
+                                        <img draggable="false" src="{{asset('website/images/features/1.png')}}" alt="">
                                     </div>
                                     <div class="features-content">
-                                        <h2><a href="causes-single.html">bail of orphan</a></h2>
+                                        <h2>Orphan Sponsorship</h2>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="features-item-2">
                                     <div class="features-icon">
-                                        <img draggable="false" src="{{asset('website/images/features/img-2.png')}}" alt="">
+                                        <img draggable="false" src="{{asset('website/images/features/icon.png')}}" alt="">
                                     </div>
                                     <div class="features-content">
-                                        <h2><a href="causes-single.html">Hope Operator</a></h2>
+                                        <h2>Student Sponsorship </h2>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="features-item-2 active">
+                                <div class="features-item-2">
                                     <div class="features-icon">
-                                        <img draggable="false" src="{{asset('website/images/features/img-3.png')}}" alt="">
+                                        <img draggable="false" src="{{asset('website/images/features/img-4.png')}}" alt="">
                                     </div>
                                     <div class="features-content">
-                                        <h2><a href="causes-single.html">Environtment Recyle</a></h2>
+                                        <h2>family Sponsorship </h2>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="features-item">
                                     <div class="features-icon">
-                                        <img draggable="false" src="{{asset('website/images/features/img-4.png')}}" alt="">
+                                        <img draggable="false" src="{{asset('website/images/features/img-2.png')}}" alt="">
                                     </div>
                                     <div class="features-content">
-                                        <h2><a href="causes-single.html">Fasting food & Sacrifice</a></h2>
+                                        <h2>Elderly Sponsorship</h2>
                                     </div>
                                 </div>
                             </div>
@@ -204,13 +204,13 @@
     <!-- features-area end -->
     <!-- case-area-start -->
     <div class="case-area section-padding">
-        <div class="container">
+        <div  class="container">
             <div class="col-md-6 col-md-offset-3">
                 <div class="section-title section-title2 text-center">
                     <div class="thumb-text">
-                        <span>Bailouts</span>
+                        <span>Projects</span>
                     </div>
-                    <h2>Latest Bailouts of our Charity </h2>
+                    <h2> مشاريعنا الخيرية الربحية </h2>
                 </div>
             </div>
             <div class="row">
@@ -218,7 +218,7 @@
                     <div class="cause-item">
                         <div class="cause-top">
                             <div class="cause-img">
-                                <img src="{{asset('website/images/cause/img-1.png')}}" alt="">
+                                <img src="{{asset('website/images/cause/p4.jpg')}}" alt="">
                                 <div class="case-btn">
                                     <a href="{{url('donate')}}" class="theme-btn">Donate Now<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
@@ -226,10 +226,12 @@
                         </div>
                         <div class="cause-text">
                             <ul>
-                                <li><a href="{{url('donate')}}">GOAL : 5 millions S.P</a></li>
-                                <li><a href="{{url('donate')}}">RISED : 2 millions S.P</a></li>
+                                <li><a href="{{url('donate')}}">GOAL : 4 </a>
+                                    <a href="{{url('donate')}}">millions S.P</a><br></li>
+                                <li><a href="{{url('donate')}}">RISED : 1</a>
+                                    <a href="{{url('donate')}}">millions S.P</a><br></li>
                             </ul>
-                            <h3><a href="{{url('donate')}}">Financial Help for Poor Families</a></h3>
+                            <h3><a href="{{url('donate')}}"></a>عربة الطعام</h3>
                         </div>
                     </div>
                 </div>
@@ -237,7 +239,7 @@
                     <div class="cause-item">
                         <div class="cause-top">
                             <div class="cause-img">
-                                <img src="{{asset('website/images/cause/img-2.jpg')}}" alt="">
+                                <img src="{{asset('website/images/cause/p2.jpg')}}" alt="">
                                 <div class="case-btn">
                                     <a href="{{url('donate')}}" class="theme-btn">Donate Now<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
@@ -245,10 +247,13 @@
                         </div>
                         <div class="cause-text">
                             <ul>
-                                <li><a href="{{url('donate')}}">GOAL : 8 millions S.P</a></li>
-                                <li><a href="{{url('donate')}}">RISED : 3 millions S.P</a></li>
+                                <li><a href="{{url('donate')}}">GOAL : 4 </a>
+                                    <a href="{{url('donate')}}">millions S.P</a><br></li>
+                                <li><a href="{{url('donate')}}">RISED : 1</a>
+                                    <a href="{{url('donate')}}">millions S.P</a><br></li>
                             </ul>
-                            <h3><a href="{{url('donate')}}">Education for Poor Children</a></h3>
+
+                            <h3><a href="{{url('donate')}}">مطبخ بيت المونة</a></h3>
                         </div>
                     </div>
                 </div>
@@ -256,7 +261,7 @@
                     <div class="cause-item">
                         <div class="cause-top">
                             <div class="cause-img">
-                                <img src="{{asset('website/images/cause/img-6.jpg')}}" alt="">
+                                <img src="{{asset('website/images/cause/p3.jpg')}}" alt="">
                                 <div class="case-btn">
                                     <a href="{{url('donate')}}" class="theme-btn">Donate Now<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                 </div>
@@ -264,10 +269,12 @@
                         </div>
                         <div class="cause-text">
                             <ul>
-                                <li><a href="{{url('donate')}}">GOAL : 4 millions S.P</a></li>
-                                <li><a href="{{url('donate')}}">RISED : 1 millions S.P</a></li>
+                                <li><a href="{{url('donate')}}">GOAL : 4 </a>
+                                    <a href="{{url('donate')}}">millions S.P</a><br></li>
+                                <li><a href="{{url('donate')}}">RISED : 1</a>
+                                    <a href="{{url('donate')}}">millions S.P</a><br></li>
                             </ul>
-                            <h3><a href="{{url('donate')}}">Supporting scientific projects</a></h3>
+                            <h3><a href="{{url('donate')}}">مشغل الأمل</a></h3>
                         </div>
                     </div>
                 </div>
@@ -276,30 +283,7 @@
     </div>
     <!-- case-area-end -->
     <!-- cta-area start -->
-    <div class="cta-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-md-12 col-12">
-                    <div class="cta-left">
-                        <h2>If You Want To Join Us As a Volunteer. <a href="{{url('join')}}"><br>
-                                Click Here</a> </h2>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-lg-offset-1 col-md-12 col-12">
-                    <div class="cta-wrap">
-                        <div class="cta-call">
-                            <span>Call Us!</span>
-                            <h3>+963 964 444 111</h3>
-                        </div>
-                        <div class="cta-call" style="margin-left: 100px; ">
-                            <span>E-mail Us!</span>
-                            <h3>    <a href = "mailto: project.4tth@gmail.com"> project.4tth@gmail.com</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- cta-area start -->
     <!-- event-area start -->
     <div class="event-area section-padding">
@@ -319,7 +303,7 @@
                     <a href="{{route('event.index')}}">
                     <div class="event-item">
                         <div class="event-img">
-                            <img src="{{asset('website/images/event/1.jpg')}}" alt="">
+                            <img style="min-width: 250px; max-width: 250px; min-height: 200px; max-height: 200px;" src="{{asset('website/images/event/11.jpg')}}" alt="">
                         </div>
                         <div class="event-text">
                             <div class="event-left">
@@ -332,8 +316,8 @@
 
                             <div class="event-right">
                                 <ul>
-                                    <li><i class="ti-location-pin"></i> 9:00 AM - 10:00 AM</li>
-                                    <li><i class="ti-location-pin"></i> 968, Homs, Syria.</li>
+                                    <li><i class="ti-location-pin"></i> 18:00 PM - 21:00 PM</li>
+                                    <li><i class="ti-location-pin"></i> 968,  Homs,Syria.</li>
                                 </ul>
                                 <h2>التمرات</h2>
                                 <p>توزيع التمر على الصائمين في حمص قبل أذان المغرب</p>
@@ -344,7 +328,7 @@
                     <a href="{{route('event.index')}}">
                     <div class="event-item">
                         <div class="event-img">
-                            <img src="{{asset('website/images/event/2.jpg')}}" alt="">
+                            <img style="min-width: 250px; max-width: 250px; min-height: 200px; max-height: 200px;"src="{{asset('website/images/event/22.jpg')}}" alt="">
                         </div>
                         <div class="event-text">
                             <div class="event-left">
@@ -356,7 +340,7 @@
                             <div class="event-right">
                                 <ul>
                                     <li><i class="ti-location-pin"></i> 16:00 PM - 21:00 PM</li>
-                                    <li><i class="ti-location-pin"></i> 968, Homs, Syria.</li>
+                                    <li><i class="ti-location-pin"></i> 968,  Homs,Syria.</li>
                                 </ul>
                                 <h2><a href="{{route('event.index')}}">رداء الخير</a></h2>
                                 <p>يستقبل الملابس الجديدة والمستعملة والأثاث الجديد والمستعمل ويعيد تأهليها ويتم توزيعها على المحتاجين والأرامل</p>
@@ -367,7 +351,7 @@
                         <a href="{{route('event.index')}}">
                     <div class="event-item">
                         <div class="event-img">
-                            <img src="{{asset('website/images/event/3.jpg')}}" alt="">
+                            <img style="min-width: 250px; max-width: 250px; min-height: 200px; max-height: 200px;"src="{{asset('website/images/event/33.jpg')}}" alt="">
                         </div>
                         <div class="event-text">
                             <div class="event-left">
@@ -379,7 +363,7 @@
                             <div class="event-right">
                                 <ul>
                                     <li><i class="ti-location-pin"></i> 11:00 AM - 14:00 PM</li>
-                                    <li><i class="ti-location-pin"></i> 968, Homs, Syria.</li>
+                                    <li><i class="ti-location-pin"></i> 968,  Homs,Syria.</li>
                                 </ul>
                                 <h2><a href="{{route('event.index')}}"></a>لتبقى مدينتنا أجمل</h2>
                                 <p>مبادرة تأهيل وتنظيف حديقة الكورنيش</p>
@@ -395,74 +379,6 @@
         <div class="shape2"><img src="{{asset('website/images/event//2.png')}}" alt=""></div>
     </div>
     <!-- event-area start -->
-    <!-- volunteer-area start -->
-    <div class="volunteer-area section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <div class="section-title section-title2 text-center">
-                        <div class="thumb-text">
-                            <span>Volunteer</span>
-                        </div>
-                        <h2>Our Great Team</h2>
-                        <p>Site Programming Team from IT Albaath University</p>
-                    </div>
-                </div>
-            </div>
-            <div class="volunteer-wrap">
-                <div class="row">
-                    <div class="col col-md-3 col-sm-6 custom-grid col-12">
-                        <div class="volunteer-item">
-                            <div class="volunteer-img">
-                                <img src="{{asset('website/images/team/1.png')}}" alt="">
-                            </div>
-                            <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Hanan Fattoum</a></h2>
-                                <span>Volunteer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-md-3 col-sm-6 custom-grid col-12">
-                        <div class="volunteer-item">
-                            <div class="volunteer-img">
-                                <img src="{{asset('website/images/team/2.png')}}" alt="">
-                            </div>
-                            <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Layal Deeb</a></h2>
-                                <span>Volunteer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-md-3 col-sm-6 custom-grid col-12">
-                        <div class="volunteer-item">
-                            <div class="volunteer-img">
-                                <img src="{{asset('website/images/team/3.png')}}" alt="">
-                            </div>
-                            <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Omar Alsalkhadi</a></h2>
-                                <span>Volunteer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-md-3 col-sm-6 custom-grid col-12">
-                        <div class="volunteer-item">
-                            <div class="volunteer-img">
-                                <img src="{{asset('website/images/team/4.png')}}" alt="">
-                            </div>
-                            <div class="volunteer-content">
-                                <h2><a href="volunteer.html">Mohammad Aljaoor</a></h2>
-                                <span>Admin</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- volunteer-area start -->
-    <!-- start testimonials-section-s2 -->
-    <!-- end testimonials-section-s2 -->
-    <!-- blog-area start -->
     <div class="blog-area section-padding">
         <div class="container">
             <div class="row">
@@ -484,9 +400,9 @@
                             </div>
                             <div class="blog-content">
                                 <ul>
-                                    <li>22 June, 2020</li>
+                                    <li>12<br>October<br>2022</li>
                                     <li><i class="fa fa-heart" aria-hidden="true"></i>56</li>
-                                    <li><i class="fa fa-comments-o" aria-hidden="true"></i> 78</li>
+                                    <li><i class="fa fa-comments-o" aria-hidden="true"></i>78</li>
                                 </ul>
                                 <h2>تعلن جمعيتنا عن بدء التسجيل في فريق الأمل لكرة القدم</h2>
                             </div>
@@ -496,9 +412,9 @@
                         <div class="blog-item">
                             <div class="blog-content">
                                 <ul>
-                                    <li>22 June, 2020</li>
-                                    <li><i class="fa fa-heart" aria-hidden="true"></i>56</li>
-                                    <li><i class="fa fa-comments-o" aria-hidden="true"></i> 78</li>
+                                    <li>22  July<br> 2022</li>
+                                    <li><i class="fa fa-heart" aria-hidden="true"></i>87</li>
+                                    <li><i class="fa fa-comments-o" aria-hidden="true"></i>96</li>
                                 </ul>
                                 <h2>افتتاح مشغل لجمعية شعاع الأمل الخيرية </h2>
                             </div>
@@ -511,7 +427,7 @@
                         <div class="blog-item">
                             <div class="blog-content">
                                 <ul>
-                                    <li>22 June, 2020</li>
+                                    <li>8<br>May <br>2022</li>
                                     <li><i class="fa fa-heart" aria-hidden="true"></i>56</li>
                                     <li><i class="fa fa-comments-o" aria-hidden="true"></i> 78</li>
                                 </ul>
@@ -529,11 +445,11 @@
                             </div>
                             <div class="blog-content">
                                 <ul>
-                                    <li>22 June, 2020</li>
-                                    <li><i class="fa fa-heart" aria-hidden="true"></i>56</li>
-                                    <li><i class="fa fa-comments-o" aria-hidden="true"></i> 78</li>
+                                    <li>22 <br>June<br> 2022</li>
+                                    <li><i class="fa fa-heart" aria-hidden="true"></i>43</li>
+                                    <li><i class="fa fa-comments-o" aria-hidden="true"></i>56</li>
                                 </ul>
-                                <h2>اقامة الحفل الخيري السنوي الرابع تحت شعار (الخير انتم أهله ونحن طريقه) </h2>
+                                <h2>اقامة الحفل الخيري السنوي الرابع لجمعية الأمل تحت شعار (الخير انتم أهله ونحن طريقه) </h2>
                             </div>
                         </div>
                     </div>
@@ -541,6 +457,77 @@
             </div>
         </div>
     </div>
+
+    <!-- volunteer-area start -->
+    <div class="volunteer-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="section-title section-title2 text-center">
+                        <div class="thumb-text">
+                            <span>Volunteer</span>
+                        </div>
+                        <h2>Our Great Team</h2>
+                        <p>WebSite Programming Team from IT Albaath University</p>
+                    </div>
+                </div>
+            </div>
+            <div class="volunteer-wrap">
+                <div class="row">
+                    <div class="col col-md-3 col-sm-6 custom-grid col-12">
+                        <div class="volunteer-item">
+                            <div class="volunteer-img">
+                                <img src="{{asset('website/images/team/o.jpg')}}" alt="">
+                            </div>
+                            <div class="volunteer-content">
+                                <h2><a href="volunteer.html">Omar Alsalkhadi</a></h2>
+                                <span>Volunteer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-3 col-sm-6 custom-grid col-12">
+                        <div class="volunteer-item">
+                            <div class="volunteer-img">
+                                <img src="{{asset('website/images/team/l.jpg')}}" alt="">
+                            </div>
+                            <div class="volunteer-content">
+                                <h2><a href="volunteer.html">Layal Deeb</a></h2>
+                                <span>Volunteer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-3 col-sm-6 custom-grid col-12">
+                        <div class="volunteer-item">
+                            <div class="volunteer-img">
+                                <img src="{{asset('website/images/team/h.jpg')}}" alt="">
+                            </div>
+                            <div class="volunteer-content">
+                                <h2><a href="volunteer.html">Hanan Fattoum</a></h2>
+                                <span>Volunteer</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col col-md-3 col-sm-6 custom-grid col-12">
+                        <div class="volunteer-item">
+                            <div class="volunteer-img">
+                                <img src="{{asset('website/images/team/m.jpg')}}" alt="">
+                            </div>
+                            <div class="volunteer-content">
+                                <h2><a href="volunteer.html">Mohammad Aljaoor</a></h2>
+                                <span>Admin</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- volunteer-area start -->
+    <!-- start testimonials-section-s2 -->
+    <!-- end testimonials-section-s2 -->
+    <!-- blog-area start -->
     <!-- blog-area start -->
     <!-- start partners-section -->
 {{--    <section class="partners-section section-padding">--}}
@@ -570,7 +557,30 @@
 {{--        </div> <!-- end container -->--}}
 {{--    </section>--}}
     <!-- end partners-section -->
-
+    <div class="cta-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-12 col-12">
+                    <div class="cta-left">
+                        <h2>If You Want To Join Us As a Volunteer. <a href="{{url('join')}}"><br>
+                                Click Here</a> </h2>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-lg-offset-1 col-md-12 col-12">
+                    <div class="cta-wrap">
+                        <div class="cta-call">
+                            <span>Call Us!</span>
+                            <h3>+963 964 444 111</h3>
+                        </div>
+                        <div class="cta-call" style="margin-left: 100px; ">
+                            <span>E-mail Us!</span>
+                            <h3>    <a href = "mailto: project.4tth@gmail.com"> project.4tth@gmail.com</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection

@@ -63,7 +63,6 @@
                                 <span>offices</span>
                             </div>
                             <h2>Our  offices</h2>
-                            <p>It is a long established fact that reader distracted by the the readable content off page looking at its layout point.</p>
                         </div>
                     </div>
                 </div>
@@ -118,6 +117,7 @@
             <div class="shape2"><img src="{{asset('website/images/event/2.png')}}" alt=""></div>
         </div>
         <!-- event-area start -->
+
 
     </div>
     <!-- end of page-wrapper -->
