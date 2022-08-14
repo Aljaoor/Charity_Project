@@ -55,7 +55,7 @@
     <div>
     <span style="padding-left: 100px; font: bold; font-size: 25px;">Details request of {{$details->user->name}}</span>
 
-    <button class="theme-btn"  style="margin-left: 650px;"
+    <button class="theme-btn"  style="margin-left: 550px;"
             data-toggle="modal"
             data-target="#accept"
             data-accept_request_id="{{$details->id}}"

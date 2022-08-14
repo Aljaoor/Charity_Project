@@ -64,10 +64,11 @@ Bright Of Hope";
 
 
 
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api.ultramsg.com/instance13013/messages/chat",
+            CURLOPT_URL => "https://api.ultramsg.com/instance14676/messages/chat",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -76,13 +77,14 @@ Bright Of Hope";
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => "token=7gptlblt2p3ihi56&to=$mobile&body=$message&priority=10&referenceId=",
+            CURLOPT_POSTFIELDS => "token=663kth4du1qvr447&to=$mobile&body=$message&priority=1&referenceId=",
             CURLOPT_HTTPHEADER => array(
                 "content-type: application/x-www-form-urlencoded"
             ),
         ));
 
-        curl_exec($curl);
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
 //        whats app message        ===================
 
 

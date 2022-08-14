@@ -85,17 +85,17 @@
                              @endcan
 
 
-                            <div class="event-item" >
+                            <div  class="event-item" >
 
                                 <div class="event-text" >
 
                                 <div class="event-left">
-                                    <div class="event-l-text" style="" >
+                                    <div class="event-l-text" style="min-width: 300px; max-width: 300px; min-height: 300px; max-height: 300px;" >
                                         <span>Office Name</span>
-                                        <h4>{{$office->name }} </h4>
+                                        <h4 style="font-size: 35px;">{{$office->name }} </h4>
                                     </div>
                                 </div>
-                                <div class="event-right">
+                                <div  class="event-right">
 
                                         <h2>Maximum number of people the office can help     <span style="color: #1b6d85"> {{ $office->max_member_count }}</span>
                                         </h2>

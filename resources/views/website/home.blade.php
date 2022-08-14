@@ -209,7 +209,7 @@
                     <div class="thumb-text">
                         <span>Projects</span>
                     </div>
-                    <h2> مشاريعنا الخيرية الربحية </h2>
+                    <h2> Our Profit Charitable Projects</h2>
                 </div>
             </div>
             <div class="row">
@@ -226,9 +226,9 @@
                         <div class="cause-text">
                             <ul>
                                 <li><a href="{{url('donate')}}">GOAL : 5 millions S.P</a></li>
-                                <li><a href="{{url('donate')}}">RISED : 2 millions S.P</a></li>
+                               <li> <a href="{{url('donate')}}">RISED : 2 millions S.P</a></li>
                             </ul>
-                            <h3><a href="{{url('donate')}}"></a>عربة الطعام</h3>
+                            <h3><a href="{{url('donate')}}"></a> Car Food</h3>
                         </div>
                     </div>
                 </div>
@@ -248,7 +248,7 @@
                                 <li><a href="{{url('donate')}}">RISED : 3 millions S.P</a></li>
                             </ul>
 
-                            <h3><a href="{{url('donate')}}">مطبخ بيت المونة</a></h3>
+                            <h3><a href="{{url('donate')}}">Kitchen of the pantry house</a></h3>
                         </div>
                     </div>
                 </div>
@@ -267,7 +267,7 @@
                                 <li><a href="{{url('donate')}}">GOAL : 4 millions S.P</a></li>
                                 <li><a href="{{url('donate')}}">RISED : 1 millions S.P</a></li>
                             </ul>
-                            <h3><a href="{{url('donate')}}">مشغل الأمل</a></h3>
+                            <h3><a href="{{url('donate')}}">Hope Factory</a></h3>
                         </div>
                     </div>
                 </div>
